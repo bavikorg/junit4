@@ -28,7 +28,7 @@ public final class Checks {
      * @return the passed-in value, if not {@code null}
      * @throws NullPointerException if {@code value} is {@code null}
      */
-    public static <T> T notNull(T value, String message) {
+    public static <T> T notNull(T value, /*~~>*/String message) {
         if (value == null) {
             throw new NullPointerException(message);
         }

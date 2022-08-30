@@ -57,7 +57,7 @@ public final class Throwables {
      *
      * @since 4.13
      */
-    public static String getStacktrace(Throwable exception) {
+    public static /*~~>*/String getStacktrace(Throwable exception) {
         StringWriter stringWriter = new StringWriter();
         PrintWriter writer = new PrintWriter(stringWriter);
         exception.printStackTrace(writer);
@@ -70,8 +70,8 @@ public final class Throwables {
      *
      * @return a trimmed stack trace, or the original trace if trimming wasn't possible
      */
-    public static String getTrimmedStackTrace(Throwable exception) {
-        List<String> trimmedStackTraceLines = getTrimmedStackTraceLines(exception);
+    public static /*~~>*/String getTrimmedStackTrace(Throwable exception) {
+        List</*~~>*/String> trimmedStackTraceLines = getTrimmedStackTraceLines(exception);
         if (trimmedStackTraceLines.isEmpty()) {
             return getFullStackTrace(exception);
         }
@@ -82,7 +82,7 @@ public final class Throwables {
         return result.toString();
     }
 
-    private static List<String> getTrimmedStackTraceLines(Throwable exception) {
+    private static List</*~~>*/String> getTrimmedStackTraceLines(Throwable exception) {
         List<StackTraceElement> stackTraceElements = Arrays.asList(exception.getStackTrace());
         int linesToInclude = stackTraceElements.size();
 
@@ -90,7 +90,7 @@ public final class Throwables {
         for (StackTraceElement stackTraceElement : asReversedList(stackTraceElements)) {
             state = state.processStackTraceElement(stackTraceElement);
             if (state == State.DONE) {
-                List<String> trimmedLines = new ArrayList<String>(linesToInclude + 2);
+                List</*~~>*/String> trimmedLines = new ArrayList</*~~>*/String>(linesToInclude + 2);
                 trimmedLines.add("");
                 for (StackTraceElement each : stackTraceElements.subList(0, linesToInclude)) {
                     trimmedLines.add("\tat " + each);
@@ -127,15 +127,15 @@ public final class Throwables {
         }
     }
 
-    private static List<String> getCauseStackTraceLines(Throwable exception) {
+    private static List</*~~>*/String> getCauseStackTraceLines(Throwable exception) {
         if (exception.getCause() != null || hasSuppressed(exception)) {
-            String fullTrace = getFullStackTrace(exception);
+            /*~~>*/String fullTrace = getFullStackTrace(exception);
             BufferedReader reader = new BufferedReader(
                     new StringReader(fullTrace.substring(exception.toString().length())));
-            List<String> causedByLines = new ArrayList<String>();
+            List</*~~>*/String> causedByLines = new ArrayList</*~~>*/String>();
     
             try {
-                String line;
+                /*~~>*/String line;
                 while ((line = reader.readLine()) != null) {
                     if (line.startsWith("Caused by: ") || line.trim().startsWith("Suppressed: ")) {
                         causedByLines.add(line);
@@ -153,7 +153,7 @@ public final class Throwables {
         return Collections.emptyList();
     }
 
-    private static String getFullStackTrace(Throwable exception) {
+    private static /*~~>*/String getFullStackTrace(Throwable exception) {
         StringWriter stringWriter = new StringWriter();
         PrintWriter writer = new PrintWriter(stringWriter);
         exception.printStackTrace(writer);
@@ -161,9 +161,9 @@ public final class Throwables {
     }
 
     private static void appendStackTraceLines(
-            List<String> stackTraceLines, StringBuilder destBuilder) {
-        for (String stackTraceLine : stackTraceLines) {
-            destBuilder.append(String.format("%s%n", stackTraceLine));
+            List</*~~>*/String> stackTraceLines, StringBuilder destBuilder) {
+        for (/*~~>*/String stackTraceLine : stackTraceLines) {
+            destBuilder.append(/*~~>*/String.format("%s%n", stackTraceLine));
         }
     }
 
@@ -184,7 +184,7 @@ public final class Throwables {
 
     private enum State {
         PROCESSING_OTHER_CODE {
-            @Override public State processLine(String methodName) {
+            @Override public State processLine(/*~~>*/String methodName) {
                 if (isTestFrameworkMethod(methodName)) {
                     return PROCESSING_TEST_FRAMEWORK_CODE;
                 }
@@ -192,7 +192,7 @@ public final class Throwables {
             }
         },
         PROCESSING_TEST_FRAMEWORK_CODE {
-            @Override public State processLine(String methodName) {
+            @Override public State processLine(/*~~>*/String methodName) {
                 if (isReflectionMethod(methodName)) {
                     return PROCESSING_REFLECTION_CODE;
                 } else if (isTestFrameworkMethod(methodName)) {
@@ -202,7 +202,7 @@ public final class Throwables {
             } 
         },
         PROCESSING_REFLECTION_CODE {
-            @Override public State processLine(String methodName) {
+            @Override public State processLine(/*~~>*/String methodName) {
                 if (isReflectionMethod(methodName)) {
                     return this;
                 } else if (isTestFrameworkMethod(methodName)) {
@@ -213,13 +213,13 @@ public final class Throwables {
             } 
         },
         DONE {
-            @Override public State processLine(String methodName) {
+            @Override public State processLine(/*~~>*/String methodName) {
                 return this;
             } 
         };
 
         /** Processes a stack trace element method name, possibly moving to a new state. */
-        protected abstract State processLine(String methodName);
+        protected abstract State processLine(/*~~>*/String methodName);
         
         /** Processes a stack trace element, possibly moving to a new state. */
         public final State processStackTraceElement(StackTraceElement element) {
@@ -227,7 +227,7 @@ public final class Throwables {
         }
     }
 
-    private static final String[] TEST_FRAMEWORK_METHOD_NAME_PREFIXES = {
+    private static final /*~~>*/String[] TEST_FRAMEWORK_METHOD_NAME_PREFIXES = {
         "org.junit.runner.",
         "org.junit.runners.",
         "org.junit.experimental.runners.",
@@ -238,16 +238,16 @@ public final class Throwables {
         "junit.textui",
     };
 
-    private static final String[] TEST_FRAMEWORK_TEST_METHOD_NAME_PREFIXES = {
+    private static final /*~~>*/String[] TEST_FRAMEWORK_TEST_METHOD_NAME_PREFIXES = {
         "org.junit.internal.StackTracesTest",
     };
 
-    private static boolean isTestFrameworkMethod(String methodName) {
+    private static boolean isTestFrameworkMethod(/*~~>*/String methodName) {
         return isMatchingMethod(methodName, TEST_FRAMEWORK_METHOD_NAME_PREFIXES) &&
                 !isMatchingMethod(methodName, TEST_FRAMEWORK_TEST_METHOD_NAME_PREFIXES);
     }
     
-    private static final String[] REFLECTION_METHOD_NAME_PREFIXES = {
+    private static final /*~~>*/String[] REFLECTION_METHOD_NAME_PREFIXES = {
         "sun.reflect.",
         "java.lang.reflect.",
         "jdk.internal.reflect.",
@@ -257,12 +257,12 @@ public final class Throwables {
         "junit.framework.TestCase.runBare(", // runBare() directly calls setUp() and tearDown()
    };
     
-    private static boolean isReflectionMethod(String methodName) {
+    private static boolean isReflectionMethod(/*~~>*/String methodName) {
         return isMatchingMethod(methodName, REFLECTION_METHOD_NAME_PREFIXES);
     }
 
-    private static boolean isMatchingMethod(String methodName, String[] methodNamePrefixes) {
-        for (String methodNamePrefix : methodNamePrefixes) {
+    private static boolean isMatchingMethod(/*~~>*/String methodName, /*~~>*/String[] methodNamePrefixes) {
+        for (/*~~>*/String methodNamePrefix : methodNamePrefixes) {
             if (methodName.startsWith(methodNamePrefix)) {
                 return true;
             }

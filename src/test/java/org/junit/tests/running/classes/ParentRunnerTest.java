@@ -30,7 +30,7 @@ import org.junit.rules.RuleMemberValidatorTest.TestWithNonStaticClassRule;
 import org.junit.rules.RuleMemberValidatorTest.TestWithProtectedClassRule;
 
 public class ParentRunnerTest {
-    public static String log = "";
+    public static /*~~>*/String log = "";
 
     public static class FruitTest {
         @Test
@@ -90,10 +90,10 @@ public class ParentRunnerTest {
     }
 
     private static class Exclude extends Filter {
-        private final String methodName;
+        private final /*~~>*/String methodName;
 
-        public Exclude(String methodName) {
-            this.methodName = methodName;
+        public Exclude(/*~~>*/String methodName) {
+            /*~~>*/this.methodName = methodName;
         }
 
         @Override
@@ -102,7 +102,7 @@ public class ParentRunnerTest {
         }
 
         @Override
-        public String describe() {
+        public /*~~>*/String describe() {
             return "filter method name: " + methodName;
         }
     }
@@ -148,7 +148,7 @@ public class ParentRunnerTest {
                 "The class org.junit.tests.running.classes.ParentRunnerTest$NonPublicTestClass is not public.");
     }
 
-    private void assertClassHasFailureMessage(Class<?> klass, String message) {
+    private void assertClassHasFailureMessage(Class<?> klass, /*~~>*/String message) {
         JUnitCore junitCore = new JUnitCore();
         Request request = Request.aClass(klass);
         Result result = junitCore.run(request);

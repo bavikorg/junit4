@@ -48,7 +48,7 @@ public class ResultPrinter implements TestListener {
         printDefects(result.failures(), result.failureCount(), "failure");
     }
 
-    protected void printDefects(Enumeration<TestFailure> booBoos, int count, String type) {
+    protected void printDefects(Enumeration<TestFailure> booBoos, int count, /*~~>*/String type) {
         if (count == 0) return;
         if (count == 1) {
             getWriter().println("There was " + count + " " + type + ":");
@@ -95,7 +95,7 @@ public class ResultPrinter implements TestListener {
      * Returns the formatted string of the elapsed time.
      * Duplicated from BaseTestRunner. Fix it.
      */
-    protected String elapsedTimeAsString(long runTime) {
+    protected /*~~>*/String elapsedTimeAsString(long runTime) {
         return NumberFormat.getInstance().format((double) runTime / 1000);
     }
 

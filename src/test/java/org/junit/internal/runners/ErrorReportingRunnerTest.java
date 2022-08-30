@@ -81,7 +81,7 @@ public class ErrorReportingRunnerTest {
         @Before public static void staticBeforeMethod() {}
         @After public static void staticAfterMethod() {}
 
-        @Test public String testMethodReturningString() {
+        @Test public /*~~>*/String testMethodReturningString() {
             return "this should not be allowed";
         }
     }

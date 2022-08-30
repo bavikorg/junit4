@@ -78,7 +78,7 @@ public abstract class TestCase extends Assert implements Test {
     /**
      * the name of the test case
      */
-    private String fName;
+    private /*~~>*/String fName;
 
     /**
      * No-arg constructor to enable serialization. This method
@@ -91,7 +91,7 @@ public abstract class TestCase extends Assert implements Test {
     /**
      * Constructs a test case with the given name.
      */
-    public TestCase(String name) {
+    public TestCase(/*~~>*/String name) {
         fName = name;
     }
 
@@ -188,7 +188,7 @@ public abstract class TestCase extends Assert implements Test {
      * Asserts that a condition is true. If it isn't it throws
      * an AssertionFailedError with the given message.
      */
-    public static void assertTrue(String message, boolean condition) {
+    public static void assertTrue(/*~~>*/String message, boolean condition) {
         Assert.assertTrue(message, condition);
     }
 
@@ -204,7 +204,7 @@ public abstract class TestCase extends Assert implements Test {
      * Asserts that a condition is false. If it isn't it throws
      * an AssertionFailedError with the given message.
      */
-    public static void assertFalse(String message, boolean condition) {
+    public static void assertFalse(/*~~>*/String message, boolean condition) {
         Assert.assertFalse(message, condition);
     }
 
@@ -219,7 +219,7 @@ public abstract class TestCase extends Assert implements Test {
     /**
      * Fails a test with the given message.
      */
-    public static void fail(String message) {
+    public static void fail(/*~~>*/String message) {
         Assert.fail(message);
     }
 
@@ -234,7 +234,7 @@ public abstract class TestCase extends Assert implements Test {
      * Asserts that two objects are equal. If they are not
      * an AssertionFailedError is thrown with the given message.
      */
-    public static void assertEquals(String message, Object expected, Object actual) {
+    public static void assertEquals(/*~~>*/String message, Object expected, Object actual) {
         Assert.assertEquals(message, expected, actual);
     }
 
@@ -249,14 +249,14 @@ public abstract class TestCase extends Assert implements Test {
     /**
      * Asserts that two Strings are equal.
      */
-    public static void assertEquals(String message, String expected, String actual) {
+    public static void assertEquals(/*~~>*/String message, /*~~>*/String expected, /*~~>*/String actual) {
         Assert.assertEquals(message, expected, actual);
     }
 
     /**
      * Asserts that two Strings are equal.
      */
-    public static void assertEquals(String expected, String actual) {
+    public static void assertEquals(/*~~>*/String expected, /*~~>*/String actual) {
         Assert.assertEquals(expected, actual);
     }
 
@@ -265,7 +265,7 @@ public abstract class TestCase extends Assert implements Test {
      * an AssertionFailedError is thrown with the given message.  If the expected
      * value is infinity then the delta value is ignored.
      */
-    public static void assertEquals(String message, double expected, double actual, double delta) {
+    public static void assertEquals(/*~~>*/String message, double expected, double actual, double delta) {
         Assert.assertEquals(message, expected, actual, delta);
     }
 
@@ -282,7 +282,7 @@ public abstract class TestCase extends Assert implements Test {
      * are not an AssertionFailedError is thrown with the given message. If the
      * expected value is infinity then the delta value is ignored.
      */
-    public static void assertEquals(String message, float expected, float actual, float delta) {
+    public static void assertEquals(/*~~>*/String message, float expected, float actual, float delta) {
         Assert.assertEquals(message, expected, actual, delta);
     }
 
@@ -298,7 +298,7 @@ public abstract class TestCase extends Assert implements Test {
      * Asserts that two longs are equal. If they are not
      * an AssertionFailedError is thrown with the given message.
      */
-    public static void assertEquals(String message, long expected, long actual) {
+    public static void assertEquals(/*~~>*/String message, long expected, long actual) {
         Assert.assertEquals(message, expected, actual);
     }
 
@@ -313,7 +313,7 @@ public abstract class TestCase extends Assert implements Test {
      * Asserts that two booleans are equal. If they are not
      * an AssertionFailedError is thrown with the given message.
      */
-    public static void assertEquals(String message, boolean expected, boolean actual) {
+    public static void assertEquals(/*~~>*/String message, boolean expected, boolean actual) {
         Assert.assertEquals(message, expected, actual);
     }
 
@@ -328,7 +328,7 @@ public abstract class TestCase extends Assert implements Test {
      * Asserts that two bytes are equal. If they are not
      * an AssertionFailedError is thrown with the given message.
      */
-    public static void assertEquals(String message, byte expected, byte actual) {
+    public static void assertEquals(/*~~>*/String message, byte expected, byte actual) {
         Assert.assertEquals(message, expected, actual);
     }
 
@@ -343,7 +343,7 @@ public abstract class TestCase extends Assert implements Test {
      * Asserts that two chars are equal. If they are not
      * an AssertionFailedError is thrown with the given message.
      */
-    public static void assertEquals(String message, char expected, char actual) {
+    public static void assertEquals(/*~~>*/String message, char expected, char actual) {
         Assert.assertEquals(message, expected, actual);
     }
 
@@ -358,7 +358,7 @@ public abstract class TestCase extends Assert implements Test {
      * Asserts that two shorts are equal. If they are not
      * an AssertionFailedError is thrown with the given message.
      */
-    public static void assertEquals(String message, short expected, short actual) {
+    public static void assertEquals(/*~~>*/String message, short expected, short actual) {
         Assert.assertEquals(message, expected, actual);
     }
 
@@ -373,7 +373,7 @@ public abstract class TestCase extends Assert implements Test {
      * Asserts that two ints are equal. If they are not
      * an AssertionFailedError is thrown with the given message.
      */
-    public static void assertEquals(String message, int expected, int actual) {
+    public static void assertEquals(/*~~>*/String message, int expected, int actual) {
         Assert.assertEquals(message, expected, actual);
     }
 
@@ -395,7 +395,7 @@ public abstract class TestCase extends Assert implements Test {
      * Asserts that an object isn't null. If it is
      * an AssertionFailedError is thrown with the given message.
      */
-    public static void assertNotNull(String message, Object object) {
+    public static void assertNotNull(/*~~>*/String message, Object object) {
         Assert.assertNotNull(message, object);
     }
 
@@ -414,7 +414,7 @@ public abstract class TestCase extends Assert implements Test {
      * Asserts that an object is null.  If it is not
      * an AssertionFailedError is thrown with the given message.
      */
-    public static void assertNull(String message, Object object) {
+    public static void assertNull(/*~~>*/String message, Object object) {
         Assert.assertNull(message, object);
     }
 
@@ -422,7 +422,7 @@ public abstract class TestCase extends Assert implements Test {
      * Asserts that two objects refer to the same object. If they are not
      * an AssertionFailedError is thrown with the given message.
      */
-    public static void assertSame(String message, Object expected, Object actual) {
+    public static void assertSame(/*~~>*/String message, Object expected, Object actual) {
         Assert.assertSame(message, expected, actual);
     }
 
@@ -439,7 +439,7 @@ public abstract class TestCase extends Assert implements Test {
      * refer to the same object an AssertionFailedError is thrown with the
      * given message.
      */
-    public static void assertNotSame(String message, Object expected, Object actual) {
+    public static void assertNotSame(/*~~>*/String message, Object expected, Object actual) {
         Assert.assertNotSame(message, expected, actual);
     }
 
@@ -451,19 +451,19 @@ public abstract class TestCase extends Assert implements Test {
         Assert.assertNotSame(expected, actual);
     }
 
-    public static void failSame(String message) {
+    public static void failSame(/*~~>*/String message) {
         Assert.failSame(message);
     }
 
-    public static void failNotSame(String message, Object expected, Object actual) {
+    public static void failNotSame(/*~~>*/String message, Object expected, Object actual) {
         Assert.failNotSame(message, expected, actual);
     }
 
-    public static void failNotEquals(String message, Object expected, Object actual) {
+    public static void failNotEquals(/*~~>*/String message, Object expected, Object actual) {
         Assert.failNotEquals(message, expected, actual);
     }
 
-    public static String format(String message, Object expected, Object actual) {
+    public static /*~~>*/String format(/*~~>*/String message, Object expected, Object actual) {
         return Assert.format(message, expected, actual);
     }
 
@@ -485,7 +485,7 @@ public abstract class TestCase extends Assert implements Test {
      * Returns a string representation of the test case.
      */
     @Override
-    public String toString() {
+    public /*~~>*/String toString() {
         return getName() + "(" + getClass().getName() + ")";
     }
 
@@ -494,7 +494,7 @@ public abstract class TestCase extends Assert implements Test {
      *
      * @return the name of the TestCase
      */
-    public String getName() {
+    public /*~~>*/String getName() {
         return fName;
     }
 
@@ -503,7 +503,7 @@ public abstract class TestCase extends Assert implements Test {
      *
      * @param name the name to set
      */
-    public void setName(String name) {
+    public void setName(/*~~>*/String name) {
         fName = name;
     }
 }

@@ -34,7 +34,7 @@ public class BlockJUnit4ClassRunnerTest {
         }
     }
 
-    private static String log;
+    private static /*~~>*/String log;
 
     public static class MethodBlockAfterFireTestStarted {
         public MethodBlockAfterFireTestStarted() {

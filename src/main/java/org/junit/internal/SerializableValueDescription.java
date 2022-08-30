@@ -11,10 +11,10 @@ import java.io.Serializable;
  * previously serialized instances.
  */
 class SerializableValueDescription implements Serializable {
-    private final String value;
+    private final /*~~>*/String value;
 
     private SerializableValueDescription(Object value) {
-        this.value = String.valueOf(value);
+        /*~~>*/this.value = /*~~>*/String.valueOf(value);
     }
 
     /**
@@ -32,7 +32,7 @@ class SerializableValueDescription implements Serializable {
     }
 
     @Override
-    public String toString() {
+    public /*~~>*/String toString() {
         return value;
     }
 }

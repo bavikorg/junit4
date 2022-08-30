@@ -46,12 +46,12 @@ public class ErrorCollectorTest {
                         everyTestRunSuccessful()},
                 {
                     CheckMatcherThatFailsWithoutProvidedReason.class,
-                        hasSingleFailureWithMessage(Matchers.<String>allOf(
+                        hasSingleFailureWithMessage(Matchers.</*~~>*/String>allOf(
                             containsString("Expected: is <4>"),
                             containsString("but: was <3>")))},
                 {
                     CheckMatcherThatFailsWithProvidedReason.class,
-                        hasSingleFailureWithMessage(Matchers.<String>allOf(
+                        hasSingleFailureWithMessage(Matchers.</*~~>*/String>allOf(
                             containsString("reason"),
                             containsString("Expected: is <4>"),
                             containsString("but: was <3>")))},

@@ -14,7 +14,7 @@ public abstract class PotentialAssignment {
         }
     }
 
-    public static PotentialAssignment forValue(final String name, final Object value) {
+    public static PotentialAssignment forValue(final /*~~>*/String name, final Object value) {
         return new PotentialAssignment() {
             @Override
             public Object getValue() {
@@ -22,13 +22,13 @@ public abstract class PotentialAssignment {
             }
 
             @Override
-            public String toString() {
+            public /*~~>*/String toString() {
                 return format("[%s]", value);
             }
 
             @Override
-            public String getDescription() {
-                String valueString;
+            public /*~~>*/String getDescription() {
+                /*~~>*/String valueString;
 
                 if (value == null) {
                     valueString = "null";
@@ -48,5 +48,5 @@ public abstract class PotentialAssignment {
 
     public abstract Object getValue() throws CouldNotGenerateValueException;
 
-    public abstract String getDescription() throws CouldNotGenerateValueException;
+    public abstract /*~~>*/String getDescription() throws CouldNotGenerateValueException;
 }

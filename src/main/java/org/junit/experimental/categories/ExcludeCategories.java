@@ -45,7 +45,7 @@ public final class ExcludeCategories extends CategoryFilterFactory {
         }
 
         @Override
-        public String describe() {
+        public /*~~>*/String describe() {
             return "excludes " + super.describe();
         }
     }

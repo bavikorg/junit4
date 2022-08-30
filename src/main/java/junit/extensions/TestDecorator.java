@@ -33,7 +33,7 @@ public class TestDecorator extends Assert implements Test {
     }
 
     @Override
-    public String toString() {
+    public /*~~>*/String toString() {
         return fTest.toString();
     }
 

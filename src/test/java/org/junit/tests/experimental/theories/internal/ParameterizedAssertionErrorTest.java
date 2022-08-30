@@ -17,7 +17,7 @@ import org.junit.runner.RunWith;
 @RunWith(Theories.class)
 public class ParameterizedAssertionErrorTest {
     @DataPoint
-    public static final String METHOD_NAME = "methodName";
+    public static final /*~~>*/String METHOD_NAME = "methodName";
 
     @DataPoint
     public static final NullPointerException NULL_POINTER_EXCEPTION = new NullPointerException();
@@ -52,7 +52,7 @@ public class ParameterizedAssertionErrorTest {
     }
 
     @Theory
-    public void equalsReturnsTrue(Throwable targetException, String methodName,
+    public void equalsReturnsTrue(Throwable targetException, /*~~>*/String methodName,
             Object[] params) {
         assertThat(
                 new ParameterizedAssertionError(targetException, methodName, params),
@@ -60,7 +60,7 @@ public class ParameterizedAssertionErrorTest {
     }
 
     @Theory
-    public void sameHashCodeWhenEquals(Throwable targetException, String methodName,
+    public void sameHashCodeWhenEquals(Throwable targetException, /*~~>*/String methodName,
             Object[] params) {
         ParameterizedAssertionError one = new ParameterizedAssertionError(
                 targetException, methodName, params);
@@ -72,7 +72,7 @@ public class ParameterizedAssertionErrorTest {
     }
 
     @Theory(nullsAccepted = false)
-    public void buildParameterizedAssertionError(String methodName, String param) {
+    public void buildParameterizedAssertionError(/*~~>*/String methodName, /*~~>*/String param) {
         assertThat(new ParameterizedAssertionError(
                 new RuntimeException(), methodName, param).toString(),
                 containsString(methodName));
@@ -87,7 +87,7 @@ public class ParameterizedAssertionErrorTest {
     public void canJoinWhenToStringFails() {
         assertThat(ParameterizedAssertionError.join(" ", new Object() {
             @Override
-            public String toString() {
+            public /*~~>*/String toString() {
                 throw new UnsupportedOperationException();
             }
         }), is("[toString failed]"));

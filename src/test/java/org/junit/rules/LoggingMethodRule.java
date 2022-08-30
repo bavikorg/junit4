@@ -5,10 +5,10 @@ import org.junit.runners.model.Statement;
 
 class LoggingMethodRule implements MethodRule {
     private final StringBuilder log;
-    private final String name;
+    private final /*~~>*/String name;
 
-    LoggingMethodRule(StringBuilder log, String name) {
-        this.name = name;
+    LoggingMethodRule(StringBuilder log, /*~~>*/String name) {
+        /*~~>*/this.name = name;
         this.log = log;
     }
 

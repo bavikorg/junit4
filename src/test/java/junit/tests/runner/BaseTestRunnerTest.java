@@ -10,12 +10,12 @@ public class BaseTestRunnerTest extends TestCase {
         private boolean fRunFailed = false;
 
         @Override
-        protected void runFailed(String message) {
+        protected void runFailed(/*~~>*/String message) {
             fRunFailed = true;
         }
 
         @Override
-        public void testEnded(String testName) {
+        public void testEnded(/*~~>*/String testName) {
         }
 
         @Override
@@ -23,7 +23,7 @@ public class BaseTestRunnerTest extends TestCase {
         }
 
         @Override
-        public void testStarted(String testName) {
+        public void testStarted(/*~~>*/String testName) {
         }
     }
 

@@ -59,7 +59,7 @@ public class JUnit38ClassRunner extends Runner implements Filterable, Orderable 
             return test.getClass();
         }
 
-        private String getName(Test test) {
+        private /*~~>*/String getName(Test test) {
             if (test instanceof TestCase) {
                 return ((TestCase) test).getName();
             } else {
@@ -106,7 +106,7 @@ public class JUnit38ClassRunner extends Runner implements Filterable, Orderable 
                     getAnnotations(tc));
         } else if (test instanceof TestSuite) {
             TestSuite ts = (TestSuite) test;
-            String name = ts.getName() == null ? createSuiteDescription(ts) : ts.getName();
+            /*~~>*/String name = ts.getName() == null ? createSuiteDescription(ts) : ts.getName();
             Description description = Description.createSuiteDescription(name);
             int n = ts.testCount();
             for (int i = 0; i < n; i++) {
@@ -140,10 +140,10 @@ public class JUnit38ClassRunner extends Runner implements Filterable, Orderable 
         return new Annotation[0];
     }
 
-    private static String createSuiteDescription(TestSuite ts) {
+    private static /*~~>*/String createSuiteDescription(TestSuite ts) {
         int count = ts.countTestCases();
-        String example = count == 0 ? "" : String.format(" [example: %s]", ts.testAt(0));
-        return String.format("TestSuite with %s tests%s", count, example);
+        /*~~>*/String example = count == 0 ? "" : /*~~>*/String.format(" [example: %s]", ts.testAt(0));
+        return /*~~>*/String.format("TestSuite with %s tests%s", count, example);
     }
 
     public void filter(Filter filter) throws NoTestsRemainException {

@@ -277,8 +277,8 @@ public class CategoryTest {
     @Test
     public void describeMultipleCategoryFilter() {
         CategoryFilter filter= CategoryFilter.include(FastTests.class, SlowTests.class);
-        String d1= format("categories [%s, %s]", FastTests.class, SlowTests.class);
-        String d2= format("categories [%s, %s]", SlowTests.class, FastTests.class);
+        /*~~>*/String d1= format("categories [%s, %s]", FastTests.class, SlowTests.class);
+        /*~~>*/String d2= format("categories [%s, %s]", SlowTests.class, FastTests.class);
         assertThat(filter.describe(), is(anyOf(equalTo(d1), equalTo(d2))));
     }
 
@@ -534,7 +534,7 @@ public class CategoryTest {
     }
 
     @RunWith(Categories.class)
-    @Categories.ExcludeCategory(String.class)
+    @Categories.ExcludeCategory(/*~~>*/String.class)
     @Suite.SuiteClasses(NoIncludeCategoryAnnotationTest.class)
     public static class NoIncludeCategoryAnnotationSuite {
     }
@@ -547,7 +547,7 @@ public class CategoryTest {
         }
 
         @Test
-        @Category(String.class) public void test1() {
+        @Category(/*~~>*/String.class) public void test1() {
         }
     }
 
@@ -560,7 +560,7 @@ public class CategoryTest {
 
     @RunWith(Categories.class)
     @Categories.IncludeCategory(CharSequence.class)
-    @Categories.ExcludeCategory(String.class)
+    @Categories.ExcludeCategory(/*~~>*/String.class)
     @Suite.SuiteClasses(NoIncludeCategoryAnnotationTest.class)
     public static class SameAsNoIncludeCategoryAnnotationSuite {
     }

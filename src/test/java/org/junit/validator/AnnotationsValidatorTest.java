@@ -17,11 +17,11 @@ import org.junit.runners.model.TestClass;
 
 public class AnnotationsValidatorTest {
     public static class ExampleAnnotationValidator extends AnnotationValidator {
-        private static final String ANNOTATED_METHOD_CALLED= "annotated method called";
+        private static final /*~~>*/String ANNOTATED_METHOD_CALLED= "annotated method called";
 
-        private static final String ANNOTATED_FIELD_CALLED= "annotated field called";
+        private static final /*~~>*/String ANNOTATED_FIELD_CALLED= "annotated field called";
 
-        private static final String ANNOTATED_CLASS_CALLED= "annotated class called";
+        private static final /*~~>*/String ANNOTATED_CLASS_CALLED= "annotated class called";
 
         @Override
         public List<Exception> validateAnnotatedClass(TestClass testClass) {
@@ -54,7 +54,7 @@ public class AnnotationsValidatorTest {
 
     public static class AnnotationValidatorFieldTest {
         @ExampleAnnotationWithValidator
-        private String field;
+        private /*~~>*/String field;
 
         @Test
         public void test() {
@@ -71,23 +71,23 @@ public class AnnotationsValidatorTest {
     @Test
     public void validatorIsCalledForAClass() {
         assertClassHasFailureMessage(AnnotationValidatorClassTest.class,
-                ExampleAnnotationValidator.ANNOTATED_CLASS_CALLED);
+                /*~~>*/ExampleAnnotationValidator.ANNOTATED_CLASS_CALLED);
     }
 
     @Test
     public void validatorIsCalledForAMethod() {
         assertClassHasFailureMessage(AnnotationValidatorMethodTest.class,
-                ExampleAnnotationValidator.ANNOTATED_METHOD_CALLED);
+                /*~~>*/ExampleAnnotationValidator.ANNOTATED_METHOD_CALLED);
     }
 
     @Test
     public void validatorIsCalledForAField() {
         assertClassHasFailureMessage(AnnotationValidatorFieldTest.class,
-                ExampleAnnotationValidator.ANNOTATED_FIELD_CALLED);
+                /*~~>*/ExampleAnnotationValidator.ANNOTATED_FIELD_CALLED);
     }
 
     private void assertClassHasFailureMessage(Class<?> klass,
-            String expectedFailure) {
+            /*~~>*/String expectedFailure) {
         AnnotationsValidator validator= new AnnotationsValidator();
         Collection<Exception> errors= validator
                 .validateTestClass(new TestClass(klass));

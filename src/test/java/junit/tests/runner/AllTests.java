@@ -8,7 +8,7 @@ import junit.framework.TestSuite;
  */
 public class AllTests {
 
-    public static void main(String[] args) {
+    public static void main(/*~~>*/String[] args) {
         junit.textui.TestRunner.run(suite());
     }
 
@@ -24,7 +24,7 @@ public class AllTests {
     }
 
     static boolean isJDK11() {
-        String version = System.getProperty("java.version");
+        /*~~>*/String version = System.getProperty("java.version");
         return version.startsWith("1.1");
     }
 }

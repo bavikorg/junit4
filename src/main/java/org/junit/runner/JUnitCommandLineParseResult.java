@@ -10,7 +10,7 @@ import org.junit.runner.manipulation.Filter;
 import org.junit.runners.model.InitializationError;
 
 class JUnitCommandLineParseResult {
-    private final List<String> filterSpecs = new ArrayList<String>();
+    private final List</*~~>*/String> filterSpecs = new ArrayList</*~~>*/String>();
     private final List<Class<?>> classes = new ArrayList<Class<?>>();
     private final List<Throwable> parserErrors = new ArrayList<Throwable>();
 
@@ -22,7 +22,7 @@ class JUnitCommandLineParseResult {
     /**
      * Returns filter specs parsed from command line.
      */
-    public List<String> getFilterSpecs() {
+    public List</*~~>*/String> getFilterSpecs() {
         return Collections.unmodifiableList(filterSpecs);
     }
 
@@ -38,7 +38,7 @@ class JUnitCommandLineParseResult {
      *
      * @param args Arguments
      */
-    public static JUnitCommandLineParseResult parse(String[] args) {
+    public static JUnitCommandLineParseResult parse(/*~~>*/String[] args) {
         JUnitCommandLineParseResult result = new JUnitCommandLineParseResult();
 
         result.parseArgs(args);
@@ -46,19 +46,19 @@ class JUnitCommandLineParseResult {
         return result;
     }
 
-    private void parseArgs(String[] args) {
+    private void parseArgs(/*~~>*/String[] args) {
         parseParameters(parseOptions(args));
     }
 
-    String[] parseOptions(String... args) {
+    /*~~>*//*~~>*/String[] parseOptions(/*~~>*/String... args) {
         for (int i = 0; i != args.length; ++i) {
-            String arg = args[i];
+            /*~~>*/String arg = args[i];
 
             if (arg.equals("--")) {
                 return copyArray(args, i + 1, args.length);
             } else if (arg.startsWith("--")) {
                 if (arg.startsWith("--filter=") || arg.equals("--filter")) {
-                    String filterSpec;
+                    /*~~>*/String filterSpec;
                     if (arg.equals("--filter")) {
                         ++i;
 
@@ -81,19 +81,19 @@ class JUnitCommandLineParseResult {
             }
         }
 
-        return new String[]{};
+        return new /*~~>*/String[]{};
     }
 
-    private String[] copyArray(String[] args, int from, int to) {
-        String[] result = new String[to - from];
+    private /*~~>*//*~~>*/String[] copyArray(/*~~>*/String[] args, int from, int to) {
+        /*~~>*/String[] result = new /*~~>*/String[to - from];
         for (int j = from; j != to; ++j) {
             result[j - from] = args[j];
         }
         return result;
     }
 
-    void parseParameters(String[] args) {
-        for (String arg : args) {
+    void parseParameters(/*~~>*/String[] args) {
+        for (/*~~>*/String arg : args) {
             try {
                 classes.add(Classes.getClass(arg));
             } catch (ClassNotFoundException e) {
@@ -123,7 +123,7 @@ class JUnitCommandLineParseResult {
 
     private Request applyFilterSpecs(Request request) {
         try {
-            for (String filterSpec : filterSpecs) {
+            for (/*~~>*/String filterSpec : filterSpecs) {
                 Filter filter = FilterFactories.createFilterFromFilterSpec(
                         request, filterSpec);
                 request = request.filterWith(filter);
@@ -140,7 +140,7 @@ class JUnitCommandLineParseResult {
     public static class CommandLineParserError extends Exception {
         private static final long serialVersionUID= 1L;
 
-        public CommandLineParserError(String message) {
+        public CommandLineParserError(/*~~>*/String message) {
             super(message);
         }
     }

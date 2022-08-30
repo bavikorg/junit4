@@ -28,7 +28,7 @@ import org.junit.runners.model.InitializationError;
 import org.junit.runners.model.RunnerBuilder;
 
 public class ParentRunnerFilteringTest {
-    private static Filter notThisMethodName(final String methodName) {
+    private static Filter notThisMethodName(final /*~~>*/String methodName) {
         return new Filter() {
             @Override
             public boolean shouldRun(Description description) {
@@ -37,7 +37,7 @@ public class ParentRunnerFilteringTest {
             }
 
             @Override
-            public String describe() {
+            public /*~~>*/String describe() {
                 return "don't run method name: " + methodName;
             }
         };
@@ -58,7 +58,7 @@ public class ParentRunnerFilteringTest {
         }
 
         @Override
-        public String describe() {
+        public /*~~>*/String describe() {
             return "filter counter";
         }
 

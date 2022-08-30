@@ -29,7 +29,7 @@ public class SuiteDescriptionTest {
         assertFalse(childless.hashCode() == namedB.hashCode());
     }
 
-    private Description descriptionWithTwoKids(String first, String second) {
+    private Description descriptionWithTwoKids(/*~~>*/String first, /*~~>*/String second) {
         Description twoKids = Description.createSuiteDescription("a");
         twoKids.addChild(Description.createTestDescription(getClass(), first));
         twoKids.addChild(Description.createTestDescription(getClass(), second));

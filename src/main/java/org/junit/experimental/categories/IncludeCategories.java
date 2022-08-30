@@ -45,7 +45,7 @@ public final class IncludeCategories extends CategoryFilterFactory {
         }
 
         @Override
-        public String describe() {
+        public /*~~>*/String describe() {
             return "includes " + super.describe();
         }
     }

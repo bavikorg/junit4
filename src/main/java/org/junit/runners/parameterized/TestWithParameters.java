@@ -16,23 +16,23 @@ import org.junit.runners.model.TestClass;
  * @since 4.12
  */
 public class TestWithParameters {
-    private final String name;
+    private final /*~~>*/String name;
 
     private final TestClass testClass;
 
     private final List<Object> parameters;
 
-    public TestWithParameters(String name, TestClass testClass,
+    public TestWithParameters(/*~~>*/String name, TestClass testClass,
             List<Object> parameters) {
         notNull(name, "The name is missing.");
         notNull(testClass, "The test class is missing.");
         notNull(parameters, "The parameters are missing.");
-        this.name = name;
+        /*~~>*/this.name = name;
         this.testClass = testClass;
         this.parameters = unmodifiableList(new ArrayList<Object>(parameters));
     }
 
-    public String getName() {
+    public /*~~>*/String getName() {
         return name;
     }
 
@@ -64,13 +64,13 @@ public class TestWithParameters {
             return false;
         }
         TestWithParameters other = (TestWithParameters) obj;
-        return name.equals(other.name)
+        return name.equals(/*~~>*/other.name)
                 && parameters.equals(other.parameters)
                 && testClass.equals(other.testClass);
     }
 
     @Override
-    public String toString() {
+    public /*~~>*/String toString() {
         return testClass.getName() + " '" + name + "' with parameters "
                 + parameters;
     }

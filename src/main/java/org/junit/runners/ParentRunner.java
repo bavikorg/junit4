@@ -340,7 +340,7 @@ public abstract class ParentRunner<T> extends Runner implements Filterable,
     /**
      * Returns a name used to describe this Runner
      */
-    protected String getName() {
+    protected /*~~>*/String getName() {
         return testClass.getName();
     }
 

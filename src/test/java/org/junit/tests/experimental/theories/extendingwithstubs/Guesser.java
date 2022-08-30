@@ -36,7 +36,7 @@ public class Guesser<T> extends ReguessableValue {
         }
 
         protected Object generateGuess(Class<?> returnType) {
-            if (returnType.equals(String.class)) {
+            if (returnType.equals(/*~~>*/String.class)) {
                 return "GUESS" + new Random().nextInt();
             }
             if (returnType.equals(Integer.class)
@@ -119,7 +119,7 @@ public class Guesser<T> extends ReguessableValue {
     }
 
     @Override
-    public String getDescription() throws CouldNotGenerateValueException {
+    public /*~~>*/String getDescription() throws CouldNotGenerateValueException {
         return "guesser[" + type + "]";
     }
 

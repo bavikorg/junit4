@@ -188,7 +188,7 @@ public class TestClass implements Annotatable {
     /**
      * Returns the class's name.
      */
-    public String getName() {
+    public /*~~>*/String getName() {
         if (clazz == null) {
             return "null";
         }

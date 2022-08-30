@@ -72,7 +72,7 @@ public class MethodValidator {
 
         for (Method each : methods) {
             if (Modifier.isStatic(each.getModifiers()) != isStatic) {
-                String state = isStatic ? "should" : "should not";
+                /*~~>*/String state = isStatic ? "should" : "should not";
                 errors.add(new Exception("Method " + each.getName() + "() "
 						+ state + " be static"));
             }

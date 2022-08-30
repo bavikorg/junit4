@@ -39,7 +39,7 @@ public class TestFailure {
      * Returns a short description of the failure.
      */
     @Override
-    public String toString() {
+    public /*~~>*/String toString() {
         return fFailedTest + ": " + fThrownException.getMessage();
     }
     
@@ -47,14 +47,14 @@ public class TestFailure {
      * Returns a String containing the stack trace of the error
      * thrown by TestFailure.
      */
-    public String trace() {
+    public /*~~>*/String trace() {
         return Throwables.getStacktrace(thrownException());
     }
 
     /**
      * Returns a String containing the message from the thrown exception.
      */
-    public String exceptionMessage() {
+    public /*~~>*/String exceptionMessage() {
         return thrownException().getMessage();
     }
 

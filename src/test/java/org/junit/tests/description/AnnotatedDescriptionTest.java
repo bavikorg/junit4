@@ -51,7 +51,7 @@ public class AnnotatedDescriptionTest {
 
     @Retention(RetentionPolicy.RUNTIME)
     public @interface ValuedAnnotation {
-        String value();
+        /*~~>*/String value();
     }
 
     @ValuedAnnotation("hello")
@@ -78,7 +78,7 @@ public class AnnotatedDescriptionTest {
     @Test
     public void characterizeCreatingMyOwnAnnotation() {
         Annotation annotation = new Ignore() {
-            public String value() {
+            public /*~~>*/String value() {
                 return "message";
             }
 

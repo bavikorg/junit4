@@ -32,7 +32,7 @@ public class JUnitCore {
      *
      * @param args names of classes in which to find tests to run
      */
-    public static void main(String... args) {
+    public static void main(/*~~>*/String... args) {
         Result result = new JUnitCore().runMain(new RealSystem(), args);
         System.exit(result.wasSuccessful() ? 0 : 1);
     }
@@ -66,7 +66,7 @@ public class JUnitCore {
      * @param system system to run with
      * @param args from main()
      */
-    Result runMain(JUnitSystem system, String... args) {
+    Result runMain(JUnitSystem system, /*~~>*/String... args) {
         system.out().println("JUnit version " + Version.id());
 
         JUnitCommandLineParseResult jUnitCommandLineParseResult = JUnitCommandLineParseResult.parse(args);
@@ -80,7 +80,7 @@ public class JUnitCore {
     /**
      * @return the version number of this release
      */
-    public String getVersion() {
+    public /*~~>*/String getVersion() {
         return Version.id();
     }
 

@@ -17,9 +17,9 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class FilterOptionIntegrationTest {
-    private static final String INCLUDES_DUMMY_CATEGORY_0 = "--filter=" +
+    private static final /*~~>*/String INCLUDES_DUMMY_CATEGORY_0 = "--filter=" +
             IncludeCategories.class.getName() + "=" + DummyCategory0.class.getName();
-    private static final String EXCLUDES_DUMMY_CATEGORY_1 = "--filter=" +
+    private static final /*~~>*/String EXCLUDES_DUMMY_CATEGORY_1 = "--filter=" +
             ExcludeCategories.class.getName() + "=" + DummyCategory1.class.getName();
 
     private JUnitCore jUnitCore = new JUnitCore();
@@ -106,7 +106,7 @@ public class FilterOptionIntegrationTest {
         assertThat("failureCount does not match", result.getFailureCount(), is(0));
     }
 
-    private Result runJUnit(final String... args) {
+    private Result runJUnit(final /*~~>*/String... args) {
         return jUnitCore.runMain(new TestSystem(), args);
     }
 
@@ -121,8 +121,8 @@ public class FilterOptionIntegrationTest {
     }
 
     private static class TestListener extends RunListener {
-        private Set<String> startedTests = new HashSet<String>();
-        private Set<String> finishedTests = new HashSet<String>();
+        private Set</*~~>*/String> startedTests = new HashSet</*~~>*/String>();
+        private Set</*~~>*/String> finishedTests = new HashSet</*~~>*/String>();
 
         @Override
         public void testFinished(final Description description) {

@@ -46,7 +46,7 @@ public class BadlyFormedClassesTest {
 
     @Test
     public void constructorException() {
-        String message = exceptionMessageFrom(FaultyConstructor.class);
+        /*~~>*/String message = exceptionMessageFrom(FaultyConstructor.class);
         assertEquals("Thrown during construction", message);
     }
 
@@ -61,11 +61,11 @@ public class BadlyFormedClassesTest {
                 exceptionMessageFrom(BadBeforeMethodWithLegacyRunner.class));
     }
 
-    private String exceptionMessageFrom(Class<?> testClass) {
+    private /*~~>*/String exceptionMessageFrom(Class<?> testClass) {
         JUnitCore core = new JUnitCore();
         Result result = core.run(testClass);
         Failure failure = result.getFailures().get(0);
-        String message = failure.getException().getMessage();
+        /*~~>*/String message = failure.getException().getMessage();
         return message;
     }
 }

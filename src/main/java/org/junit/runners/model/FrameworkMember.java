@@ -55,7 +55,7 @@ public abstract class FrameworkMember<T extends FrameworkMember<T>> implements
         return Modifier.isPublic(getModifiers());
     }
 
-    public abstract String getName();
+    public abstract /*~~>*/String getName();
 
     public abstract Class<?> getType();
 

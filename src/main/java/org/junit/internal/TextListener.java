@@ -72,7 +72,7 @@ public class TextListener extends RunListener {
         }
     }
 
-    protected void printFailure(Failure each, String prefix) {
+    protected void printFailure(Failure each, /*~~>*/String prefix) {
         getWriter().println(prefix + ") " + each.getTestHeader());
         getWriter().print(each.getTrimmedTrace());
     }
@@ -95,7 +95,7 @@ public class TextListener extends RunListener {
      * Returns the formatted string of the elapsed time. Duplicated from
      * BaseTestRunner. Fix it.
      */
-    protected String elapsedTimeAsString(long runTime) {
+    protected /*~~>*/String elapsedTimeAsString(long runTime) {
         return NumberFormat.getInstance().format((double) runTime / 1000);
     }
 }

@@ -19,7 +19,7 @@ public class ParameterizedNamesTest {
     @RunWith(Parameterized.class)
     public static class ParameterizedWithSpecialCharsInName {
 
-        public ParameterizedWithSpecialCharsInName(String s) {
+        public ParameterizedWithSpecialCharsInName(/*~~>*/String s) {
         }
 
         @Parameterized.Parameters(name = "{0}")

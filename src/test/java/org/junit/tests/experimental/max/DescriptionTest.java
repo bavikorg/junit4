@@ -33,7 +33,7 @@ public class DescriptionTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void createSuiteDescription_whenNull() {
-        Description.createSuiteDescription((String) null);
+        Description.createSuiteDescription((/*~~>*/String) null);
     }
 
     @Test
@@ -80,7 +80,7 @@ public class DescriptionTest {
             }
 
             @Override // just making public
-            public Class<?> findClass(String name) throws ClassNotFoundException {
+            public Class<?> findClass(/*~~>*/String name) throws ClassNotFoundException {
                 return super.findClass(name);
             }
         }

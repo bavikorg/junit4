@@ -23,12 +23,12 @@ public abstract class ComparisonCriteria {
      * @param actuals Object array or array of arrays (multi-dimensional array) with
      * actual values
      */
-    public void arrayEquals(String message, Object expecteds, Object actuals)
+    public void arrayEquals(/*~~>*/String message, Object expecteds, Object actuals)
             throws ArrayComparisonFailure {
         arrayEquals(message, expecteds, actuals, true);
     }
 
-    private void arrayEquals(String message, Object expecteds, Object actuals, boolean outer)
+    private void arrayEquals(/*~~>*/String message, Object expecteds, Object actuals, boolean outer)
             throws ArrayComparisonFailure {
         if (expecteds == actuals
             || Arrays.deepEquals(new Object[] {expecteds}, new Object[] {actuals})) {
@@ -37,10 +37,10 @@ public abstract class ComparisonCriteria {
             // the arrays are exactly equal.
             return;
         }
-        String header = message == null ? "" : message + ": ";
+        /*~~>*/String header = message == null ? "" : message + ": ";
 
         // Only include the user-provided message in the outer exception.
-        String exceptionMessage = outer ? header : "";
+        /*~~>*/String exceptionMessage = outer ? header : "";
 
         if (expecteds == null) {
             Assert.fail(exceptionMessage + "expected array was null");
@@ -106,16 +106,16 @@ public abstract class ComparisonCriteria {
         }
     }
 
-    private static Object objectWithToString(final String string) {
+    private static Object objectWithToString(final /*~~>*/String string) {
         return new Object() {
             @Override
-            public String toString() {
+            public /*~~>*/String toString() {
                 return string;
             }
         };
     }
 
-    private String componentTypeName(Class<?> arrayClass) {
+    private /*~~>*/String componentTypeName(Class<?> arrayClass) {
         Class<?> componentType = arrayClass.getComponentType();
         if (componentType.isArray()) {
             return componentTypeName(componentType) + "[]";

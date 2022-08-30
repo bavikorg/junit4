@@ -125,7 +125,7 @@ public class ExpectedException implements TestRule {
 
     private final ExpectedExceptionMatcherBuilder matcherBuilder = new ExpectedExceptionMatcherBuilder();
 
-    private String missingExceptionMessage= "Expected test to throw %s";
+    private /*~~>*/String missingExceptionMessage= "Expected test to throw %s";
 
     private ExpectedException() {
     }
@@ -160,7 +160,7 @@ public class ExpectedException implements TestRule {
      * @param message exception detail message
      * @return the rule itself
      */
-    public ExpectedException reportMissingExceptionWithMessage(String message) {
+    public ExpectedException reportMissingExceptionWithMessage(/*~~>*/String message) {
         missingExceptionMessage = message;
         return this;
     }
@@ -206,7 +206,7 @@ public class ExpectedException implements TestRule {
      *     throw new NullPointerException(&quot;What happened?&quot;);
      * }</pre>
      */
-    public void expectMessage(String substring) {
+    public void expectMessage(/*~~>*/String substring) {
         expectMessage(containsString(substring));
     }
 
@@ -219,7 +219,7 @@ public class ExpectedException implements TestRule {
      *     throw new NullPointerException(&quot;What happened?&quot;);
      * }</pre>
      */
-    public void expectMessage(Matcher<String> matcher) {
+    public void expectMessage(Matcher</*~~>*/String> matcher) {
         expect(hasMessage(matcher));
     }
 
@@ -278,8 +278,8 @@ public class ExpectedException implements TestRule {
         fail(missingExceptionMessage());
     }
     
-    private String missingExceptionMessage() {
-        String expectation= StringDescription.toString(matcherBuilder.build());
+    private /*~~>*/String missingExceptionMessage() {
+        /*~~>*/String expectation= StringDescription.toString(matcherBuilder.build());
         return format(missingExceptionMessage, expectation);
     }
 }

@@ -39,7 +39,7 @@ public class Failure implements Serializable {
     /**
      * @return a user-understandable label for the test
      */
-    public String getTestHeader() {
+    public /*~~>*/String getTestHeader() {
         return fDescription.getDisplayName();
     }
 
@@ -59,14 +59,14 @@ public class Failure implements Serializable {
     }
 
     @Override
-    public String toString() {
+    public /*~~>*/String toString() {
         return getTestHeader() + ": " + fThrownException.getMessage();
     }
 
     /**
      * Gets the printed form of the exception and its stack trace.
      */
-    public String getTrace() {
+    public /*~~>*/String getTrace() {
         return Throwables.getStacktrace(getException());
     }
 
@@ -75,7 +75,7 @@ public class Failure implements Serializable {
      * This method will attempt to filter out frames of the stack trace that are below
      * the test method call.
      */
-    public String getTrimmedTrace() {
+    public /*~~>*/String getTrimmedTrace() {
         return Throwables.getTrimmedStackTrace(getException());
     }
 
@@ -84,7 +84,7 @@ public class Failure implements Serializable {
      *
      * @return the message of the thrown exception
      */
-    public String getMessage() {
+    public /*~~>*/String getMessage() {
         return getException().getMessage();
     }
 }

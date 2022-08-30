@@ -86,7 +86,7 @@ public class ResultTest extends TestCase {
  
     private void assertResultReserializable(Result result, SerializationFormat resourceSerializationFormat)
             throws IOException, ClassNotFoundException {
-        String resourceName = getName();
+        /*~~>*/String resourceName = getName();
         InputStream resource = getClass().getResourceAsStream(resourceName);
         assertNotNull("Could not read resource " + resourceName, resource);
         ObjectInputStream objectInputStream = new ObjectInputStream(resource);
@@ -175,7 +175,7 @@ public class ResultTest extends TestCase {
         int index = 0;
         for (Failure failure : result.getFailures()) {
             Failure failureFromStream = fromStream.getFailures().get(index);
-            String messagePrefix = String.format("failures[%d]", index++);
+            /*~~>*/String messagePrefix = /*~~>*/String.format("failures[%d]", index++);
             assertEquals(messagePrefix + ".description",
                     failure.getDescription(), failureFromStream.getDescription());
             Throwable exception = failure.getException();

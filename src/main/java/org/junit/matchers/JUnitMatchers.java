@@ -65,7 +65,7 @@ public class JUnitMatchers {
      * @deprecated Please use {@link CoreMatchers#containsString(String)} instead.
      */
     @Deprecated
-    public static Matcher<java.lang.String> containsString(java.lang.String substring) {
+    public static Matcher</*~~>*/java.lang.String> containsString(/*~~>*/java.lang.String substring) {
         return CoreMatchers.containsString(substring);
     }
 

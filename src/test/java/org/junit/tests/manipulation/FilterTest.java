@@ -9,9 +9,9 @@ import org.junit.runner.manipulation.Filter;
 
 public class FilterTest {
     public static class NamedFilter extends Filter {
-        private final String fName;
+        private final /*~~>*/String fName;
 
-        public NamedFilter(String name) {
+        public NamedFilter(/*~~>*/String name) {
             fName = name;
         }
 
@@ -21,7 +21,7 @@ public class FilterTest {
         }
 
         @Override
-        public String describe() {
+        public /*~~>*/String describe() {
             return fName;
         }
     }

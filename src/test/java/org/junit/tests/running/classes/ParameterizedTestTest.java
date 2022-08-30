@@ -229,7 +229,7 @@ public class ParameterizedTestTest {
         assertTrue(failures.get(0).getException().getMessage().contains("Wrong number of parameters and @Parameter fields. @Parameter fields counted: 1, available parameters: 2."));
     }
 
-    private static String fLog;
+    private static /*~~>*/String fLog;
 
     @RunWith(Parameterized.class)
     public static class BeforeAndAfter {
@@ -273,7 +273,7 @@ public class ParameterizedTestTest {
         }
 
         @Parameterized.BeforeParam
-        public static void beforeParam(String x) {
+        public static void beforeParam(/*~~>*/String x) {
             fLog += "before(" + x + ") ";
         }
 
@@ -287,14 +287,14 @@ public class ParameterizedTestTest {
             fLog += "afterClass ";
         }
 
-        private final String x;
+        private final /*~~>*/String x;
 
-        public BeforeParamAndAfterParam(String x) {
-            this.x = x;
+        public BeforeParamAndAfterParam(/*~~>*/String x) {
+            /*~~>*/this.x = x;
         }
 
         @Parameters
-        public static Collection<String> data() {
+        public static Collection</*~~>*/String> data() {
             return Arrays.asList("A", "B");
         }
 
@@ -327,7 +327,7 @@ public class ParameterizedTestTest {
         }
 
         @Parameterized.BeforeParam
-        public static void before2(String x) {
+        public static void before2(/*~~>*/String x) {
             fLog += "before2(" + x + ") ";
         }
 
@@ -337,18 +337,18 @@ public class ParameterizedTestTest {
         }
 
         @Parameterized.AfterParam
-        public static void after1(String x) {
+        public static void after1(/*~~>*/String x) {
             fLog += "after1(" + x + ") ";
         }
 
-        private final String x;
+        private final /*~~>*/String x;
 
-        public MultipleBeforeParamAndAfterParam(String x) {
-            this.x = x;
+        public MultipleBeforeParamAndAfterParam(/*~~>*/String x) {
+            /*~~>*/this.x = x;
         }
 
         @Parameters
-        public static Collection<String> data() {
+        public static Collection</*~~>*/String> data() {
             return Arrays.asList("A", "B");
         }
 
@@ -376,20 +376,20 @@ public class ParameterizedTestTest {
     @FixMethodOrder(MethodSorters.NAME_ASCENDING)
     public static class MultipleParametersBeforeParamAndAfterParam {
         @Parameterized.BeforeParam
-        public static void before(String x, int y) {
+        public static void before(/*~~>*/String x, int y) {
             fLog += "before(" + x + "," + y + ") ";
         }
 
         @Parameterized.AfterParam
-        public static void after(String x, int y) {
+        public static void after(/*~~>*/String x, int y) {
             fLog += "after(" + x + "," + y + ") ";
         }
 
-        private final String x;
+        private final /*~~>*/String x;
         private final int y;
 
-        public MultipleParametersBeforeParamAndAfterParam(String x, int y) {
-            this.x = x;
+        public MultipleParametersBeforeParamAndAfterParam(/*~~>*/String x, int y) {
+            /*~~>*/this.x = x;
             this.y = y;
         }
 
@@ -421,18 +421,18 @@ public class ParameterizedTestTest {
     @RunWith(Parameterized.class)
     public static class BeforeParamAndAfterParamError {
         @Parameterized.BeforeParam
-        public void beforeParam(String x) {
+        public void beforeParam(/*~~>*/String x) {
         }
 
         @Parameterized.AfterParam
         private static void afterParam() {
         }
 
-        public BeforeParamAndAfterParamError(String x) {
+        public BeforeParamAndAfterParamError(/*~~>*/String x) {
         }
 
         @Parameters
-        public static Collection<String> data() {
+        public static Collection</*~~>*/String> data() {
             return Arrays.asList("A", "B");
         }
 
@@ -454,18 +454,18 @@ public class ParameterizedTestTest {
     @RunWith(Parameterized.class)
     public static class BeforeParamAndAfterParamErrorNumberOfParameters {
         @Parameterized.BeforeParam
-        public static void beforeParam(String x, String y) {
+        public static void beforeParam(/*~~>*/String x, /*~~>*/String y) {
         }
 
         @Parameterized.AfterParam
-        public static void afterParam(String x, String y, String z) {
+        public static void afterParam(/*~~>*/String x, /*~~>*/String y, /*~~>*/String z) {
         }
 
-        public BeforeParamAndAfterParamErrorNumberOfParameters(String x) {
+        public BeforeParamAndAfterParamErrorNumberOfParameters(/*~~>*/String x) {
         }
 
         @Parameters
-        public static Collection<String> data() {
+        public static Collection</*~~>*/String> data() {
             return Arrays.asList("A", "B", "C", "D");
         }
 
@@ -546,7 +546,7 @@ public class ParameterizedTestTest {
     @RunWith(Parameterized.class)
     public static class ParametersNotIterable {
         @Parameters
-        public static String data() {
+        public static /*~~>*/String data() {
             return "foo";
         }
 
@@ -642,7 +642,7 @@ public class ParameterizedTestTest {
             if (!dataCalled.compareAndSet(false, true)) {
                 fail("Should not call @Parameters method more than once");
             }
-            return new OneShotIterable<String>(asList("first test", "second test"));
+            return new OneShotIterable</*~~>*/String>(asList("first test", "second test"));
         }
 
         public SingleArgumentTestWithIterable(Object argument) {
@@ -731,7 +731,7 @@ public class ParameterizedTestTest {
                 "Called ExceptionThrowingRunnerFactory.");
     }
 
-    private void assertTestCreatesSingleFailureWithMessage(Class<?> test, String message) {
+    private void assertTestCreatesSingleFailureWithMessage(Class<?> test, /*~~>*/String message) {
         Result result = JUnitCore.runClasses(test);
         assertEquals(1, result.getFailures().size());
         assertEquals(message, result.getFailures().get(0).getMessage());
@@ -749,7 +749,7 @@ public class ParameterizedTestTest {
     public static class UseParameterizedFactoryTest extends
             UseParameterizedFactoryAbstractTest {
 
-        public UseParameterizedFactoryTest(String parameter) {
+        public UseParameterizedFactoryTest(/*~~>*/String parameter) {
 
         }
 
@@ -770,12 +770,12 @@ public class ParameterizedTestTest {
         static boolean assumptionFails;
 
         @Parameters
-        public static Iterable<String> data() {
+        public static Iterable</*~~>*/String> data() {
             assumeFalse(assumptionFails);
             return Collections.singletonList("foobar");
         }
 
-        public AssumptionInParametersMethod(String parameter) {
+        public AssumptionInParametersMethod(/*~~>*/String parameter) {
         }
 
         @Test

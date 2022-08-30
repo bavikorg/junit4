@@ -109,13 +109,13 @@ public class ClassRulesTest {
         assertEquals(1, ExampleTestWithCustomClassRule.counter.count);
     }
 
-    private static final List<String> orderList = new LinkedList<String>();
+    private static final List</*~~>*/String> orderList = new LinkedList</*~~>*/String>();
 
     private static class OrderTestRule implements TestRule {
-        private String name;
+        private /*~~>*/String name;
 
-        public OrderTestRule(String name) {
-            this.name = name;
+        public OrderTestRule(/*~~>*/String name) {
+            /*~~>*/this.name = name;
         }
 
         public Statement apply(final Statement base, final Description description) {

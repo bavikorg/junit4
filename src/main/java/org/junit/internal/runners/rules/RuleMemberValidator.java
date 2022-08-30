@@ -174,7 +174,7 @@ public class RuleMemberValidator {
             //    - UNLESS they're also @ClassRule annotated
             // Note that MethodRule cannot be annotated with @ClassRule
             if (member.isStatic() && (isMethodRuleMember || !isClassRuleAnnotated)) {
-                String message;
+                /*~~>*/String message;
                 if (isMethodRule(member)) {
                     message = "must not be static.";
                 } else {

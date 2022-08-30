@@ -33,7 +33,7 @@ public class SortableTest {
     }
 
     public static class TestClassRunnerIsSortable {
-        private static String log = "";
+        private static /*~~>*/String log = "";
 
         public static class SortMe {
             @Test
@@ -154,7 +154,7 @@ public class SortableTest {
     }
 
     public static class TestClassRunnerIsSortableWithSuiteMethod {
-        private static String log = "";
+        private static /*~~>*/String log = "";
 
         public static class SortMe {
             @Test
@@ -229,7 +229,7 @@ public class SortableTest {
     }
 
     public static class TestOnlySortableClassRunnerIsSortable {
-        private static String log = "";
+        private static /*~~>*/String log = "";
 
         /**
          * A Runner that implements {@link Sortable} but not {@link Orderable}.

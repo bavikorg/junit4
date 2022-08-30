@@ -102,7 +102,7 @@ public class TestClass {
         return klass;
     }
 
-    public String getName() {
+    public /*~~>*/String getName() {
         return klass.getName();
     }
 

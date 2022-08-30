@@ -33,10 +33,10 @@ abstract class CategoryFilterFactory implements FilterFactory {
      */
     protected abstract Filter createFilter(List<Class<?>> categories);
 
-    private List<Class<?>> parseCategories(String categories) throws ClassNotFoundException {
+    private List<Class<?>> parseCategories(/*~~>*/String categories) throws ClassNotFoundException {
         List<Class<?>> categoryClasses = new ArrayList<Class<?>>();
 
-        for (String category : categories.split(",")) {
+        for (/*~~>*/String category : categories.split(",")) {
             /*
              * Load the category class using the context class loader.
              * If there is no context class loader, use the class loader for this class.

@@ -8,9 +8,9 @@ import org.hamcrest.TypeSafeMatcher;
 public class ThrowableMessageMatcher<T extends Throwable> extends
         TypeSafeMatcher<T> {
 
-    private final Matcher<String> matcher;
+    private final Matcher</*~~>*/String> matcher;
 
-    public ThrowableMessageMatcher(Matcher<String> matcher) {
+    public ThrowableMessageMatcher(Matcher</*~~>*/String> matcher) {
         this.matcher = matcher;
     }
 
@@ -31,7 +31,7 @@ public class ThrowableMessageMatcher<T extends Throwable> extends
     }
 
     @Factory
-    public static <T extends Throwable> Matcher<T> hasMessage(final Matcher<String> matcher) {
+    public static <T extends Throwable> Matcher<T> hasMessage(final Matcher</*~~>*/String> matcher) {
         return new ThrowableMessageMatcher<T>(matcher);
     }
 }

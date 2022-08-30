@@ -76,7 +76,7 @@ public class WithOnlyTestAnnotations {
         JUnitCore core = new JUnitCore();
         Result result = core.run(ErrorWhenTestHasParametersDespiteTheories.class);
         assertEquals(1, result.getFailureCount());
-        String message = result.getFailures().get(0).getMessage();
+        /*~~>*/String message = result.getFailures().get(0).getMessage();
         assertThat(message, containsString("should have no parameters"));
     }
 }

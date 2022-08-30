@@ -164,7 +164,7 @@ public class BlockJUnit4ClassRunner extends ParentRunner<FrameworkMethod> {
 
     protected void validateNoNonStaticInnerClass(List<Throwable> errors) {
         if (getTestClass().isANonStaticInnerClass()) {
-            String gripe = "The inner class " + getTestClass().getName()
+            /*~~>*/String gripe = "The inner class " + getTestClass().getName()
                     + " is not static.";
             errors.add(new Exception(gripe));
         }
@@ -186,7 +186,7 @@ public class BlockJUnit4ClassRunner extends ParentRunner<FrameworkMethod> {
      */
     protected void validateOnlyOneConstructor(List<Throwable> errors) {
         if (!hasOneConstructor()) {
-            String gripe = "Test class should have exactly one public constructor";
+            /*~~>*/String gripe = "Test class should have exactly one public constructor";
             errors.add(new Exception(gripe));
         }
     }
@@ -199,7 +199,7 @@ public class BlockJUnit4ClassRunner extends ParentRunner<FrameworkMethod> {
         if (!getTestClass().isANonStaticInnerClass()
                 && hasOneConstructor()
                 && (getTestClass().getOnlyConstructor().getParameterTypes().length != 0)) {
-            String gripe = "Test class should have exactly one public zero-argument constructor";
+            /*~~>*/String gripe = "Test class should have exactly one public zero-argument constructor";
             errors.add(new Exception(gripe));
         }
     }
@@ -264,7 +264,7 @@ public class BlockJUnit4ClassRunner extends ParentRunner<FrameworkMethod> {
      * Returns the name that describes {@code method} for {@link Description}s.
      * Default implementation is the method's name
      */
-    protected String testName(FrameworkMethod method) {
+    protected /*~~>*/String testName(FrameworkMethod method) {
         return method.getName();
     }
 

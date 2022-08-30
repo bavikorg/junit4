@@ -139,7 +139,7 @@ public class FailOnTimeoutTest {
         boolean stackTraceContainsTheRealCauseOfTheTimeout = false;
         boolean stackTraceContainsOtherThanTheRealCauseOfTheTimeout = false;
         for (StackTraceElement element : stackTrace) {
-            String methodName = element.getMethodName();
+            /*~~>*/String methodName = element.getMethodName();
             if ("theRealCauseOfTheTimeout".equals(methodName)) {
                 stackTraceContainsTheRealCauseOfTheTimeout = true;
             }

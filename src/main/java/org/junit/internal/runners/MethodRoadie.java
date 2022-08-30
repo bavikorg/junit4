@@ -116,7 +116,7 @@ public class MethodRoadie {
             } else if (!testMethod.expectsException()) {
                 addFailure(actual);
             } else if (testMethod.isUnexpected(actual)) {
-                String message = "Unexpected exception, expected<" + testMethod.getExpectedException().getName() + "> but was<"
+                /*~~>*/String message = "Unexpected exception, expected<" + testMethod.getExpectedException().getName() + "> but was<"
                         + actual.getClass().getName() + ">";
                 addFailure(new Exception(message, actual));
             }

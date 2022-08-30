@@ -23,7 +23,7 @@ public class AssumptionViolatedException extends RuntimeException implements Sel
      * serialization compatibility. 
      * See https://github.com/junit-team/junit4/issues/976
      */
-    private final String fAssumption;
+    private final /*~~>*/String fAssumption;
     private final boolean fValueMatcher;
     private final Object fValue;
     private final Matcher<?> fMatcher;
@@ -32,8 +32,8 @@ public class AssumptionViolatedException extends RuntimeException implements Sel
      * @deprecated Please use {@link org.junit.AssumptionViolatedException} instead.
      */
     @Deprecated
-    public AssumptionViolatedException(String assumption, boolean hasValue, Object value, Matcher<?> matcher) {
-        this.fAssumption = assumption;
+    public AssumptionViolatedException(/*~~>*/String assumption, boolean hasValue, Object value, Matcher<?> matcher) {
+        /*~~>*/this.fAssumption = assumption;
         this.fValue = value;
         this.fMatcher = matcher;
         this.fValueMatcher = hasValue;
@@ -61,7 +61,7 @@ public class AssumptionViolatedException extends RuntimeException implements Sel
      * @deprecated Please use {@link org.junit.AssumptionViolatedException} instead.
      */
     @Deprecated
-    public AssumptionViolatedException(String assumption, Object value, Matcher<?> matcher) {
+    public AssumptionViolatedException(/*~~>*/String assumption, Object value, Matcher<?> matcher) {
         this(assumption, true, value, matcher);
     }
 
@@ -71,7 +71,7 @@ public class AssumptionViolatedException extends RuntimeException implements Sel
      * @deprecated Please use {@link org.junit.AssumptionViolatedException} instead.
      */
     @Deprecated
-    public AssumptionViolatedException(String assumption) {
+    public AssumptionViolatedException(/*~~>*/String assumption) {
         this(assumption, false, null, null);
     }
 
@@ -81,13 +81,13 @@ public class AssumptionViolatedException extends RuntimeException implements Sel
      * @deprecated Please use {@link org.junit.AssumptionViolatedException} instead.
      */
     @Deprecated
-    public AssumptionViolatedException(String assumption, Throwable e) {
+    public AssumptionViolatedException(/*~~>*/String assumption, Throwable e) {
         this(assumption, false, null, null);
         initCause(e);
     }
 
     @Override
-    public String getMessage() {
+    public /*~~>*/String getMessage() {
         return StringDescription.asString(this);
     }
 

@@ -27,7 +27,7 @@ import org.junit.internal.Throwables;
  * This class was born live on stage in Sardinia during XP2000.
  */
 public abstract class BaseTestRunner implements TestListener {
-    public static final String SUITE_METHODNAME = "suite";
+    public static final /*~~>*/String SUITE_METHODNAME = "suite";
 
     private static Properties fPreferences;
     static int fgMaxMessageLength = 500;
@@ -64,7 +64,7 @@ public abstract class BaseTestRunner implements TestListener {
         }
     }
 
-    public static void setPreference(String key, String value) {
+    public static void setPreference(/*~~>*/String key, /*~~>*/String value) {
         getPreferences().put(key, value);
     }
 
@@ -82,9 +82,9 @@ public abstract class BaseTestRunner implements TestListener {
 
     // TestRunListener implementation
 
-    public abstract void testStarted(String testName);
+    public abstract void testStarted(/*~~>*/String testName);
 
-    public abstract void testEnded(String testName);
+    public abstract void testEnded(/*~~>*/String testName);
 
     public abstract void testFailed(int status, Test test, Throwable e);
 
@@ -92,7 +92,7 @@ public abstract class BaseTestRunner implements TestListener {
      * Returns the Test corresponding to the given suite. This is
      * a template method, subclasses override runFailed(), clearStatus().
      */
-    public Test getTest(String suiteClassName) {
+    public Test getTest(/*~~>*/String suiteClassName) {
         if (suiteClassName.length() <= 0) {
             clearStatus();
             return null;
@@ -101,7 +101,7 @@ public abstract class BaseTestRunner implements TestListener {
         try {
             testClass = loadSuiteClass(suiteClassName);
         } catch (ClassNotFoundException e) {
-            String clazz = e.getMessage();
+            /*~~>*/String clazz = e.getMessage();
             if (clazz == null) {
                 clazz = suiteClassName;
             }
@@ -144,7 +144,7 @@ public abstract class BaseTestRunner implements TestListener {
     /**
      * Returns the formatted string of the elapsed time.
      */
-    public String elapsedTimeAsString(long runTime) {
+    public /*~~>*/String elapsedTimeAsString(long runTime) {
         return NumberFormat.getInstance().format((double) runTime / 1000);
     }
 
@@ -152,8 +152,8 @@ public abstract class BaseTestRunner implements TestListener {
      * Processes the command line arguments and
      * returns the name of the suite class to run or null
      */
-    protected String processArguments(String[] args) {
-        String suiteName = null;
+    protected /*~~>*/String processArguments(/*~~>*/String[] args) {
+        /*~~>*/String suiteName = null;
         for (int i = 0; i < args.length; i++) {
             if (args[i].equals("-noloading")) {
                 setLoading(false);
@@ -183,7 +183,7 @@ public abstract class BaseTestRunner implements TestListener {
     /**
      * Extract the class name from a String in VA/Java style
      */
-    public String extractClassName(String className) {
+    public /*~~>*/String extractClassName(/*~~>*/String className) {
         if (className.startsWith("Default package for")) {
             return className.substring(className.lastIndexOf(".") + 1);
         }
@@ -193,7 +193,7 @@ public abstract class BaseTestRunner implements TestListener {
     /**
      * Truncates a String to the maximum length.
      */
-    public static String truncate(String s) {
+    public static /*~~>*/String truncate(/*~~>*/String s) {
         if (fgMaxMessageLength != -1 && s.length() > fgMaxMessageLength) {
             s = s.substring(0, fgMaxMessageLength) + "...";
         }
@@ -204,12 +204,12 @@ public abstract class BaseTestRunner implements TestListener {
      * Override to define how to handle a failed loading of
      * a test suite.
      */
-    protected abstract void runFailed(String message);
+    protected abstract void runFailed(/*~~>*/String message);
 
     /**
      * Returns the loaded Class for a suite name.
      */
-    protected Class<?> loadSuiteClass(String suiteClassName) throws ClassNotFoundException {
+    protected Class<?> loadSuiteClass(/*~~>*/String suiteClassName) throws ClassNotFoundException {
         return Class.forName(suiteClassName);
     }
 
@@ -224,7 +224,7 @@ public abstract class BaseTestRunner implements TestListener {
     }
 
     private static File getPreferencesFile() {
-        String home = System.getProperty("user.home");
+        /*~~>*/String home = System.getProperty("user.home");
         return new File(home, "junit.properties");
     }
 
@@ -246,12 +246,12 @@ public abstract class BaseTestRunner implements TestListener {
         }
     }
 
-    public static String getPreference(String key) {
+    public static /*~~>*/String getPreference(/*~~>*/String key) {
         return getPreferences().getProperty(key);
     }
 
-    public static int getPreference(String key, int dflt) {
-        String value = getPreference(key);
+    public static int getPreference(/*~~>*/String key, int dflt) {
+        /*~~>*/String value = getPreference(key);
         int intValue = dflt;
         if (value == null) {
             return intValue;
@@ -266,14 +266,14 @@ public abstract class BaseTestRunner implements TestListener {
     /**
      * Returns a filtered stack trace
      */
-    public static String getFilteredTrace(Throwable e) {
+    public static /*~~>*/String getFilteredTrace(Throwable e) {
         return BaseTestRunner.getFilteredTrace(Throwables.getStacktrace(e));
     }
 
     /**
      * Filters stack frames from internal JUnit classes
      */
-    public static String getFilteredTrace(String stack) {
+    public static /*~~>*/String getFilteredTrace(/*~~>*/String stack) {
         if (showStackRaw()) {
             return stack;
         }
@@ -283,7 +283,7 @@ public abstract class BaseTestRunner implements TestListener {
         StringReader sr = new StringReader(stack);
         BufferedReader br = new BufferedReader(sr);
 
-        String line;
+        /*~~>*/String line;
         try {
             while ((line = br.readLine()) != null) {
                 if (!filterLine(line)) {
@@ -300,8 +300,8 @@ public abstract class BaseTestRunner implements TestListener {
         return !getPreference("filterstack").equals("true") || fgFilterStack == false;
     }
 
-    static boolean filterLine(String line) {
-        String[] patterns = new String[]{
+    static boolean filterLine(/*~~>*/String line) {
+        /*~~>*/String[] patterns = new /*~~>*/String[]{
                 "junit.framework.TestCase",
                 "junit.framework.TestResult",
                 "junit.framework.TestSuite",

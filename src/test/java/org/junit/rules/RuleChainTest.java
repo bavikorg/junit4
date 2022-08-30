@@ -21,13 +21,13 @@ import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 
 public class RuleChainTest {
-    private static final List<String> LOG = new ArrayList<String>();
+    private static final List</*~~>*/String> LOG = new ArrayList</*~~>*/String>();
 
     private static class LoggingRule extends TestWatcher {
-        private final String label;
+        private final /*~~>*/String label;
 
-        public LoggingRule(String label) {
-            this.label = label;
+        public LoggingRule(/*~~>*/String label) {
+            /*~~>*/this.label = label;
         }
 
         @Override
@@ -56,7 +56,7 @@ public class RuleChainTest {
     @Test
     public void executeRulesInCorrectOrder() throws Exception {
         testResult(UseRuleChain.class);
-        List<String> expectedLog = asList("starting outer rule",
+        List</*~~>*/String> expectedLog = asList("starting outer rule",
                 "starting middle rule", "starting inner rule",
                 "finished inner rule", "finished middle rule",
                 "finished outer rule");
@@ -88,7 +88,7 @@ public class RuleChainTest {
         Result result = JUnitCore.runClasses(RuleChainWithNullRules.class);
 
         assertThat(result.getFailures().size(), equalTo(1));
-        String stacktrace = Throwables.getStacktrace(result.getFailures().get(0).getException());
+        /*~~>*/String stacktrace = Throwables.getStacktrace(result.getFailures().get(0).getException());
         assertThat(stacktrace, containsString("\tat org.junit.rules.RuleChainTest$RuleChainWithNullRules.<init>(RuleChainTest.java:"));
     }
 }

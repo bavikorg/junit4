@@ -24,7 +24,7 @@ public class ExpectException extends Statement {
             }
         } catch (Throwable e) {
             if (!expected.isAssignableFrom(e.getClass())) {
-                String message = "Unexpected exception, expected<"
+                /*~~>*/String message = "Unexpected exception, expected<"
                         + expected.getName() + "> but was<"
                         + e.getClass().getName() + ">";
                 throw new Exception(message, e);

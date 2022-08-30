@@ -17,7 +17,7 @@ import org.junit.runner.Runner;
 import org.junit.runner.notification.RunNotifier;
 
 public class ForwardCompatibilityTest extends TestCase {
-    static String fLog;
+    static /*~~>*/String fLog;
 
     public static class NewTest {
         @Before
@@ -47,7 +47,7 @@ public class ForwardCompatibilityTest extends TestCase {
     public void testToString() {
         JUnit4TestAdapter adapter = new JUnit4TestAdapter(NewTest.class);
         junit.framework.Test test = adapter.getTests().get(0);
-        assertEquals(String.format("test(%s)", NewTest.class.getName()), test.toString());
+        assertEquals(/*~~>*/String.format("test(%s)", NewTest.class.getName()), test.toString());
     }
 
     public void testUseGlobalCache() {
@@ -95,8 +95,8 @@ public class ForwardCompatibilityTest extends TestCase {
             }
         });
         adapter.run(result);
-        String testName = String.format("error(%s)", ErrorTest.class.getName());
-        assertEquals(String.format(" start %s error %s end %s", testName, testName, testName), log.toString());
+        /*~~>*/String testName = /*~~>*/String.format("error(%s)", ErrorTest.class.getName());
+        assertEquals(/*~~>*/String.format(" start %s error %s end %s", testName, testName, testName), log.toString());
     }
 
 
@@ -134,7 +134,7 @@ public class ForwardCompatibilityTest extends TestCase {
         }
     }
 
-    static String log;
+    static /*~~>*/String log;
 
     public static class BeforeClassTest {
         @BeforeClass

@@ -109,12 +109,12 @@ public class TemporaryFolderUsageTest {
     @Test
     public void newFolderWithPathStartingWithFileSeparatorThrowsIOException()
             throws IOException {
-        String fileAtRoot;
+        /*~~>*/String fileAtRoot;
         File[] roots = File.listRoots();
         if (roots != null && roots.length > 0) {
             fileAtRoot = roots[0].getAbsolutePath() + "temp1";
         } else {
-            fileAtRoot = File.separator + "temp1";
+            fileAtRoot = /*~~>*/File.separator + "temp1";
         }
         tempFolder.create();
         thrown.expect(IOException.class);
@@ -126,7 +126,7 @@ public class TemporaryFolderUsageTest {
     public void newFolderWithPathContainingFileSeparatorCreatesDirectories()
             throws IOException {
         tempFolder.create();
-        tempFolder.newFolder("temp1" + File.separator + "temp2");
+        tempFolder.newFolder("temp1" + /*~~>*/File.separator + "temp2");
         File temp1 = new File(tempFolder.getRoot(), "temp1");
         assertFileIsDirectory(temp1);
         assertFileIsDirectory(new File(temp1, "temp2"));
@@ -148,7 +148,7 @@ public class TemporaryFolderUsageTest {
         tempFolder.newFolder("level1", "level2", "level3");
 
         thrown.expect(IOException.class);
-        String path = "level1" + File.separator + "level2" + File.separator + "level3";
+        /*~~>*/String path = "level1" + /*~~>*/File.separator + "level2" + /*~~>*/File.separator + "level3";
         thrown.expectMessage("a folder with the path '" + path + "' already exists");
         tempFolder.newFolder("level1", "level2", "level3");
     }
@@ -159,7 +159,7 @@ public class TemporaryFolderUsageTest {
 
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage("must pass at least one path");
-        tempFolder.newFolder(new String[0]);
+        tempFolder.newFolder(new /*~~>*/String[0]);
     }
 
     @Test
@@ -178,7 +178,7 @@ public class TemporaryFolderUsageTest {
     public void newFolderWithPathsContainingFileSeparatorCreatesFullPath()
             throws IOException {
         tempFolder.create();
-        tempFolder.newFolder("temp1", "temp2", "temp3" + File.separator + "temp4");
+        tempFolder.newFolder("temp1", "temp2", "temp3" + /*~~>*/File.separator + "temp4");
 
         File directory = new File(tempFolder.getRoot(), "temp1");
         assertFileIsDirectory(directory);
@@ -215,7 +215,7 @@ public class TemporaryFolderUsageTest {
 
     @Test
     public void newNamedFileIsCreatedUnderRootFolder() throws IOException {
-        final String fileName = "SampleFile.txt";
+        final /*~~>*/String fileName = "SampleFile.txt";
         tempFolder.create();
 
         File f = tempFolder.newFile(fileName);
@@ -269,13 +269,13 @@ public class TemporaryFolderUsageTest {
         checkFileExists("exists", file, false);
     }
 
-    private void checkFileExists(String msg, File file, boolean exists) {
+    private void checkFileExists(/*~~>*/String msg, File file, boolean exists) {
         assertThat("File is null", file, is(notNullValue()));
         assertThat("File '" + file.getAbsolutePath() + "' " + msg,
                 file.exists(), is(exists));
     }
 
-    private void checkFileIsDirectory(String msg, File file, boolean isDirectory) {
+    private void checkFileIsDirectory(/*~~>*/String msg, File file, boolean isDirectory) {
         assertThat("File is null", file, is(notNullValue()));
         assertThat("File '" + file.getAbsolutePath() + "' " + msg,
                 file.isDirectory(), is(isDirectory));
@@ -291,7 +291,7 @@ public class TemporaryFolderUsageTest {
         checkFileIsDirectory("is not a directory", file, true);
     }
 
-    private void assertFileCreatedUnderRootFolder(String msg, File f) {
+    private void assertFileCreatedUnderRootFolder(/*~~>*/String msg, File f) {
         assertParentFolderForFileIs(f, tempFolder.getRoot());
     }
 

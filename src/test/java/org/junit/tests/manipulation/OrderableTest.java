@@ -23,7 +23,7 @@ import org.junit.runners.MethodSorters;
 public class OrderableTest {
  
     public static class TestClassRunnerIsOrderable {
-        private static String log = "";
+        private static /*~~>*/String log = "";
 
         public static class OrderMe {
             @Test
@@ -149,7 +149,7 @@ public class OrderableTest {
     }
 
     public static class TestOrderableClassRunnerIsSortable {
-        private static String log = "";
+        private static /*~~>*/String log = "";
 
         /**
          * A Runner that implements {@link Orderable}.
@@ -223,7 +223,7 @@ public class OrderableTest {
     }
 
     public static class TestClassRunnerIsOrderableWithSuiteMethod {
-        private static String log = "";
+        private static /*~~>*/String log = "";
 
         public static class OrderMe {
             @Test

@@ -26,7 +26,7 @@ import org.junit.runners.model.Statement;
  * 
  */
 public class ClassLevelMethodsWithIgnoredTestsTest {
-    private static final String FAILURE_MESSAGE = "This should not have happened!";
+    private static final /*~~>*/String FAILURE_MESSAGE = "This should not have happened!";
 
     public static class BeforeClassWithIgnoredTest {
         @BeforeClass
@@ -143,20 +143,20 @@ public class ClassLevelMethodsWithIgnoredTestsTest {
     }
 
     private void runClassAndVerifyNoFailures(Class<?> klass,
-            String testFailureDescription) {
+            /*~~>*/String testFailureDescription) {
         Result result = JUnitCore.runClasses(klass);
         analyseResult(result, testFailureDescription);
     }
 
-    private void analyseResult(Result result, String testFailureDescription) {
+    private void analyseResult(Result result, /*~~>*/String testFailureDescription) {
         List<Failure> failures = result.getFailures();
         if (failures.isEmpty() == false) {
             analyzeFailure(failures.get(0), testFailureDescription);
         }
     }
 
-    private void analyzeFailure(Failure failure, String testFailureDescription) {
-        String actualFailureMsg = failure.getMessage();
+    private void analyzeFailure(Failure failure, /*~~>*/String testFailureDescription) {
+        /*~~>*/String actualFailureMsg = failure.getMessage();
         if (FAILURE_MESSAGE.equals(actualFailureMsg)) {
             fail(testFailureDescription);
         }

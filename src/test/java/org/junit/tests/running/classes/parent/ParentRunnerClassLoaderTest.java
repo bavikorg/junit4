@@ -51,7 +51,7 @@ public class ParentRunnerClassLoaderTest {
 
         ParentRunner<FrameworkMethod> subParentRunner = new BlockJUnit4ClassRunner(originalTestClass) {
             @Override
-            protected String getName() {
+            protected /*~~>*/String getName() {
                 return waitClass.getName();
             }
         };
@@ -87,7 +87,7 @@ public class ParentRunnerClassLoaderTest {
         }
 
         @Override // just making public
-        public Class<?> findClass(String name) throws ClassNotFoundException {
+        public Class<?> findClass(/*~~>*/String name) throws ClassNotFoundException {
             return super.findClass(name);
         }
     }

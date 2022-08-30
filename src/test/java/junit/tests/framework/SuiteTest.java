@@ -13,7 +13,7 @@ import junit.framework.TestSuite;
 public class SuiteTest extends TestCase {
     protected TestResult fResult;
 
-    public SuiteTest(String name) {
+    public SuiteTest(/*~~>*/String name) {
         super(name);
     }
 

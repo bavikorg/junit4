@@ -16,15 +16,15 @@ public class TypeMatchingBetweenMultiDataPointsMethod {
     @RunWith(Theories.class)
     public static class WithWrongfullyTypedDataPointsMethod {
         @DataPoint
-        public static String[] correctlyTyped = {"Good", "Morning"};
+        public static /*~~>*/String[] correctlyTyped = {"Good", "Morning"};
 
         @DataPoints
-        public static String[] wrongfullyTyped() {
-            return new String[]{"Hello", "World"};
+        public static /*~~>*//*~~>*/String[] wrongfullyTyped() {
+            return new /*~~>*/String[]{"Hello", "World"};
         }
 
         @Theory
-        public void testTheory(String[] array) {
+        public void testTheory(/*~~>*/String[] array) {
         }
     }
 
@@ -36,17 +36,17 @@ public class TypeMatchingBetweenMultiDataPointsMethod {
     @RunWith(Theories.class)
     public static class WithCorrectlyTypedDataPointsMethod {
         @DataPoint
-        public static String[] correctlyTyped = {"Good", "Morning"};
+        public static /*~~>*/String[] correctlyTyped = {"Good", "Morning"};
 
         @DataPoints
-        public static String[][] anotherCorrectlyTyped() {
-            return new String[][]{
+        public static /*~~>*//*~~>*/String[][] anotherCorrectlyTyped() {
+            return new /*~~>*/String[][]{
                     {"Hello", "World"}
             };
         }
 
         @Theory
-        public void testTheory(String[] array) {
+        public void testTheory(/*~~>*/String[] array) {
         }
     }
 

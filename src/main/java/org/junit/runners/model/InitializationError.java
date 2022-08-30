@@ -34,7 +34,7 @@ public class InitializationError extends Exception {
      * Construct a new {@code InitializationError} with one cause
      * with message {@code string}
      */
-    public InitializationError(String string) {
+    public InitializationError(/*~~>*/String string) {
         this(new Exception(string));
     }
 

@@ -43,7 +43,7 @@ public class WhenNoParametersMatch {
         AssumptionsFail.DATA = data;
         AssumptionsFail.MATCHER = matcher;
 
-        String result = testResult(AssumptionsFail.class).toString();
+        /*~~>*/String result = testResult(AssumptionsFail.class).toString();
 
         assertThat(result, containsString(matcher.toString()));
         assertThat(result, containsString("" + data));

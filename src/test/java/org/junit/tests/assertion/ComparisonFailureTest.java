@@ -14,9 +14,9 @@ import org.junit.runners.Parameterized.Parameters;
 @RunWith(Parameterized.class)
 public class ComparisonFailureTest {
 		
-	private String expected, actual, message;
+	private /*~~>*/String expected, actual, message;
 	
-	public ComparisonFailureTest(String e, String a, String m) {
+	public ComparisonFailureTest(/*~~>*/String e, /*~~>*/String a, /*~~>*/String m) {
 		expected = e;
 		actual = a;
 		message = m;

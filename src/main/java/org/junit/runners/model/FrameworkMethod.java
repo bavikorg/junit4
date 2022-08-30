@@ -65,7 +65,7 @@ public class FrameworkMethod extends FrameworkMember<FrameworkMethod> {
      * Returns the method's name
      */
     @Override
-    public String getName() {
+    public /*~~>*/String getName() {
         return method.getName();
     }
 
@@ -98,7 +98,7 @@ public class FrameworkMethod extends FrameworkMember<FrameworkMethod> {
      */
     public void validatePublicVoid(boolean isStatic, List<Throwable> errors) {
         if (isStatic() != isStatic) {
-            String state = isStatic ? "should" : "should not";
+            /*~~>*/String state = isStatic ? "should" : "should not";
             errors.add(new Exception("Method " + method.getName() + "() " + state + " be static"));
         }
         if (!isPublic()) {
@@ -210,7 +210,7 @@ public class FrameworkMethod extends FrameworkMember<FrameworkMethod> {
     }
 
     @Override
-    public String toString() {
+    public /*~~>*/String toString() {
         return method.toString();
     }
 }

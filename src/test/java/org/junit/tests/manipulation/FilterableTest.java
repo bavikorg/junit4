@@ -27,7 +27,7 @@ public class FilterableTest {
                 }
 
                 @Override
-                public String describe() {
+                public /*~~>*/String describe() {
                     return "skip methods containing the word 'skip'";
                 }
             });

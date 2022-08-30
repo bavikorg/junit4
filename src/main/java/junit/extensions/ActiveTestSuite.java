@@ -21,11 +21,11 @@ public class ActiveTestSuite extends TestSuite {
         super(theClass);
     }
 
-    public ActiveTestSuite(String name) {
+    public ActiveTestSuite(/*~~>*/String name) {
         super(name);
     }
 
-    public ActiveTestSuite(Class<? extends TestCase> theClass, String name) {
+    public ActiveTestSuite(Class<? extends TestCase> theClass, /*~~>*/String name) {
         super(theClass, name);
     }
 

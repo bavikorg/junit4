@@ -12,16 +12,16 @@ import java.util.List;
 public class InvalidTestClassError extends InitializationError {
     private static final long serialVersionUID = 1L;
 
-    private final String message;
+    private final /*~~>*/String message;
 
     public InvalidTestClassError(Class<?> offendingTestClass, List<Throwable> validationErrors) {
         super(validationErrors);
-        this.message = createMessage(offendingTestClass, validationErrors);
+        /*~~>*/this.message = createMessage(offendingTestClass, validationErrors);
     }
 
-    private static String createMessage(Class<?> testClass, List<Throwable> validationErrors) {
+    private static /*~~>*/String createMessage(Class<?> testClass, List<Throwable> validationErrors) {
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("Invalid test class '%s':", testClass.getName()));
+        sb.append(/*~~>*/String.format("Invalid test class '%s':", testClass.getName()));
         int i = 1;
         for (Throwable error : validationErrors) {
             sb.append("\n  " + (i++) + ". " + error.getMessage());
@@ -33,7 +33,7 @@ public class InvalidTestClassError extends InitializationError {
      * @return a message with a list of all of the validation errors
      */
     @Override
-    public String getMessage() {
+    public /*~~>*/String getMessage() {
         return message;
     }
 }

@@ -175,7 +175,7 @@ public class Categories extends Suite {
          * @see #toString()
          */
         @Override
-        public String describe() {
+        public /*~~>*/String describe() {
             return toString();
         }
 
@@ -192,7 +192,7 @@ public class Categories extends Suite {
          * </ul>
          * @see Class#toString() name of category
          */
-        @Override public String toString() {
+        @Override public /*~~>*/String toString() {
             StringBuilder description= new StringBuilder("categories ")
                 .append(included.isEmpty() ? "[all]" : included);
             if (!excluded.isEmpty()) {

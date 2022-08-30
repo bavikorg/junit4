@@ -81,7 +81,7 @@ public class MoneyBag implements IMoney {
         return false;
     }
 
-    private Money findMoney(String currency) {
+    private Money findMoney(/*~~>*/String currency) {
         for (Money each : fMonies) {
             if (each.currency().equals(currency)) {
                 return each;
@@ -139,7 +139,7 @@ public class MoneyBag implements IMoney {
     }
 
     @Override
-    public String toString() {
+    public /*~~>*/String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         for (Money each : fMonies) {

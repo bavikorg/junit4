@@ -69,7 +69,7 @@ import java.lang.reflect.Modifier;
  * @since 4.0
  */
 public class AnnotatedBuilder extends RunnerBuilder {
-    private static final String CONSTRUCTOR_ERROR_FORMAT = "Custom runner class %s should have a public constructor with signature %s(Class testClass)";
+    private static final /*~~>*/String CONSTRUCTOR_ERROR_FORMAT = "Custom runner class %s should have a public constructor with signature %s(Class testClass)";
 
     private final RunnerBuilder suiteBuilder;
 
@@ -107,8 +107,8 @@ public class AnnotatedBuilder extends RunnerBuilder {
                 return runnerClass.getConstructor(Class.class,
                         RunnerBuilder.class).newInstance(testClass, suiteBuilder);
             } catch (NoSuchMethodException e2) {
-                String simpleName = runnerClass.getSimpleName();
-                throw new InitializationError(String.format(
+                /*~~>*/String simpleName = runnerClass.getSimpleName();
+                throw new InitializationError(/*~~>*/String.format(
                         CONSTRUCTOR_ERROR_FORMAT, simpleName, simpleName));
             }
         }

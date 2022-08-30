@@ -35,7 +35,7 @@ public class SuccessfulWithDataPointFields {
     @RunWith(Theories.class)
     public static class BeforeAndAfterOnSameInstance {
         @DataPoint
-        public static String A = "A";
+        public static /*~~>*/String A = "A";
 
         private int befores = 0;
 
@@ -45,7 +45,7 @@ public class SuccessfulWithDataPointFields {
         }
 
         @Theory
-        public void stringsAreOK(String string) {
+        public void stringsAreOK(/*~~>*/String string) {
             assertTrue(befores == 1);
         }
     }
@@ -53,15 +53,15 @@ public class SuccessfulWithDataPointFields {
     @RunWith(Theories.class)
     public static class NewObjectEachTime {
         @DataPoint
-        public static String A = "A";
+        public static /*~~>*/String A = "A";
 
         @DataPoint
-        public static String B = "B";
+        public static /*~~>*/String B = "B";
 
-        private List<String> list = new ArrayList<String>();
+        private List</*~~>*/String> list = new ArrayList</*~~>*/String>();
 
         @Theory
-        public void addToEmptyList(String string) {
+        public void addToEmptyList(/*~~>*/String string) {
             list.add(string);
             assertThat(list.size(), is(1));
         }
@@ -130,13 +130,13 @@ public class SuccessfulWithDataPointFields {
         public static final int ONE = 1;
 
         @DataPoint
-        public static final String A = "A";
+        public static final /*~~>*/String A = "A";
 
         public DifferentTypesInConstructor(int x) {
         }
 
         @Theory
-        public void yesIndeed(String a) {
+        public void yesIndeed(/*~~>*/String a) {
         }
     }
 
@@ -145,10 +145,10 @@ public class SuccessfulWithDataPointFields {
         public static int befores = 0;
 
         @DataPoint
-        public static String A = "A";
+        public static /*~~>*/String A = "A";
 
         @DataPoint
-        public static String B = "B";
+        public static /*~~>*/String B = "B";
 
         @Before
         public void incrementBefore() {
@@ -161,7 +161,7 @@ public class SuccessfulWithDataPointFields {
         }
 
         @Theory
-        public void stringsAreOK(String string) {
+        public void stringsAreOK(/*~~>*/String string) {
         }
 
         @AfterClass
@@ -175,7 +175,7 @@ public class SuccessfulWithDataPointFields {
         public static int tests = 0;
 
         @DataPoint
-        public static String A = "A";
+        public static /*~~>*/String A = "A";
 
         @BeforeClass
         public static void resetCalls() {
@@ -184,7 +184,7 @@ public class SuccessfulWithDataPointFields {
 
         @Theory
         @Test
-        public void stringsAreOK(String string) {
+        public void stringsAreOK(/*~~>*/String string) {
             tests++;
         }
 

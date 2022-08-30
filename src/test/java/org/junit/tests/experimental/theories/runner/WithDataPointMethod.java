@@ -82,7 +82,7 @@ public class WithDataPointMethod {
         }
 
         @Theory
-        public void onlyStringsOk(String s) {
+        public void onlyStringsOk(/*~~>*/String s) {
         }
 
         @Theory
@@ -93,7 +93,7 @@ public class WithDataPointMethod {
     @Test
     public void ignoreDataPointMethodsWithWrongTypes() throws Throwable {
         assertThat(potentialAssignments(
-                HasDateMethod.class.getMethod("onlyStringsOk", String.class))
+                HasDateMethod.class.getMethod("onlyStringsOk", /*~~>*/String.class))
                 .toString(), not(containsString("100")));
     }
 

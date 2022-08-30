@@ -19,7 +19,7 @@ public class ListTest {
     protected List<Integer> fFull;
     protected static List<Integer> fgHeavy;
 
-    public static void main(String... args) {
+    public static void main(/*~~>*/String... args) {
         junit.textui.TestRunner.run(suite());
     }
 

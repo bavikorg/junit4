@@ -142,7 +142,7 @@ public class TestRuleTest {
         assertEquals(0, result.getFailureCount());
     }
 
-    private static String log;
+    private static /*~~>*/String log;
 
     public static class BeforesAndAfters {
         private static StringBuilder watchedLog = new StringBuilder();
@@ -215,7 +215,7 @@ public class TestRuleTest {
     }
 
     public static class CustomTestName implements TestRule {
-        public String name = null;
+        public /*~~>*/String name = null;
 
         public Statement apply(final Statement base, final Description description) {
             return new Statement() {
@@ -234,7 +234,7 @@ public class TestRuleTest {
 
         @Test
         public void foo() {
-            assertEquals("foo", counter.name);
+            assertEquals("foo", /*~~>*/counter.name);
         }
     }
 
@@ -459,7 +459,7 @@ public class TestRuleTest {
 
         @Test
         public void foo() {
-            assertEquals("foo", counter.name);
+            assertEquals("foo", /*~~>*/counter.name);
         }
     }
 
@@ -468,13 +468,13 @@ public class TestRuleTest {
         assertThat(testResult(MethodUsesCustomMethodRule.class), isSuccessful());
     }
 
-    private static final List<String> orderList = new LinkedList<String>();
+    private static final List</*~~>*/String> orderList = new LinkedList</*~~>*/String>();
 
     private static class OrderTestRule implements TestRule {
-        private String name;
+        private /*~~>*/String name;
 
-        public OrderTestRule(String name) {
-            this.name = name;
+        public OrderTestRule(/*~~>*/String name) {
+            /*~~>*/this.name = name;
         }
 
         public Statement apply(final Statement base, final Description description) {

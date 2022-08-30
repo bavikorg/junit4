@@ -30,7 +30,7 @@ public class NameRulesTest {
         @Rule
         public TestName name = new TestName();
 
-        private final String expectedName = "x";
+        private final /*~~>*/String expectedName = "x";
 
         @Before
         public void setUp() {

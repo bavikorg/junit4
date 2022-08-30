@@ -139,7 +139,7 @@ public class JUnit38ClassRunnerTest {
         }
 
         @Override
-        public String describe() {
+        public /*~~>*/String describe() {
             return "filter all";
         }
     }

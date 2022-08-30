@@ -18,7 +18,7 @@ import org.junit.runners.BlockJUnit4ClassRunner;
 
 public class InitializationErrorForwardCompatibilityTest {
     public static class CantInitialize extends Runner {
-        private static final String UNIQUE_ERROR_MESSAGE = "Unique error message";
+        private static final /*~~>*/String UNIQUE_ERROR_MESSAGE = "Unique error message";
 
         public CantInitialize(Class<?> klass) throws Exception {
             throw new Exception(UNIQUE_ERROR_MESSAGE);
@@ -56,7 +56,7 @@ public class InitializationErrorForwardCompatibilityTest {
         TestResult result = new TestResult();
         fAdapter.run(result);
         assertEquals(1, result.errorCount());
-        assertEquals(CantInitialize.UNIQUE_ERROR_MESSAGE, result.errors()
+        assertEquals(/*~~>*/CantInitialize.UNIQUE_ERROR_MESSAGE, result.errors()
                 .nextElement().exceptionMessage());
     }
 

@@ -19,11 +19,11 @@ public class AssertionFailedError extends AssertionError {
      * @param message the detail message. The detail message is saved for later 
      * retrieval by the {@code Throwable.getMessage()} method.
      */
-    public AssertionFailedError(String message) {
+    public AssertionFailedError(/*~~>*/String message) {
         super(defaultString(message));
     }
 
-    private static String defaultString(String message) {
+    private static /*~~>*/String defaultString(/*~~>*/String message) {
         return message == null ? "" : message;
     }
 }

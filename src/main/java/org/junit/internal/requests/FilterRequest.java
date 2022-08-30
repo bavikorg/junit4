@@ -37,7 +37,7 @@ public final class FilterRequest extends Request {
             fFilter.apply(runner);
             return runner;
         } catch (NoTestsRemainException e) {
-            return new ErrorReportingRunner(Filter.class, new Exception(String
+            return new ErrorReportingRunner(Filter.class, new Exception(/*~~>*/String
                     .format("No tests found matching %s from %s", fFilter
                             .describe(), request.toString())));
         }

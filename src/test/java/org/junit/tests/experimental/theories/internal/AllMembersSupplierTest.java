@@ -26,17 +26,17 @@ public class AllMembersSupplierTest {
     
     public static class HasDataPointsArrayField {
         @DataPoints
-        public static String[] list = new String[] { "qwe", "asd" };
+        public static /*~~>*/String[] list = new /*~~>*/String[] { "qwe", "asd" };
 
         @Theory
-        public void theory(String param) {
+        public void theory(/*~~>*/String param) {
         }
     }
     
     @Test
     public void dataPointsArrayShouldBeRecognized() throws Throwable {
         List<PotentialAssignment> assignments = potentialAssignments(
-                HasDataPointsArrayField.class.getMethod("theory", String.class));
+                HasDataPointsArrayField.class.getMethod("theory", /*~~>*/String.class));
         
         assertEquals(2, assignments.size());
     }
@@ -156,36 +156,36 @@ public class AllMembersSupplierTest {
     
     public static class HasDataPointsListField {
         @DataPoints
-        public static List<String> list = Arrays.asList("one", "two");
+        public static List</*~~>*/String> list = Arrays.asList("one", "two");
 
         @Theory
-        public void theory(String param) {
+        public void theory(/*~~>*/String param) {
         }
     }
 
     @Test
     public void dataPointsCollectionFieldsShouldBeRecognized() throws Throwable {
         List<PotentialAssignment> assignments = potentialAssignments(
-            HasDataPointsListField.class.getMethod("theory", String.class));
+            HasDataPointsListField.class.getMethod("theory", /*~~>*/String.class));
 
         assertEquals(2, assignments.size());
     }
     
     public static class HasDataPointsListMethod {
         @DataPoints
-        public static List<String> getList() {
+        public static List</*~~>*/String> getList() {
             return Arrays.asList("one", "two");
         }
 
         @Theory
-        public void theory(String param) {
+        public void theory(/*~~>*/String param) {
         }
     }
 
     @Test
     public void dataPointsCollectionMethodShouldBeRecognized() throws Throwable {
         List<PotentialAssignment> assignments = potentialAssignments(
-            HasDataPointsListMethod.class.getMethod("theory", String.class));
+            HasDataPointsListMethod.class.getMethod("theory", /*~~>*/String.class));
 
         assertEquals(2, assignments.size());
     }
@@ -195,14 +195,14 @@ public class AllMembersSupplierTest {
         public static List<Object> list = Arrays.asList("string", new Object());
 
         @Theory
-        public void theory(String param) {
+        public void theory(/*~~>*/String param) {
         }
     }
 
     @Test
     public void dataPointsCollectionShouldBeRecognizedIgnoringStrangeTypes() throws Throwable {
         List<PotentialAssignment> assignments = potentialAssignments(
-            HasDataPointsListFieldWithOverlyGenericTypes.class.getMethod("theory", String.class));
+            HasDataPointsListFieldWithOverlyGenericTypes.class.getMethod("theory", /*~~>*/String.class));
 
         assertEquals(1, assignments.size());
     }

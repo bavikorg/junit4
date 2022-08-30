@@ -9,8 +9,8 @@ public class ComparisonFailure extends AssertionFailedError {
     private static final int MAX_CONTEXT_LENGTH = 20;
     private static final long serialVersionUID = 1L;
 
-    private String fExpected;
-    private String fActual;
+    private /*~~>*/String fExpected;
+    private /*~~>*/String fActual;
 
     /**
      * Constructs a comparison failure.
@@ -19,7 +19,7 @@ public class ComparisonFailure extends AssertionFailedError {
      * @param expected the expected string value
      * @param actual the actual string value
      */
-    public ComparisonFailure(String message, String expected, String actual) {
+    public ComparisonFailure(/*~~>*/String message, /*~~>*/String expected, /*~~>*/String actual) {
         super(message);
         fExpected = expected;
         fActual = actual;
@@ -32,7 +32,7 @@ public class ComparisonFailure extends AssertionFailedError {
      * @see Throwable#getMessage()
      */
     @Override
-    public String getMessage() {
+    public /*~~>*/String getMessage() {
         return new ComparisonCompactor(MAX_CONTEXT_LENGTH, fExpected, fActual).compact(super.getMessage());
     }
 
@@ -41,7 +41,7 @@ public class ComparisonFailure extends AssertionFailedError {
      *
      * @return the actual string value
      */
-    public String getActual() {
+    public /*~~>*/String getActual() {
         return fActual;
     }
 
@@ -50,7 +50,7 @@ public class ComparisonFailure extends AssertionFailedError {
      *
      * @return the expected string value
      */
-    public String getExpected() {
+    public /*~~>*/String getExpected() {
         return fExpected;
     }
 }

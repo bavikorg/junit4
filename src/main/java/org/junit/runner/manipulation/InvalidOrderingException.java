@@ -11,11 +11,11 @@ public class InvalidOrderingException extends Exception {
     public InvalidOrderingException() {
     }
 
-    public InvalidOrderingException(String message) {
+    public InvalidOrderingException(/*~~>*/String message) {
         super(message);
     }
 
-    public InvalidOrderingException(String message, Throwable cause) {
+    public InvalidOrderingException(/*~~>*/String message, Throwable cause) {
         super(message, cause);
     }
 }

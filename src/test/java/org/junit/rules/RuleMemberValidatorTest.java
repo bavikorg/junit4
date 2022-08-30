@@ -339,7 +339,7 @@ public class RuleMemberValidatorTest {
         }
     }
 
-    private void assertOneErrorWithMessage(String message) {
+    private void assertOneErrorWithMessage(/*~~>*/String message) {
         assertNumberOfErrors(1);
         assertEquals("Wrong error message:", message, errors.get(0).getMessage());
     }

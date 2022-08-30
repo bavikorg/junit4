@@ -127,7 +127,7 @@ final class SynchronizedRunListener extends RunListener {
     }
 
     @Override
-    public String toString() {
+    public /*~~>*/String toString() {
         return listener.toString() + " (with synchronization wrapper)";
     }
 }

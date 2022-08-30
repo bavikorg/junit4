@@ -14,7 +14,7 @@ import org.junit.rules.ExpectedException;
 import org.junit.runners.model.TestClass;
 
 public class TestWithParametersTest {
-    private static final String DUMMY_NAME = "dummy name";
+    private static final /*~~>*/String DUMMY_NAME = "dummy name";
 
     private static final TestClass DUMMY_TEST_CLASS = new TestClass(
             DummyClass.class);

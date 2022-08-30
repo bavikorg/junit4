@@ -34,7 +34,7 @@ public class AssertionTest {
 //      assert false;
 //  }
 
-    private static final String ASSERTION_ERROR_EXPECTED = "AssertionError expected";
+    private static final /*~~>*/String ASSERTION_ERROR_EXPECTED = "AssertionError expected";
 
     @Test(expected = AssertionError.class)
     public void fails() {
@@ -318,7 +318,7 @@ public class AssertionTest {
                 "not equal: array lengths differed, expected.length=0 actual.length=1; arrays first differed at element [1][0]; expected:<end of array> but was:<true>");
     }
 
-    private void assertArrayEqualsFailure(Object[] expecteds, Object[] actuals, String expectedMessage) {
+    private void assertArrayEqualsFailure(Object[] expecteds, Object[] actuals, /*~~>*/String expectedMessage) {
         try {
             assertArrayEquals(expecteds, actuals);
         } catch (ArrayComparisonFailure e) {
@@ -328,7 +328,7 @@ public class AssertionTest {
         throw new AssertionError(ASSERTION_ERROR_EXPECTED);
     }
 
-    private void assertArrayEqualsFailure(String message, Object[] expecteds, Object[] actuals, String expectedMessage) {
+    private void assertArrayEqualsFailure(/*~~>*/String message, Object[] expecteds, Object[] actuals, /*~~>*/String expectedMessage) {
         try {
             assertArrayEquals(message, expecteds, actuals);
         } catch (ArrayComparisonFailure e) {
@@ -688,10 +688,10 @@ public class AssertionTest {
 
     @Test
     public void assertThatIncludesDescriptionOfTestedValueInErrorMessage() {
-        String expected = "expected";
-        String actual = "actual";
+        /*~~>*/String expected = "expected";
+        /*~~>*/String actual = "actual";
 
-        String expectedMessage = "identifier\nExpected: \"expected\"\n     but: was \"actual\"";
+        /*~~>*/String expectedMessage = "identifier\nExpected: \"expected\"\n     but: was \"actual\"";
 
         try {
             assertThat("identifier", actual, equalTo(expected));
@@ -704,7 +704,7 @@ public class AssertionTest {
 
     @Test
     public void assertThatIncludesAdvancedMismatch() {
-        String expectedMessage = "identifier\nExpected: is an instance of java.lang.Integer\n     but: \"actual\" is a java.lang.String";
+        /*~~>*/String expectedMessage = "identifier\nExpected: is an instance of java.lang.Integer\n     but: \"actual\" is a java.lang.String";
 
         try {
             assertThat("identifier", "actual", is(instanceOf(Integer.class)));
@@ -717,10 +717,10 @@ public class AssertionTest {
 
     @Test
     public void assertThatDescriptionCanBeElided() {
-        String expected = "expected";
-        String actual = "actual";
+        /*~~>*/String expected = "expected";
+        /*~~>*/String actual = "actual";
 
-        String expectedMessage = "\nExpected: \"expected\"\n     but: was \"actual\"";
+        /*~~>*/String expectedMessage = "\nExpected: \"expected\"\n     but: was \"actual\"";
 
         try {
             assertThat(actual, equalTo(expected));
@@ -749,7 +749,7 @@ public class AssertionTest {
 
     private static class NullToString {
         @Override
-        public String toString() {
+        public /*~~>*/String toString() {
             return null;
         }
     }
@@ -790,7 +790,7 @@ public class AssertionTest {
     public void assertNotEqualsIncludesCorrectMessage() {
         Integer value1 = new Integer(1);
         Integer value2 = new Integer(1);
-        String message = "The values should be different";
+        /*~~>*/String message = "The values should be different";
 
         try {
             assertNotEquals(message, value1, value2);

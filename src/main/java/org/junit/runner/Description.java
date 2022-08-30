@@ -41,7 +41,7 @@ public class Description implements Serializable {
      * @param annotations meta-data about the test, for downstream interpreters
      * @return a <code>Description</code> named <code>name</code>
      */
-    public static Description createSuiteDescription(String name, Annotation... annotations) {
+    public static Description createSuiteDescription(/*~~>*/String name, Annotation... annotations) {
         return new Description(null, name, annotations);
     }
 
@@ -54,7 +54,7 @@ public class Description implements Serializable {
      * @param annotations meta-data about the test, for downstream interpreters
      * @return a <code>Description</code> named <code>name</code>
      */
-    public static Description createSuiteDescription(String name, Serializable uniqueId, Annotation... annotations) {
+    public static Description createSuiteDescription(/*~~>*/String name, Serializable uniqueId, Annotation... annotations) {
         return new Description(null, name, uniqueId, annotations);
     }
 
@@ -69,7 +69,7 @@ public class Description implements Serializable {
      * @param annotations meta-data about the test, for downstream interpreters
      * @return a <code>Description</code> named <code>name</code>
      */
-    public static Description createTestDescription(String className, String name, Annotation... annotations) {
+    public static Description createTestDescription(/*~~>*/String className, /*~~>*/String name, Annotation... annotations) {
         return new Description(null, formatDisplayName(name, className), annotations);
     }
 
@@ -82,7 +82,7 @@ public class Description implements Serializable {
      * @param annotations meta-data about the test, for downstream interpreters
      * @return a <code>Description</code> named <code>name</code>
      */
-    public static Description createTestDescription(Class<?> clazz, String name, Annotation... annotations) {
+    public static Description createTestDescription(Class<?> clazz, /*~~>*/String name, Annotation... annotations) {
         return new Description(clazz, formatDisplayName(name, clazz.getName()), annotations);
     }
 
@@ -95,7 +95,7 @@ public class Description implements Serializable {
      * @param name the name of the test (a method name for test annotated with {@link org.junit.Test})
      * @return a <code>Description</code> named <code>name</code>
      */
-    public static Description createTestDescription(Class<?> clazz, String name) {
+    public static Description createTestDescription(Class<?> clazz, /*~~>*/String name) {
         return new Description(clazz, formatDisplayName(name, clazz.getName()));
     }
 
@@ -106,12 +106,12 @@ public class Description implements Serializable {
      * @param name the name of the test (a method name for test annotated with {@link org.junit.Test})
      * @return a <code>Description</code> named <code>name</code>
      */
-    public static Description createTestDescription(String className, String name, Serializable uniqueId) {
+    public static Description createTestDescription(/*~~>*/String className, /*~~>*/String name, Serializable uniqueId) {
         return new Description(null, formatDisplayName(name, className), uniqueId);
     }
 
-    private static String formatDisplayName(String name, String className) {
-        return String.format("%s(%s)", name, className);
+    private static /*~~>*/String formatDisplayName(/*~~>*/String name, /*~~>*/String className) {
+        return /*~~>*/String.format("%s(%s)", name, className);
     }
 
     /**
@@ -153,16 +153,16 @@ public class Description implements Serializable {
      * See https://github.com/junit-team/junit4/issues/976
      */
     private final Collection<Description> fChildren = new ConcurrentLinkedQueue<Description>();
-    private final String fDisplayName;
+    private final /*~~>*/String fDisplayName;
     private final Serializable fUniqueId;
     private final Annotation[] fAnnotations;
     private volatile /* write-once */ Class<?> fTestClass;
 
-    private Description(Class<?> clazz, String displayName, Annotation... annotations) {
+    private Description(Class<?> clazz, /*~~>*/String displayName, Annotation... annotations) {
         this(clazz, displayName, displayName, annotations);
     }
 
-    private Description(Class<?> testClass, String displayName, Serializable uniqueId, Annotation... annotations) {
+    private Description(Class<?> testClass, /*~~>*/String displayName, Serializable uniqueId, Annotation... annotations) {
         if ((displayName == null) || (displayName.length() == 0)) {
             throw new IllegalArgumentException(
                     "The display name must not be empty.");
@@ -172,7 +172,7 @@ public class Description implements Serializable {
                     "The unique id must not be null.");
         }
         this.fTestClass = testClass;
-        this.fDisplayName = displayName;
+        /*~~>*/this.fDisplayName = displayName;
         this.fUniqueId = uniqueId;
         this.fAnnotations = annotations;
     }
@@ -180,7 +180,7 @@ public class Description implements Serializable {
     /**
      * @return a user-understandable label
      */
-    public String getDisplayName() {
+    public /*~~>*/String getDisplayName() {
         return fDisplayName;
     }
 
@@ -244,7 +244,7 @@ public class Description implements Serializable {
     }
 
     @Override
-    public String toString() {
+    public /*~~>*/String toString() {
         return getDisplayName();
     }
 
@@ -291,7 +291,7 @@ public class Description implements Serializable {
         if (fTestClass != null) {
             return fTestClass;
         }
-        String name = getClassName();
+        /*~~>*/String name = getClassName();
         if (name == null) {
             return null;
         }
@@ -307,7 +307,7 @@ public class Description implements Serializable {
      * @return If this describes a method invocation,
      *         the name of the class of the test instance
      */
-    public String getClassName() {
+    public /*~~>*/String getClassName() {
         return fTestClass != null ? fTestClass.getName() : methodAndClassNamePatternGroupOrDefault(2, toString());
     }
 
@@ -315,12 +315,12 @@ public class Description implements Serializable {
      * @return If this describes a method invocation,
      *         the name of the method (or null if not)
      */
-    public String getMethodName() {
+    public /*~~>*/String getMethodName() {
         return methodAndClassNamePatternGroupOrDefault(1, null);
     }
 
-    private String methodAndClassNamePatternGroupOrDefault(int group,
-            String defaultString) {
+    private /*~~>*/String methodAndClassNamePatternGroupOrDefault(int group,
+            /*~~>*/String defaultString) {
         Matcher matcher = METHOD_AND_CLASS_NAME_PATTERN.matcher(toString());
         return matcher.matches() ? matcher.group(group) : defaultString;
     }

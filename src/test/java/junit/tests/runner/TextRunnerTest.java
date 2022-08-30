@@ -24,11 +24,11 @@ public class TextRunnerTest extends TestCase {
         execTest("junit.tests.BogusDude", false);
     }
 
-    void execTest(String testClass, boolean success) throws Exception {
-        String java = System.getProperty("java.home") + File.separator + "bin" + File.separator + "java";
-        String cp = System.getProperty("java.class.path");
+    void execTest(/*~~>*/String testClass, boolean success) throws Exception {
+        /*~~>*/String java = System.getProperty("java.home") + /*~~>*/File.separator + "bin" + /*~~>*/File.separator + "java";
+        /*~~>*/String cp = System.getProperty("java.class.path");
         //use -classpath for JDK 1.1.7 compatibility
-        String[] cmd = {java, "-classpath", cp, "junit.textui.TestRunner", testClass};
+        /*~~>*/String[] cmd = {java, "-classpath", cp, "junit.textui.TestRunner", testClass};
         Process p = Runtime.getRuntime().exec(cmd);
         InputStream i = p.getInputStream();
         while ((i.read()) != -1)

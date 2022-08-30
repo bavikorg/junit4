@@ -17,7 +17,7 @@ import org.hamcrest.StringDescription;
  */
 class SerializableMatcherDescription<T> extends BaseMatcher<T> implements Serializable {
 
-    private final String matcherDescription;
+    private final /*~~>*/String matcherDescription;
 
     private SerializableMatcherDescription(Matcher<T> matcher) {
         matcherDescription = StringDescription.asString(matcher);

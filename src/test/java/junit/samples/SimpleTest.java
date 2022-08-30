@@ -66,7 +66,7 @@ public class SimpleTest extends TestCase {
         assertEquals("Capacity", 12.0, 11.99, 0.0);
     }
 
-    public static void main(String[] args) {
+    public static void main(/*~~>*/String[] args) {
         junit.textui.TestRunner.run(suite());
     }
 }

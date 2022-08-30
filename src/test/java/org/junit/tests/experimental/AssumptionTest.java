@@ -237,7 +237,7 @@ public class AssumptionTest {
         assertThat(result.getAssumptionFailureCount(), is(1));
     }
 
-    static final String message = "Some random message string.";
+    static final /*~~>*/String message = "Some random message string.";
     static final Throwable e = new Throwable();
 
     /**

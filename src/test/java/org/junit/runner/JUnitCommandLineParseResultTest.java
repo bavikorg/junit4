@@ -21,18 +21,18 @@ public class JUnitCommandLineParseResultTest {
 
     @Test
     public void shouldStopParsingOptionsUponDoubleHyphenArg() throws Exception {
-        String[] restOfArgs = jUnitCommandLineParseResult.parseOptions(
+        /*~~>*/String[] restOfArgs = jUnitCommandLineParseResult.parseOptions(
                 "--0", "--1", "--", "--2", "--3");
 
-        assertThat(restOfArgs, is(new String[]{"--2", "--3"}));
+        assertThat(restOfArgs, is(new /*~~>*/String[]{"--2", "--3"}));
     }
 
     @Test
     public void shouldParseFilterArgWithEqualsSyntax() throws Exception {
-        String value= IncludeCategories.class.getName() + "=" + DummyCategory0.class.getName();
+        /*~~>*/String value= IncludeCategories.class.getName() + "=" + DummyCategory0.class.getName();
         jUnitCommandLineParseResult.parseOptions("--filter=" + value);
 
-        List<String> specs= jUnitCommandLineParseResult.getFilterSpecs();
+        List</*~~>*/String> specs= jUnitCommandLineParseResult.getFilterSpecs();
 
         assertThat(specs, hasItems(value));
     }
@@ -49,27 +49,27 @@ public class JUnitCommandLineParseResultTest {
 
     @Test
     public void shouldParseFilterArgInWhichValueIsASeparateArg() throws Exception {
-        String value= IncludeCategories.class.getName() + "=" + DummyCategory0.class.getName();
+        /*~~>*/String value= IncludeCategories.class.getName() + "=" + DummyCategory0.class.getName();
         jUnitCommandLineParseResult.parseOptions("--filter", value);
 
-        List<String> specs= jUnitCommandLineParseResult.getFilterSpecs();
+        List</*~~>*/String> specs= jUnitCommandLineParseResult.getFilterSpecs();
 
         assertThat(specs, hasItems(value));
     }
 
     @Test
     public void shouldStopParsingOptionsUponNonOption() throws Exception {
-        String[] restOfArgs = jUnitCommandLineParseResult.parseOptions(new String[]{
+        /*~~>*/String[] restOfArgs = jUnitCommandLineParseResult.parseOptions(new /*~~>*/String[]{
                 "--0", "--1", "2", "3"
         });
 
-        assertThat(restOfArgs, is(new String[]{"2", "3"}));
+        assertThat(restOfArgs, is(new /*~~>*/String[]{"2", "3"}));
     }
 
     @Test
     public void shouldCreateFailureUponUnknownOption() throws Exception {
-        String unknownOption = "--unknown-option";
-        jUnitCommandLineParseResult.parseOptions(new String[]{
+        /*~~>*/String unknownOption = "--unknown-option";
+        jUnitCommandLineParseResult.parseOptions(new /*~~>*/String[]{
                 unknownOption
         });
 
@@ -81,7 +81,7 @@ public class JUnitCommandLineParseResultTest {
 
     @Test
     public void shouldCreateFailureUponUncreatedFilter() throws Exception {
-        jUnitCommandLineParseResult.parseOptions(new String[]{
+        jUnitCommandLineParseResult.parseOptions(new /*~~>*/String[]{
                 "--filter=" + FilterFactoryStub.class.getName()
         });
 
@@ -93,8 +93,8 @@ public class JUnitCommandLineParseResultTest {
 
     @Test
     public void shouldCreateFailureUponUnfoundFilterFactory() throws Exception {
-        String nonExistentFilterFactory = "NonExistentFilterFactory";
-        jUnitCommandLineParseResult.parseOptions(new String[]{
+        /*~~>*/String nonExistentFilterFactory = "NonExistentFilterFactory";
+        jUnitCommandLineParseResult.parseOptions(new /*~~>*/String[]{
                 "--filter=" + nonExistentFilterFactory
         });
 
@@ -106,7 +106,7 @@ public class JUnitCommandLineParseResultTest {
 
     @Test
     public void shouldAddToClasses() {
-        jUnitCommandLineParseResult.parseParameters(new String[]{
+        jUnitCommandLineParseResult.parseParameters(new /*~~>*/String[]{
                 DummyTest.class.getName()
         });
 
@@ -118,8 +118,8 @@ public class JUnitCommandLineParseResultTest {
 
     @Test
     public void shouldCreateFailureUponUnknownTestClass() throws Exception {
-        String unknownTestClass = "UnknownTestClass";
-        jUnitCommandLineParseResult.parseParameters(new String[]{
+        /*~~>*/String unknownTestClass = "UnknownTestClass";
+        jUnitCommandLineParseResult.parseParameters(new /*~~>*/String[]{
                 unknownTestClass
         });
 

@@ -116,7 +116,7 @@ public class FilterFactoriesTest {
         }
 
         @Override
-        public String describe() {
+        public /*~~>*/String describe() {
             return null;
         }
     }

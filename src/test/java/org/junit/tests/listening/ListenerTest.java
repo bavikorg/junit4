@@ -8,7 +8,7 @@ import org.junit.runner.JUnitCore;
 import org.junit.runner.notification.RunListener;
 
 public class ListenerTest {
-    private static String log;
+    private static /*~~>*/String log;
 
     public static class OneTest {
         @Test

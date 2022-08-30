@@ -23,12 +23,12 @@ public class TextFeedbackTest extends TestCase {
         /* Spoof printing time so the tests are deterministic
            */
         @Override
-        protected String elapsedTimeAsString(long runTime) {
+        protected /*~~>*/String elapsedTimeAsString(long runTime) {
             return "0";
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(/*~~>*/String[] args) {
         TestRunner.run(TextFeedbackTest.class);
     }
 
@@ -39,14 +39,14 @@ public class TextFeedbackTest extends TestCase {
     }
 
     public void testEmptySuite() {
-        String expected = expected(new String[]{"", "Time: 0", "", "OK (0 tests)", ""});
+        /*~~>*/String expected = expected(new /*~~>*/String[]{"", "Time: 0", "", "OK (0 tests)", ""});
         runner.doRun(new TestSuite());
         assertEquals(expected, output.toString());
     }
 
 
     public void testOneTest() {
-        String expected = expected(new String[]{".", "Time: 0", "", "OK (1 test)", ""});
+        /*~~>*/String expected = expected(new /*~~>*/String[]{".", "Time: 0", "", "OK (1 test)", ""});
         TestSuite suite = new TestSuite();
         suite.addTest(new TestCase() {
             @Override
@@ -58,7 +58,7 @@ public class TextFeedbackTest extends TestCase {
     }
 
     public void testTwoTests() {
-        String expected = expected(new String[]{"..", "Time: 0", "", "OK (2 tests)", ""});
+        /*~~>*/String expected = expected(new /*~~>*/String[]{"..", "Time: 0", "", "OK (2 tests)", ""});
         TestSuite suite = new TestSuite();
         suite.addTest(new TestCase() {
             @Override
@@ -75,7 +75,7 @@ public class TextFeedbackTest extends TestCase {
     }
 
     public void testFailure() {
-        String expected = expected(new String[]{".F", "Time: 0", "Failures here", "", "FAILURES!!!", "Tests run: 1,  Failures: 1,  Errors: 0", ""});
+        /*~~>*/String expected = expected(new /*~~>*/String[]{".F", "Time: 0", "Failures here", "", "FAILURES!!!", "Tests run: 1,  Failures: 1,  Errors: 0", ""});
         ResultPrinter printer = new TestResultPrinter(new PrintStream(output)) {
             @Override
             public void printFailures(TestResult result) {
@@ -95,7 +95,7 @@ public class TextFeedbackTest extends TestCase {
     }
 
     public void testError() {
-        String expected = expected(new String[]{".E", "Time: 0", "Errors here", "", "FAILURES!!!", "Tests run: 1,  Failures: 0,  Errors: 1", ""});
+        /*~~>*/String expected = expected(new /*~~>*/String[]{".E", "Time: 0", "Errors here", "", "FAILURES!!!", "Tests run: 1,  Failures: 0,  Errors: 1", ""});
         ResultPrinter printer = new TestResultPrinter(new PrintStream(output)) {
             @Override
             public void printErrors(TestResult result) {
@@ -114,7 +114,7 @@ public class TextFeedbackTest extends TestCase {
         assertEquals(expected, output.toString());
     }
 
-    private String expected(String[] lines) {
+    private /*~~>*/String expected(/*~~>*/String[] lines) {
         OutputStream expected = new ByteArrayOutputStream();
         PrintStream expectedWriter = new PrintStream(expected);
         for (int i = 0; i < lines.length; i++) {

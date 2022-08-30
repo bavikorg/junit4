@@ -30,11 +30,11 @@ public class MethodCall {
     }
 
     @Override
-    public String toString() {
-        return String.format("%s(%s)", method.getName(), argListString());
+    public /*~~>*/String toString() {
+        return /*~~>*/String.format("%s(%s)", method.getName(), argListString());
     }
 
-    private String argListString() {
+    private /*~~>*/String argListString() {
         if (args == null) {
             return null;
         }

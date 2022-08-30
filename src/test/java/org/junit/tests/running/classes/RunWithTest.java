@@ -12,7 +12,7 @@ import org.junit.runner.notification.RunNotifier;
 
 public class RunWithTest {
 
-    private static String log;
+    private static /*~~>*/String log;
 
     public static class ExampleRunner extends Runner {
         public ExampleRunner(Class<?> klass) {

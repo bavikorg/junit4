@@ -31,7 +31,7 @@ public class StopwatchTest {
 
     private static class Record {
         final long duration;
-        final String name;
+        final /*~~>*/String name;
         final TestStatus status;
 
         Record() {
@@ -45,7 +45,7 @@ public class StopwatchTest {
         Record(long duration, TestStatus status, Description description) {
             this.duration = duration;
             this.status = status;
-            this.name = description == null ? null : description.getMethodName();
+            /*~~>*/this.name = description == null ? null : description.getMethodName();
         }
     }
 
@@ -169,8 +169,8 @@ public class StopwatchTest {
     public void succeeded() {
         Result result = runTest(SuccessfulTest.class);
         assertEquals(0, result.getFailureCount());
-        assertThat(record.name, is("successfulTest"));
-        assertThat(record.name, is(finishedRecord.name));
+        assertThat(/*~~>*/record.name, is("successfulTest"));
+        assertThat(/*~~>*/record.name, is(/*~~>*/finishedRecord.name));
         assertThat(record.status, is(TestStatus.SUCCEEDED));
         assertTrue("timeSpent > 0", record.duration > 0);
         assertThat(record.duration, is(finishedRecord.duration));
@@ -180,8 +180,8 @@ public class StopwatchTest {
     public void failed() {
         Result result = runTest(FailedTest.class);
         assertEquals(1, result.getFailureCount());
-        assertThat(record.name, is("failedTest"));
-        assertThat(record.name, is(finishedRecord.name));
+        assertThat(/*~~>*/record.name, is("failedTest"));
+        assertThat(/*~~>*/record.name, is(/*~~>*/finishedRecord.name));
         assertThat(record.status, is(TestStatus.FAILED));
         assertTrue("timeSpent > 0", record.duration > 0);
         assertThat(record.duration, is(finishedRecord.duration));
@@ -191,8 +191,8 @@ public class StopwatchTest {
     public void skipped() {
         Result result = runTest(SkippedTest.class);
         assertEquals(0, result.getFailureCount());
-        assertThat(record.name, is("skippedTest"));
-        assertThat(record.name, is(finishedRecord.name));
+        assertThat(/*~~>*/record.name, is("skippedTest"));
+        assertThat(/*~~>*/record.name, is(/*~~>*/finishedRecord.name));
         assertThat(record.status, is(TestStatus.SKIPPED));
         assertTrue("timeSpent > 0", record.duration > 0);
         assertThat(record.duration, is(finishedRecord.duration));

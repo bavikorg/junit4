@@ -217,7 +217,7 @@ public class MaxStarterTest {
             }
 
             @Override
-            public String describe() {
+            public /*~~>*/String describe() {
                 return "Everything";
             }
         });

@@ -66,13 +66,13 @@ public class UnsuccessfulWithDataPointFields {
     @RunWith(Theories.class)
     public static class NullsOK {
         @DataPoint
-        public static String NULL = null;
+        public static /*~~>*/String NULL = null;
 
         @DataPoint
-        public static String A = "A";
+        public static /*~~>*/String A = "A";
 
         @Theory
-        public void everythingIsA(String a) {
+        public void everythingIsA(/*~~>*/String a) {
             assertThat(a, is("A"));
         }
     }

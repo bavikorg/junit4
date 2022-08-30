@@ -88,7 +88,7 @@ public class TestClassTest {
 
     public static class FieldAnnotated {
         @Rule
-        public String fieldC= "andromeda";
+        public /*~~>*/String fieldC= "andromeda";
 
         @Rule
         public boolean fieldA;
@@ -109,7 +109,7 @@ public class TestClassTest {
     @Test
     public void annotatedFieldValues() {
         TestClass tc = new TestClass(FieldAnnotated.class);
-        List<String> values = tc.getAnnotatedFieldValues(new FieldAnnotated(), Rule.class, String.class);
+        List</*~~>*/String> values = tc.getAnnotatedFieldValues(new FieldAnnotated(), Rule.class, /*~~>*/String.class);
         assertThat(values, hasItem("andromeda"));
         assertThat(values.size(), is(1));
     }
@@ -123,7 +123,7 @@ public class TestClassTest {
 
         @Ignore
         @Test
-        public String methodA() {
+        public /*~~>*/String methodA() {
             return "jupiter";
         }
 
@@ -142,7 +142,7 @@ public class TestClassTest {
     public void providesAnnotatedMethodsSortedByName() {
         TestClass tc = new TestClass(MethodsAnnotated.class);
         List<FrameworkMethod> annotatedMethods = tc.getAnnotatedMethods();
-        List<String> methodNames = extractNames(annotatedMethods);
+        List</*~~>*/String> methodNames = extractNames(annotatedMethods);
         assertThat(methodNames.indexOf("methodA"),
             lessThan(methodNames.indexOf("methodB")));
     }
@@ -151,12 +151,12 @@ public class TestClassTest {
     public void getAnnotatedMethodsDoesNotReturnMethodWithoutAnnotation() {
         TestClass tc = new TestClass(MethodsAnnotated.class);
         List<FrameworkMethod> annotatedMethods = tc.getAnnotatedMethods();
-        List<String> methodNames = extractNames(annotatedMethods);
+        List</*~~>*/String> methodNames = extractNames(annotatedMethods);
         assertThat(methodNames, not(hasItem("methodWithoutAnnotation")));
     }
 
-    private List<String> extractNames(List<FrameworkMethod> methods) {
-        List<String> names = new ArrayList<String>();
+    private List</*~~>*/String> extractNames(List<FrameworkMethod> methods) {
+        List</*~~>*/String> names = new ArrayList</*~~>*/String>();
         for (FrameworkMethod method: methods) {
             names.add(method.getName());
         }
@@ -166,8 +166,8 @@ public class TestClassTest {
     @Test
     public void annotatedMethodValues() {
         TestClass tc = new TestClass(MethodsAnnotated.class);
-        List<String> values = tc.getAnnotatedMethodValues(
-            new MethodsAnnotated(), Ignore.class, String.class);
+        List</*~~>*/String> values = tc.getAnnotatedMethodValues(
+            new MethodsAnnotated(), Ignore.class, /*~~>*/String.class);
         assertThat(values, hasItem("jupiter"));
         assertThat(values.size(), is(1));
     }

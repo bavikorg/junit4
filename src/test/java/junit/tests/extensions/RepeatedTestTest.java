@@ -19,7 +19,7 @@ public class RepeatedTestTest extends TestCase {
         }
     }
 
-    public RepeatedTestTest(String name) {
+    public RepeatedTestTest(/*~~>*/String name) {
         super(name);
         fSuite = new TestSuite();
         fSuite.addTest(new SuccessTest());

@@ -114,7 +114,7 @@ public class SuiteTest {
     }
 
 
-    private static String log = "";
+    private static /*~~>*/String log = "";
 
     @RunWith(Suite.class)
     @SuiteClasses({TestA.class, TestB.class})
@@ -145,7 +145,7 @@ public class SuiteTest {
     public void withoutSuiteClassAnnotationProducesFailure() {
         Result result = JUnitCore.runClasses(AllWithOutAnnotation.class);
         assertEquals(1, result.getFailureCount());
-        String expected = String.format(
+        /*~~>*/String expected = /*~~>*/String.format(
                 "class '%s' must have a SuiteClasses annotation",
                 AllWithOutAnnotation.class.getName());
         assertEquals(expected, result.getFailures().get(0).getMessage());

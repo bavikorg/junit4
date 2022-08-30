@@ -36,5 +36,5 @@ public @interface Ignore {
     /**
      * The optional reason why the test is ignored.
      */
-    String value() default "";
+    /*~~>*/String value() default "";
 }

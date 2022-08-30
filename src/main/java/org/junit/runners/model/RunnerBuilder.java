@@ -88,7 +88,7 @@ public abstract class RunnerBuilder {
 
     Class<?> addParent(Class<?> parent) throws InitializationError {
         if (!parents.add(parent)) {
-            throw new InitializationError(String.format("class '%s' (possibly indirectly) contains itself as a SuiteClass", parent.getName()));
+            throw new InitializationError(/*~~>*/String.format("class '%s' (possibly indirectly) contains itself as a SuiteClass", parent.getName()));
         }
         return parent;
     }

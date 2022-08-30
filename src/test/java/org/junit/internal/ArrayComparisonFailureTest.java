@@ -13,8 +13,8 @@ import static org.junit.Assert.fail;
 
 public class ArrayComparisonFailureTest {
 
-    private static final String ARRAY_COMPARISON_FAILURE_411 = "arrayComparisonFailure_411";
-    private static final String ARRAY_COMPARISON_FAILURE_412 = "arrayComparisonFailure_412";
+    private static final /*~~>*/String ARRAY_COMPARISON_FAILURE_411 = "arrayComparisonFailure_411";
+    private static final /*~~>*/String ARRAY_COMPARISON_FAILURE_412 = "arrayComparisonFailure_412";
 
     /*
         Test compatibility of older versions of ArrayComparisonFailure
@@ -43,7 +43,7 @@ public class ArrayComparisonFailureTest {
         assertFailureSerializableFromOthers(ARRAY_COMPARISON_FAILURE_412);
     }
 
-    private void assertFailureSerializableFromOthers(String failureFileName) throws IOException,
+    private void assertFailureSerializableFromOthers(/*~~>*/String failureFileName) throws IOException,
             ClassNotFoundException {
         try {
             assertArrayEquals(new int[]{0, 1}, new int[]{0, 5});
@@ -58,7 +58,7 @@ public class ArrayComparisonFailureTest {
         }
     }
 
-    private ArrayComparisonFailure deserializeFailureFromFile(String fileName) throws IOException,
+    private ArrayComparisonFailure deserializeFailureFromFile(/*~~>*/String fileName) throws IOException,
             ClassNotFoundException {
         InputStream resource = getClass().getResourceAsStream(fileName);
         ObjectInputStream objectInputStream = new ObjectInputStream(resource);

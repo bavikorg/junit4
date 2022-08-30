@@ -25,7 +25,7 @@ public abstract class Filter {
         }
 
         @Override
-        public String describe() {
+        public /*~~>*/String describe() {
             return "all tests";
         }
 
@@ -62,8 +62,8 @@ public abstract class Filter {
             }
 
             @Override
-            public String describe() {
-                return String.format("Method %s", desiredDescription.getDisplayName());
+            public /*~~>*/String describe() {
+                return /*~~>*/String.format("Method %s", desiredDescription.getDisplayName());
             }
         };
     }
@@ -80,7 +80,7 @@ public abstract class Filter {
      *
      * @return a textual description of this Filter
      */
-    public abstract String describe();
+    public abstract /*~~>*/String describe();
 
     /**
      * Invoke with a {@link org.junit.runner.Runner} to cause all tests it intends to run
@@ -114,7 +114,7 @@ public abstract class Filter {
             }
 
             @Override
-            public String describe() {
+            public /*~~>*/String describe() {
                 return first.describe() + " and " + second.describe();
             }
         };

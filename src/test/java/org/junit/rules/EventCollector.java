@@ -73,12 +73,12 @@ public class EventCollector extends RunListener {
         return hasNumberOfAssumptionFailures(0);
     }
 
-    public static Matcher<EventCollector> hasSingleFailureWithMessage(String message) {
+    public static Matcher<EventCollector> hasSingleFailureWithMessage(/*~~>*/String message) {
         return hasSingleFailureWithMessage(equalTo(message));
     }
 
     static Matcher<EventCollector> hasSingleFailureWithMessage(
-            final Matcher<String> messageMatcher) {
+            final Matcher</*~~>*/String> messageMatcher) {
         return new TypeSafeMatcher<EventCollector>() {
             @Override
             public boolean matchesSafely(EventCollector item) {
@@ -179,7 +179,7 @@ public class EventCollector extends RunListener {
     }
 
     @Override
-    public String toString() {
+    public /*~~>*/String toString() {
         return fTestRunsStarted.size() + " test runs started, "
             + fTestRunsFinished.size() + " test runs finished, "
             + fTestsStarted.size() + " tests started, "

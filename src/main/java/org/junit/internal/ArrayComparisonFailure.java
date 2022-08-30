@@ -20,7 +20,7 @@ public class ArrayComparisonFailure extends AssertionError {
      * See https://github.com/junit-team/junit4/issues/976
      */
     private final List<Integer> fIndices = new ArrayList<Integer>();
-    private final String fMessage;
+    private final /*~~>*/String fMessage;
     private final AssertionError fCause;
 
     /**
@@ -31,8 +31,8 @@ public class ArrayComparisonFailure extends AssertionError {
      * @param index the array position of the objects that are not equal.
      * @see Assert#assertArrayEquals(String, Object[], Object[])
      */
-    public ArrayComparisonFailure(String message, AssertionError cause, int index) {
-        this.fMessage = message;
+    public ArrayComparisonFailure(/*~~>*/String message, AssertionError cause, int index) {
+        /*~~>*/this.fMessage = message;
         this.fCause = cause;
         initCause(fCause);
         addDimension(index);
@@ -48,7 +48,7 @@ public class ArrayComparisonFailure extends AssertionError {
     }
 
     @Override
-    public String getMessage() {
+    public /*~~>*/String getMessage() {
         StringBuilder sb = new StringBuilder();
         if (fMessage != null) {
             sb.append(fMessage);
@@ -68,7 +68,7 @@ public class ArrayComparisonFailure extends AssertionError {
      * {@inheritDoc}
      */
     @Override
-    public String toString() {
+    public /*~~>*/String toString() {
         return getMessage();
     }
 }

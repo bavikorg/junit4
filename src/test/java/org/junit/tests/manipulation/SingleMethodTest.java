@@ -128,7 +128,7 @@ public class SingleMethodTest {
             }
 
             @Override
-            public String describe() {
+            public /*~~>*/String describe() {
                 return null;
             }
         });

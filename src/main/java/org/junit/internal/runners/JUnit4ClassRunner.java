@@ -74,7 +74,7 @@ public class JUnit4ClassRunner extends Runner implements Filterable, Sortable {
         return testClass.getJavaClass().getAnnotations();
     }
 
-    protected String getName() {
+    protected /*~~>*/String getName() {
         return getTestClass().getName();
     }
 
@@ -109,7 +109,7 @@ public class JUnit4ClassRunner extends Runner implements Filterable, Sortable {
         return new TestMethod(method, testClass);
     }
 
-    protected String testName(Method method) {
+    protected /*~~>*/String testName(Method method) {
         return method.getName();
     }
 

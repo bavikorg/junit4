@@ -8,11 +8,11 @@ public class Version {
 		// don't instantiate
 	}
 
-	public static String id() {
+	public static /*~~>*/String id() {
 		return "4.13.3-SNAPSHOT";
 	}
 	
-	public static void main(String[] args) {
+	public static void main(/*~~>*/String[] args) {
 		System.out.println(id());
 	}
 }

@@ -26,12 +26,12 @@ public class WithParameterSupplier {
     public ExpectedException expected = ExpectedException.none();
 
     private static class SimplePotentialAssignment extends PotentialAssignment {
-        private String description;
+        private /*~~>*/String description;
         private Object value;
 
-        public SimplePotentialAssignment(Object value, String description) {
+        public SimplePotentialAssignment(Object value, /*~~>*/String description) {
             this.value = value;
-            this.description = description;
+            /*~~>*/this.description = description;
         }
 
         @Override
@@ -40,12 +40,12 @@ public class WithParameterSupplier {
         }
 
         @Override
-        public String getDescription() throws CouldNotGenerateValueException {
+        public /*~~>*/String getDescription() throws CouldNotGenerateValueException {
             return description;
         }
     }
 
-    private static final List<String> DATAPOINTS = Arrays.asList("qwe", "asd");
+    private static final List</*~~>*/String> DATAPOINTS = Arrays.asList("qwe", "asd");
 
     public static class SimpleSupplier extends ParameterSupplier {
 
@@ -53,7 +53,7 @@ public class WithParameterSupplier {
         public List<PotentialAssignment> getValueSources(ParameterSignature sig) {
             List<PotentialAssignment> assignments = new ArrayList<PotentialAssignment>();
 
-            for (String datapoint : DATAPOINTS) {
+            for (/*~~>*/String datapoint : DATAPOINTS) {
                 assignments.add(new SimplePotentialAssignment(datapoint,
                         datapoint));
             }
@@ -67,7 +67,7 @@ public class WithParameterSupplier {
     public static class TestClassUsingParameterSupplier {
 
         @Theory
-        public void theoryMethod(@ParametersSuppliedBy(SimpleSupplier.class) String param) {
+        public void theoryMethod(@ParametersSuppliedBy(SimpleSupplier.class) /*~~>*/String param) {
         }
 
     }
@@ -75,7 +75,7 @@ public class WithParameterSupplier {
     @Test
     public void shouldPickUpDataPointsFromParameterSupplier() throws Throwable {
         List<PotentialAssignment> assignments = potentialAssignments(TestClassUsingParameterSupplier.class
-                .getMethod("theoryMethod", String.class));
+                .getMethod("theoryMethod", /*~~>*/String.class));
 
         assertEquals(2, assignments.size());
         assertEquals(DATAPOINTS.get(0), assignments.get(0).getValue());
@@ -84,7 +84,7 @@ public class WithParameterSupplier {
     
     public static class SupplierWithUnknownConstructor extends ParameterSupplier {
         
-        public SupplierWithUnknownConstructor(String param) {
+        public SupplierWithUnknownConstructor(/*~~>*/String param) {
         }
 
         @Override
@@ -98,7 +98,7 @@ public class WithParameterSupplier {
     public static class TestClassUsingSupplierWithUnknownConstructor {
 
         @Theory
-        public void theory(@ParametersSuppliedBy(SupplierWithUnknownConstructor.class) String param) {
+        public void theory(@ParametersSuppliedBy(SupplierWithUnknownConstructor.class) /*~~>*/String param) {
         }
 
     }
@@ -111,7 +111,7 @@ public class WithParameterSupplier {
     
     public static class SupplierWithTwoConstructors extends ParameterSupplier {
         
-        public SupplierWithTwoConstructors(String param) {
+        public SupplierWithTwoConstructors(/*~~>*/String param) {
         }
 
         @Override
@@ -125,7 +125,7 @@ public class WithParameterSupplier {
     public static class TestClassUsingSupplierWithTwoConstructors {
 
         @Theory
-        public void theory(@ParametersSuppliedBy(SupplierWithTwoConstructors.class) String param) {
+        public void theory(@ParametersSuppliedBy(SupplierWithTwoConstructors.class) /*~~>*/String param) {
         }
 
     }
@@ -152,7 +152,7 @@ public class WithParameterSupplier {
     public static class TestClassUsingSupplierWithTestClassConstructor {
 
         @Theory
-        public void theory(@ParametersSuppliedBy(SupplierWithTestClassConstructor.class) String param) {
+        public void theory(@ParametersSuppliedBy(SupplierWithTestClassConstructor.class) /*~~>*/String param) {
         }
 
     }

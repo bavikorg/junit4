@@ -23,7 +23,7 @@ public class StringableObject {
     }
 
     @Override
-    public String toString() {
+    public /*~~>*/String toString() {
         return stringableObject().toString();
     }
 }

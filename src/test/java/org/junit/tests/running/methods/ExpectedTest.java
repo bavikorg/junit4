@@ -37,7 +37,7 @@ public class ExpectedTest {
     public void unexpected() {
         Result result = JUnitCore.runClasses(Unexpected.class);
         Failure failure = result.getFailures().get(0);
-        String message = failure.getMessage();
+        /*~~>*/String message = failure.getMessage();
         assertTrue(message.contains("expected<java.lang.Exception> but was<java.lang.Error>"));
         assertEquals(Error.class, failure.getException().getCause().getClass());
     }
@@ -53,7 +53,7 @@ public class ExpectedTest {
         JUnitCore core = new JUnitCore();
         Result result = core.run(NoneThrown.class);
         assertFalse(result.wasSuccessful());
-        String message = result.getFailures().get(0).getMessage();
+        /*~~>*/String message = result.getFailures().get(0).getMessage();
         assertTrue(message.contains("Expected exception: java.lang.Exception"));
     }
 

@@ -16,7 +16,7 @@ final class ReflectiveThreadMXBean implements ThreadMXBean {
     static final Method getThreadCpuTimeMethod;
     static final Method isThreadCpuTimeSupportedMethod;
 
-    private static final String FAILURE_MESSAGE = "Unable to access ThreadMXBean";
+    private static final /*~~>*/String FAILURE_MESSAGE = "Unable to access ThreadMXBean";
 
     static {
       Method threadCpuTime = null;
@@ -63,9 +63,9 @@ final class ReflectiveThreadMXBean implements ThreadMXBean {
         error = e;
         // fallthrough
       }
-      throw new UnsupportedOperationException(Holder.FAILURE_MESSAGE, error);
+      throw new UnsupportedOperationException(/*~~>*/Holder.FAILURE_MESSAGE, error);
     }
-    throw new UnsupportedOperationException(Holder.FAILURE_MESSAGE);
+    throw new UnsupportedOperationException(/*~~>*/Holder.FAILURE_MESSAGE);
   }
 
   /**

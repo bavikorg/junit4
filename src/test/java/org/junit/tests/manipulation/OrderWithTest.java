@@ -18,7 +18,7 @@ import org.junit.runner.notification.RunNotifier;
 public class OrderWithTest {
  
     public static class TestClassRunnerIsOrderableViaOrderWith {
-        private static String log = "";
+        private static /*~~>*/String log = "";
 
         public static class Unordered {
             @Test
@@ -129,7 +129,7 @@ public class OrderWithTest {
     }
 
     public static class TestClassRunnerIsSortableViaOrderWith {
-        private static String log = "";
+        private static /*~~>*/String log = "";
 
         public static class Unordered {
             @Test
@@ -179,7 +179,7 @@ public class OrderWithTest {
     }
 
     public static class TestClassRunnerIsOrderableWithSuiteMethod {
-        private static String log = "";
+        private static /*~~>*/String log = "";
 
         public static class Unordered {
             @Test

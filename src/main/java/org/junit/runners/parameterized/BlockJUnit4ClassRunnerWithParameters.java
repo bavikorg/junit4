@@ -28,7 +28,7 @@ public class BlockJUnit4ClassRunnerWithParameters extends
 
     private final Object[] parameters;
 
-    private final String name;
+    private final /*~~>*/String name;
 
     public BlockJUnit4ClassRunnerWithParameters(TestWithParameters test)
             throws InitializationError {
@@ -94,12 +94,12 @@ public class BlockJUnit4ClassRunnerWithParameters extends
     }
 
     @Override
-    protected String getName() {
+    protected /*~~>*/String getName() {
         return name;
     }
 
     @Override
-    protected String testName(FrameworkMethod method) {
+    protected /*~~>*/String testName(FrameworkMethod method) {
         return method.getName() + getName();
     }
 

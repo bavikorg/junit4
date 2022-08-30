@@ -309,7 +309,7 @@ public class AnnotationTest extends TestCase {
         assertEquals(1, count);
     }
 
-    static String log;
+    static /*~~>*/String log;
 
     public static class OrderTest {
         @BeforeClass

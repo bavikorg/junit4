@@ -54,7 +54,7 @@ public class BlockJUnit4ClassRunnerWithParametersTest {
     @RunWith(Parameterized.class)
     public static class ClassWithPrivateParameter {
         @Parameterized.Parameter
-        private String parameter;
+        private /*~~>*/String parameter;
 
         @Test
         public void dummyTest() {

@@ -38,7 +38,7 @@ public class MatcherTest {
         assertThat(matcher1.toString(), not(matcher2.toString()));
     }
 
-    private static Failure failure(String string) {
+    private static Failure failure(/*~~>*/String string) {
         return new Failure(Description.EMPTY, new Error(string));
     }
 }

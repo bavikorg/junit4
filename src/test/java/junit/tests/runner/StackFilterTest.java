@@ -7,8 +7,8 @@ import junit.framework.TestCase;
 import junit.runner.BaseTestRunner;
 
 public class StackFilterTest extends TestCase {
-    String fFiltered;
-    String fUnfiltered;
+    /*~~>*/String fFiltered;
+    /*~~>*/String fUnfiltered;
 
     @Override
     protected void setUp() {

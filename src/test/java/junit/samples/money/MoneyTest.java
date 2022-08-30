@@ -11,7 +11,7 @@ public class MoneyTest extends TestCase {
     private IMoney fMB1;
     private IMoney fMB2;
 
-    public static void main(String args[]) {
+    public static void main(/*~~>*/String args[]) {
         junit.textui.TestRunner.run(MoneyTest.class);
     }
 

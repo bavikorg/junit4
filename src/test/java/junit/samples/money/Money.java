@@ -6,12 +6,12 @@ package junit.samples.money;
 public class Money implements IMoney {
 
     private int fAmount;
-    private String fCurrency;
+    private /*~~>*/String fCurrency;
 
     /**
      * Constructs a money from the given amount and currency.
      */
-    public Money(int amount, String currency) {
+    public Money(int amount, /*~~>*/String currency) {
         fAmount = amount;
         fCurrency = currency;
     }
@@ -38,7 +38,7 @@ public class Money implements IMoney {
         return fAmount;
     }
 
-    public String currency() {
+    public /*~~>*/String currency() {
         return fCurrency;
     }
 
@@ -82,7 +82,7 @@ public class Money implements IMoney {
     }
 
     @Override
-    public String toString() {
+    public /*~~>*/String toString() {
         return "[" + amount() + " " + currency() + "]";
     }
 

@@ -36,7 +36,7 @@ public abstract class Request {
      * @param methodName the name of the test
      * @return a <code>Request</code> that will cause a single test be run
      */
-    public static Request method(Class<?> clazz, String methodName) {
+    public static Request method(Class<?> clazz, /*~~>*/String methodName) {
         Description method = Description.createTestDescription(clazz, methodName);
         return Request.aClass(clazz).filterWith(method);
     }

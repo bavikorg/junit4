@@ -132,7 +132,7 @@ public class MethodRulesTest {
         assertThat(testResult(NoRulesTest.class), isSuccessful());
     }
 
-    private static String log;
+    private static /*~~>*/String log;
 
     public static class OnFailureTest {
         @Rule
@@ -157,7 +157,7 @@ public class MethodRulesTest {
     }
 
     public static class WatchmanTest {
-        private static String watchedLog;
+        private static /*~~>*/String watchedLog;
 
         @Rule
         public MethodRule watchman = new TestWatchman() {
@@ -185,14 +185,14 @@ public class MethodRulesTest {
 
     @Test
     public void succeeded() {
-        WatchmanTest.watchedLog = "";
+        /*~~>*/WatchmanTest.watchedLog = "";
         assertThat(testResult(WatchmanTest.class), failureCountIs(1));
-        assertThat(WatchmanTest.watchedLog, containsString("fails AssertionError"));
-        assertThat(WatchmanTest.watchedLog, containsString("succeeds success!"));
+        assertThat(/*~~>*/WatchmanTest.watchedLog, containsString("fails AssertionError"));
+        assertThat(/*~~>*/WatchmanTest.watchedLog, containsString("succeeds success!"));
     }
 
     public static class BeforesAndAfters {
-        private static String watchedLog;
+        private static /*~~>*/String watchedLog;
 
         @Before
         public void before() {
@@ -230,9 +230,9 @@ public class MethodRulesTest {
 
     @Test
     public void beforesAndAfters() {
-        BeforesAndAfters.watchedLog = "";
+        /*~~>*/BeforesAndAfters.watchedLog = "";
         assertThat(testResult(BeforesAndAfters.class), isSuccessful());
-        assertThat(BeforesAndAfters.watchedLog, is("starting before test after succeeded finished "));
+        assertThat(/*~~>*/BeforesAndAfters.watchedLog, is("starting before test after succeeded finished "));
     }
 
     public static class WrongTypedField {
@@ -276,7 +276,7 @@ public class MethodRulesTest {
     }
 
     public static class CustomTestName implements TestRule {
-        public String name = null;
+        public /*~~>*/String name = null;
 
         public Statement apply(final Statement base, final Description description) {
             return new Statement() {
@@ -295,7 +295,7 @@ public class MethodRulesTest {
 
         @Test
         public void foo() {
-            assertEquals("foo", counter.name);
+            assertEquals("foo", /*~~>*/counter.name);
         }
     }
 

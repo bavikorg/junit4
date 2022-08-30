@@ -75,13 +75,13 @@ public class ExpectExceptionTest {
     }
 
     private static class SomeException extends RuntimeException {
-        public SomeException(String message) {
+        public SomeException(/*~~>*/String message) {
             super(message);
         }
     }
 
     private static class AssumptionViolatedExceptionSubclass extends AssumptionViolatedException {
-        public AssumptionViolatedExceptionSubclass(String assumption) {
+        public AssumptionViolatedExceptionSubclass(/*~~>*/String assumption) {
             super(assumption);
         }
     }

@@ -35,7 +35,7 @@ public class StacktracePrintingMatcher<T extends Throwable> extends
         description.appendText(readStacktrace(item));
     }
 
-    private String readStacktrace(Throwable throwable) {
+    private /*~~>*/String readStacktrace(Throwable throwable) {
         return Throwables.getStacktrace(throwable);
     }
 

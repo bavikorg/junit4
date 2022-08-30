@@ -50,5 +50,5 @@ import org.junit.experimental.theories.internal.SpecificDataPointsSupplier;
 @Target(ElementType.PARAMETER)
 @ParametersSuppliedBy(SpecificDataPointsSupplier.class)
 public @interface FromDataPoints {
-    String value();
+    /*~~>*/String value();
 }

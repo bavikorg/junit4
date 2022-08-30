@@ -22,12 +22,12 @@ public class SpecificDataPointsSupplier extends AllMembersSupplier {
     @Override
     protected Collection<Field> getSingleDataPointFields(ParameterSignature sig) {
         Collection<Field> fields = super.getSingleDataPointFields(sig);        
-        String requestedName = sig.getAnnotation(FromDataPoints.class).value();
+        /*~~>*/String requestedName = sig.getAnnotation(FromDataPoints.class).value();
 
         List<Field> fieldsWithMatchingNames = new ArrayList<Field>();
         
         for (Field field : fields) {
-            String[] fieldNames = field.getAnnotation(DataPoint.class).value();
+            /*~~>*/String[] fieldNames = field.getAnnotation(DataPoint.class).value();
             if (Arrays.asList(fieldNames).contains(requestedName)) {
                 fieldsWithMatchingNames.add(field);
             }
@@ -39,12 +39,12 @@ public class SpecificDataPointsSupplier extends AllMembersSupplier {
     @Override
     protected Collection<Field> getDataPointsFields(ParameterSignature sig) {
         Collection<Field> fields = super.getDataPointsFields(sig);        
-        String requestedName = sig.getAnnotation(FromDataPoints.class).value();
+        /*~~>*/String requestedName = sig.getAnnotation(FromDataPoints.class).value();
         
         List<Field> fieldsWithMatchingNames = new ArrayList<Field>();
         
         for (Field field : fields) {
-            String[] fieldNames = field.getAnnotation(DataPoints.class).value();
+            /*~~>*/String[] fieldNames = field.getAnnotation(DataPoints.class).value();
             if (Arrays.asList(fieldNames).contains(requestedName)) {
                 fieldsWithMatchingNames.add(field);
             }
@@ -56,12 +56,12 @@ public class SpecificDataPointsSupplier extends AllMembersSupplier {
     @Override
     protected Collection<FrameworkMethod> getSingleDataPointMethods(ParameterSignature sig) {
         Collection<FrameworkMethod> methods = super.getSingleDataPointMethods(sig);
-        String requestedName = sig.getAnnotation(FromDataPoints.class).value();
+        /*~~>*/String requestedName = sig.getAnnotation(FromDataPoints.class).value();
         
         List<FrameworkMethod> methodsWithMatchingNames = new ArrayList<FrameworkMethod>();
         
         for (FrameworkMethod method : methods) {
-            String[] methodNames = method.getAnnotation(DataPoint.class).value();
+            /*~~>*/String[] methodNames = method.getAnnotation(DataPoint.class).value();
             if (Arrays.asList(methodNames).contains(requestedName)) {
                 methodsWithMatchingNames.add(method);
             }
@@ -73,12 +73,12 @@ public class SpecificDataPointsSupplier extends AllMembersSupplier {
     @Override
     protected Collection<FrameworkMethod> getDataPointsMethods(ParameterSignature sig) {
         Collection<FrameworkMethod> methods = super.getDataPointsMethods(sig);
-        String requestedName = sig.getAnnotation(FromDataPoints.class).value();
+        /*~~>*/String requestedName = sig.getAnnotation(FromDataPoints.class).value();
         
         List<FrameworkMethod> methodsWithMatchingNames = new ArrayList<FrameworkMethod>();
         
         for (FrameworkMethod method : methods) {
-            String[] methodNames = method.getAnnotation(DataPoints.class).value();
+            /*~~>*/String[] methodNames = method.getAnnotation(DataPoints.class).value();
             if (Arrays.asList(methodNames).contains(requestedName)) {
                 methodsWithMatchingNames.add(method);
             }

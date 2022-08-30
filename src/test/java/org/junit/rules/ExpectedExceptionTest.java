@@ -29,7 +29,7 @@ import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
 public class ExpectedExceptionTest {
-    private static final String ARBITRARY_MESSAGE = "arbitrary message";
+    private static final /*~~>*/String ARBITRARY_MESSAGE = "arbitrary message";
 
     @Parameters(name= "{0}")
     public static Collection<Object[]> testsWithEventMatcher() {
@@ -71,7 +71,7 @@ public class ExpectedExceptionTest {
                 {ThrowExpectedNullCause.class, everyTestRunSuccessful()},
                 {
                         ThrowUnexpectedCause.class,
-                        hasSingleFailureWithMessage(CoreMatchers.<String>allOf(
+                        hasSingleFailureWithMessage(CoreMatchers.</*~~>*/String>allOf(
                                 startsWith("\nExpected: ("),
                                 containsString("exception with cause is <java.lang.NullPointerException: expected cause>"),
                                 containsString("cause was <java.lang.NullPointerException: an unexpected cause>"),

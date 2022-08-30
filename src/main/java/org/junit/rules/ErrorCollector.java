@@ -71,7 +71,7 @@ public class ErrorCollector extends Verifier {
      * to the table if {@code matcher} does not match {@code value}.
      * Execution continues, but the test will fail at the end if the match fails.
      */
-    public <T> void checkThat(final String reason, final T value, final Matcher<T> matcher) {
+    public <T> void checkThat(final /*~~>*/String reason, final T value, final Matcher<T> matcher) {
         checkSucceeds(new Callable<Object>() {
             public Object call() throws Exception {
                 MatcherAssert.assertThat(reason, value, matcher);

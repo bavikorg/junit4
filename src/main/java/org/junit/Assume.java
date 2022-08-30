@@ -64,14 +64,14 @@ public class Assume {
      * throwing {@link AssumptionViolatedException}.
      * @param message A message to pass to {@link AssumptionViolatedException}.
      */
-    public static void assumeTrue(String message, boolean b) {
+    public static void assumeTrue(/*~~>*/String message, boolean b) {
         if (!b) throw new AssumptionViolatedException(message);
     }
 
     /**
      * The inverse of {@link #assumeTrue(String, boolean)}.
      */
-    public static void assumeFalse(String message, boolean b) {
+    public static void assumeFalse(/*~~>*/String message, boolean b) {
         assumeTrue(message, !b);
     }
 
@@ -124,7 +124,7 @@ public class Assume {
      * @see org.hamcrest.CoreMatchers
      * @see org.junit.matchers.JUnitMatchers
      */
-    public static <T> void assumeThat(String message, T actual, Matcher<T> matcher) {
+    public static <T> void assumeThat(/*~~>*/String message, T actual, Matcher<T> matcher) {
         if (!matcher.matches(actual)) {
             throw new AssumptionViolatedException(message, actual, matcher);
         }
@@ -163,7 +163,7 @@ public class Assume {
      * @param message Additional message to pass to {@link AssumptionViolatedException}.
      * @see #assumeNoException(Throwable)
      */
-    public static void assumeNoException(String message, Throwable e) {
+    public static void assumeNoException(/*~~>*/String message, Throwable e) {
         assumeThat(message, e, nullValue());
     }
 }

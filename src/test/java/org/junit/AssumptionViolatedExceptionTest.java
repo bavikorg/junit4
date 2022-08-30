@@ -41,7 +41,7 @@ public class AssumptionViolatedExceptionTest {
     @Rule
     public TestName name = new TestName();
 
-    private static final String MESSAGE = "Assumption message";
+    private static final /*~~>*/String MESSAGE = "Assumption message";
     private static Matcher<Integer> SERIALIZABLE_IS_THREE = new SerializableIsThreeMatcher<Integer>();
     private static final UnserializableClass UNSERIALIZABLE_VALUE = new UnserializableClass();
     private static final Matcher<UnserializableClass> UNSERIALIZABLE_MATCHER = not(is(UNSERIALIZABLE_VALUE));
@@ -56,7 +56,7 @@ public class AssumptionViolatedExceptionTest {
     @Theory
     public void toStringReportsValue(Integer actual, Matcher<Integer> matcher) {
         assertThat(new AssumptionViolatedException(actual, matcher).toString(),
-                containsString(String.valueOf(actual)));
+                containsString(/*~~>*/String.valueOf(actual)));
     }
 
     @Test
@@ -166,7 +166,7 @@ public class AssumptionViolatedExceptionTest {
 
     private void assertReserializable(AssumptionViolatedException expected)
             throws IOException, ClassNotFoundException {
-        String resourceName = name.getMethodName();
+        /*~~>*/String resourceName = name.getMethodName();
         InputStream resource = getClass().getResourceAsStream(resourceName);
         assertNotNull("Could not read resource " + resourceName, resource);
         ObjectInputStream objectInputStream = new ObjectInputStream(resource);
@@ -200,7 +200,7 @@ public class AssumptionViolatedExceptionTest {
 
     private static class UnserializableClass {
         @Override
-        public String toString() {
+        public /*~~>*/String toString() {
             return "I'm not serializable";
         }
     }

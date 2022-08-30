@@ -22,7 +22,7 @@ public class SynchronizedRunListenerTest {
 
     private static class MethodSignature {
         private final Method fMethod;
-        private final String fName;
+        private final /*~~>*/String fName;
         private final List<Class<?>> fParameterTypes;
 
         public MethodSignature(Method method) {
@@ -32,7 +32,7 @@ public class SynchronizedRunListenerTest {
         }
 
         @Override
-        public String toString() {
+        public /*~~>*/String toString() {
             return fMethod.toString();
         }
 
@@ -50,7 +50,7 @@ public class SynchronizedRunListenerTest {
                 return false;
             }
             MethodSignature that = (MethodSignature) obj;
-            return fName.equals(that.fName) && fParameterTypes.equals(that.fParameterTypes);
+            return fName.equals(/*~~>*/that.fName) && fParameterTypes.equals(that.fParameterTypes);
         }
     }
 
@@ -72,14 +72,14 @@ public class SynchronizedRunListenerTest {
     }
 
     private static class NamedListener extends RunListener {
-        private final String fName;
+        private final /*~~>*/String fName;
 
-        public NamedListener(String name) {
+        public NamedListener(/*~~>*/String name) {
             fName = name;
         }
 
         @Override
-        public String toString() {
+        public /*~~>*/String toString() {
           return "NamedListener";
         }
 
@@ -97,7 +97,7 @@ public class SynchronizedRunListenerTest {
                 return false;
             }
             NamedListener that = (NamedListener) obj;
-            return this.fName.equals(that.fName);
+            return /*~~>*/this.fName.equals(/*~~>*/that.fName);
         }
     }
 

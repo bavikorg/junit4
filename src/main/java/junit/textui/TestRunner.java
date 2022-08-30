@@ -91,11 +91,11 @@ public class TestRunner extends BaseTestRunner {
     }
 
     @Override
-    public void testStarted(String testName) {
+    public void testStarted(/*~~>*/String testName) {
     }
 
     @Override
-    public void testEnded(String testName) {
+    public void testEnded(/*~~>*/String testName) {
     }
 
     /**
@@ -131,7 +131,7 @@ public class TestRunner extends BaseTestRunner {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(/*~~>*/String[] args) {
         TestRunner aTestRunner = new TestRunner();
         try {
             TestResult r = aTestRunner.start(args);
@@ -149,9 +149,9 @@ public class TestRunner extends BaseTestRunner {
      * Starts a test run. Analyzes the command line arguments and runs the given
      * test suite.
      */
-    public TestResult start(String[] args) throws Exception {
-        String testCase = "";
-        String method = "";
+    public TestResult start(/*~~>*/String[] args) throws Exception {
+        /*~~>*/String testCase = "";
+        /*~~>*/String method = "";
         boolean wait = false;
 
         for (int i = 0; i < args.length; i++) {
@@ -160,7 +160,7 @@ public class TestRunner extends BaseTestRunner {
             } else if (args[i].equals("-c")) {
                 testCase = extractClassName(args[++i]);
             } else if (args[i].equals("-m")) {
-                String arg = args[++i];
+                /*~~>*/String arg = args[++i];
                 int lastIndex = arg.lastIndexOf('.');
                 testCase = arg.substring(0, lastIndex);
                 method = arg.substring(lastIndex + 1);
@@ -186,14 +186,14 @@ public class TestRunner extends BaseTestRunner {
         }
     }
 
-    protected TestResult runSingleMethod(String testCase, String method, boolean wait) throws Exception {
+    protected TestResult runSingleMethod(/*~~>*/String testCase, /*~~>*/String method, boolean wait) throws Exception {
         Class<? extends TestCase> testClass = loadSuiteClass(testCase).asSubclass(TestCase.class);
         Test test = TestSuite.createTest(testClass, method);
         return doRun(test, wait);
     }
 
     @Override
-    protected void runFailed(String message) {
+    protected void runFailed(/*~~>*/String message) {
         System.err.println(message);
         System.exit(FAILURE_EXIT);
     }

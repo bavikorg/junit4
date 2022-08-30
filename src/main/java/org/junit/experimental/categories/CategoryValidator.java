@@ -55,7 +55,7 @@ public final class CategoryValidator extends AnnotationValidator {
     }
 
     private void addErrorMessage(List<Exception> errors, Class<?> clazz) {
-        String message = String.format("@%s can not be combined with @Category",
+        /*~~>*/String message = /*~~>*/String.format("@%s can not be combined with @Category",
                 clazz.getSimpleName());
         errors.add(new Exception(message));
     }

@@ -9,10 +9,10 @@ public class PotentialAssignmentTest {
 
     @Test
     public void shouldUseQuotedValueInDescription() throws CouldNotGenerateValueException {
-        String name = "stringDatapoint";
+        /*~~>*/String name = "stringDatapoint";
         Object value = new Object() {
             @Override
-            public String toString() {
+            public /*~~>*/String toString() {
                 return "string value";
             }
         };
@@ -24,7 +24,7 @@ public class PotentialAssignmentTest {
 
     @Test
     public void shouldNotUseQuotesForNullValueDescriptions() throws CouldNotGenerateValueException {
-        String name = "nullDatapoint";
+        /*~~>*/String name = "nullDatapoint";
         Object value = null;
 
         PotentialAssignment assignment = PotentialAssignment.forValue(name, value);
@@ -34,10 +34,10 @@ public class PotentialAssignmentTest {
 
     @Test
     public void shouldIncludeFailureInDescriptionIfToStringFails() throws CouldNotGenerateValueException {
-        String name = "explodingValue";
+        /*~~>*/String name = "explodingValue";
         Object value = new Object() {
             @Override
-            public String toString() {
+            public /*~~>*/String toString() {
                 throw new RuntimeException("Oh no!");
             }
         };

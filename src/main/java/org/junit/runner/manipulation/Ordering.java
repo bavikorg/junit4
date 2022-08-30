@@ -20,7 +20,7 @@ import org.junit.runner.OrderWith;
  * @since 4.13
  */
 public abstract class Ordering {
-    private static final String CONSTRUCTOR_ERROR_FORMAT
+    private static final /*~~>*/String CONSTRUCTOR_ERROR_FORMAT
             = "Ordering class %s should have a public constructor with signature "
                     + "%s(Ordering.Context context)";
 
@@ -67,7 +67,7 @@ public abstract class Ordering {
             Constructor<? extends Ordering.Factory> constructor = factoryClass.getConstructor();
             factory = constructor.newInstance();
         } catch (NoSuchMethodException e) {
-            throw new InvalidOrderingException(String.format(
+            throw new InvalidOrderingException(/*~~>*/String.format(
                     CONSTRUCTOR_ERROR_FORMAT,
                     getClassName(factoryClass),
                     factoryClass.getSimpleName()));
@@ -98,8 +98,8 @@ public abstract class Ordering {
         return factory.create(new Ordering.Context(annotatedTestClass));
     }
 
-    private static String getClassName(Class<?> clazz) {
-        String name = clazz.getCanonicalName();
+    private static /*~~>*/String getClassName(Class<?> clazz) {
+        /*~~>*/String name = clazz.getCanonicalName();
         if (name == null) {
             return clazz.getName();
         }

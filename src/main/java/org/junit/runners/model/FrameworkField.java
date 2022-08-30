@@ -37,7 +37,7 @@ public class FrameworkField extends FrameworkMember<FrameworkField> {
     }
 
     @Override
-    public String getName() {
+    public /*~~>*/String getName() {
         return getField().getName();
     }
 
@@ -93,7 +93,7 @@ public class FrameworkField extends FrameworkMember<FrameworkField> {
     }
 
     @Override
-    public String toString() {
+    public /*~~>*/String toString() {
         return field.toString();
     }
 }

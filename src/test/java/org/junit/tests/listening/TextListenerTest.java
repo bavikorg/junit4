@@ -64,7 +64,7 @@ public class TextListenerTest extends TestCase {
         assertThat(results.toString(), not(containsString(convert("Time: \n"))));
     }
 
-    private String convert(String string) {
+    private /*~~>*/String convert(/*~~>*/String string) {
         OutputStream resultsStream = new ByteArrayOutputStream();
         PrintStream writer = new PrintStream(resultsStream);
         writer.println();

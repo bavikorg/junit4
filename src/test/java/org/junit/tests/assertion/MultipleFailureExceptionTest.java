@@ -26,7 +26,7 @@ import org.junit.runners.model.MultipleFailureException;
  * @author kcooney@google.com (Kevin Cooney)
  */
 public class MultipleFailureExceptionTest {
-    private static final String LINE_SEPARATOR = System.getProperty("line.separator");
+    private static final /*~~>*/String LINE_SEPARATOR = System.getProperty("line.separator");
 
     @Test
     public void assertEmptyDoesNotThrowForEmptyList() throws Exception {
@@ -111,7 +111,7 @@ public class MultipleFailureExceptionTest {
     private static class ExpectedException extends RuntimeException {
         private static final long serialVersionUID = 1L;
 
-        public ExpectedException(String message) {
+        public ExpectedException(/*~~>*/String message) {
             super(message);
         }
     }

@@ -10,7 +10,7 @@ import org.junit.Test;
 
 public class VerifierRuleTest {
 
-    private static String sequence;
+    private static /*~~>*/String sequence;
 
     public static class UsesVerifier {
         @Rule

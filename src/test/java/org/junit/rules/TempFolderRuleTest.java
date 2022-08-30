@@ -42,7 +42,7 @@ public class TempFolderRuleTest {
         @Test
         public void testTempFolderLocation() throws IOException {
             File folderRoot = folder.getRoot();
-            String tmpRoot = System.getProperty("java.io.tmpdir");
+            /*~~>*/String tmpRoot = System.getProperty("java.io.tmpdir");
             assertTrue(folderRoot.toString().startsWith(tmpRoot));
         }
     }
@@ -59,11 +59,11 @@ public class TempFolderRuleTest {
 
         @Test
         public void testUsingTempFolderStringReflection() throws Exception {
-            String subfolder = "subfolder";
-            String filename = "a.txt";
+            /*~~>*/String subfolder = "subfolder";
+            /*~~>*/String filename = "a.txt";
             // force usage of folder.newFolder(String),
             // check is available and works, to avoid a potential NoSuchMethodError with non-recompiled code.
-            Method method = folder.getClass().getMethod("newFolder", new Class<?>[]{String.class});
+            Method method = folder.getClass().getMethod("newFolder", new Class<?>[]{/*~~>*/String.class});
             createdFiles[0] = (File) method.invoke(folder, subfolder);
             new File(createdFiles[0], filename).createNewFile();
 
@@ -74,8 +74,8 @@ public class TempFolderRuleTest {
 
         @Test
         public void testUsingTempFolderString() throws IOException {
-            String subfolder = "subfolder";
-            String filename = "a.txt";
+            /*~~>*/String subfolder = "subfolder";
+            /*~~>*/String filename = "a.txt";
             // this uses newFolder(String), ensure that a single String works
             createdFiles[0] = folder.newFolder(subfolder);
             new File(createdFiles[0], filename).createNewFile();
@@ -87,9 +87,9 @@ public class TempFolderRuleTest {
 
         @Test
         public void testUsingTempTreeFolders() throws IOException {
-            String subfolder = "subfolder";
-            String anotherfolder = "anotherfolder";
-            String filename = "a.txt";
+            /*~~>*/String subfolder = "subfolder";
+            /*~~>*/String anotherfolder = "anotherfolder";
+            /*~~>*/String filename = "a.txt";
 
             createdFiles[0] = folder.newFolder(subfolder, anotherfolder);
             new File(createdFiles[0], filename).createNewFile();
@@ -99,10 +99,10 @@ public class TempFolderRuleTest {
             assertTrue(expectedFile.exists());
         }
 
-        private String join(String... folderNames) {
+        private /*~~>*/String join(/*~~>*/String... folderNames) {
             StringBuilder path = new StringBuilder();
-            for (String folderName : folderNames) {
-                path.append(File.separator).append(folderName);
+            for (/*~~>*/String folderName : folderNames) {
+                path.append(/*~~>*/File.separator).append(folderName);
             }
             return path.toString();
         }
@@ -194,12 +194,12 @@ public class TempFolderRuleTest {
         TemporaryFolder folder = new TemporaryFolder();
         folder.create();
 
-        Set<String> expectedPermissions = new TreeSet<String>(Arrays.asList("OWNER_READ", "OWNER_WRITE", "OWNER_EXECUTE"));
-        Set<String> actualPermissions = getPosixFilePermissions(folder.getRoot());
+        Set</*~~>*/String> expectedPermissions = new TreeSet</*~~>*/String>(Arrays.asList("OWNER_READ", "OWNER_WRITE", "OWNER_EXECUTE"));
+        Set</*~~>*/String> actualPermissions = getPosixFilePermissions(folder.getRoot());
         assertEquals(expectedPermissions, actualPermissions);
     }
 
-    private Set<String> getPosixFilePermissions(File root) {
+    private Set</*~~>*/String> getPosixFilePermissions(File root) {
         try {
             Class<?> pathClass = Class.forName("java.nio.file.Path");
             Object linkOptionArray = Array.newInstance(Class.forName("java.nio.file.LinkOption"), 0);
@@ -207,7 +207,7 @@ public class TempFolderRuleTest {
             Object path = File.class.getDeclaredMethod("toPath").invoke(root);
             Method posixFilePermissionsMethod = filesClass.getDeclaredMethod("getPosixFilePermissions", pathClass, linkOptionArray.getClass());
             Set<?> permissions = (Set<?>) posixFilePermissionsMethod.invoke(null, path, linkOptionArray);
-            SortedSet<String> convertedPermissions = new TreeSet<String>();
+            SortedSet</*~~>*/String> convertedPermissions = new TreeSet</*~~>*/String>();
             for (Object item : permissions) {
                 convertedPermissions.add(item.toString());
             }
@@ -239,11 +239,11 @@ public class TempFolderRuleTest {
         assertThat(testResult(NameClashes.class), failureCountIs(2));
     }
 
-    private static final String GET_ROOT_DUMMY = "dummy-getRoot";
+    private static final /*~~>*/String GET_ROOT_DUMMY = "dummy-getRoot";
 
-    private static final String NEW_FILE_DUMMY = "dummy-newFile";
+    private static final /*~~>*/String NEW_FILE_DUMMY = "dummy-newFile";
 
-    private static final String NEW_FOLDER_DUMMY = "dummy-newFolder";
+    private static final /*~~>*/String NEW_FOLDER_DUMMY = "dummy-newFolder";
 
     public static class IncorrectUsage {
         public TemporaryFolder folder = new TemporaryFolder();

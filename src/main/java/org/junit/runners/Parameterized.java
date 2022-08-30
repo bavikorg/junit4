@@ -229,7 +229,7 @@ public class Parameterized extends Suite {
          *         placeholder.
          * @see MessageFormat
          */
-        String name() default "{index}";
+        /*~~>*/String name() default "{index}";
     }
 
     /**
@@ -338,7 +338,7 @@ public class Parameterized extends Suite {
         private final Description description;
         private final AssumptionViolatedException exception;
 
-        AssumptionViolationRunner(TestClass testClass, String methodName,
+        AssumptionViolationRunner(TestClass testClass, /*~~>*/String methodName,
                 AssumptionViolatedException exception) {
             this.description = Description
                     .createTestDescription(testClass.getJavaClass(),
@@ -408,7 +408,7 @@ public class Parameterized extends Suite {
         }
 
         private TestWithParameters createTestWithNotNormalizedParameters(
-                String pattern, int index, Object parametersOrSingleParameter) {
+                /*~~>*/String pattern, int index, Object parametersOrSingleParameter) {
             Object[] parameters = normalizeParameters(parametersOrSingleParameter);
             return createTestWithParameters(testClass, pattern, index, parameters);
         }
@@ -453,7 +453,7 @@ public class Parameterized extends Suite {
         }
 
         private List<Runner> createRunnersForParameters(
-                Iterable<Object> allParameters, String namePattern,
+                Iterable<Object> allParameters, /*~~>*/String namePattern,
                 ParametersRunnerFactory runnerFactory) throws Exception {
             try {
                 List<TestWithParameters> tests = createTestsForParameters(
@@ -470,7 +470,7 @@ public class Parameterized extends Suite {
         }
 
         private List<TestWithParameters> createTestsForParameters(
-                Iterable<Object> allParameters, String namePattern)
+                Iterable<Object> allParameters, /*~~>*/String namePattern)
                 throws Exception {
             int i = 0;
             List<TestWithParameters> children = new ArrayList<TestWithParameters>();
@@ -483,20 +483,20 @@ public class Parameterized extends Suite {
 
         private static Exception parametersMethodReturnedWrongType(
                 TestClass testClass, FrameworkMethod parametersMethod) throws Exception {
-            String className = testClass.getName();
-            String methodName = parametersMethod.getName();
-            String message = MessageFormat.format(
+            /*~~>*/String className = testClass.getName();
+            /*~~>*/String methodName = parametersMethod.getName();
+            /*~~>*/String message = MessageFormat.format(
                     "{0}.{1}() must return an Iterable of arrays.", className,
                     methodName);
             return new Exception(message);
         }
 
         private TestWithParameters createTestWithParameters(
-                TestClass testClass, String pattern, int index,
+                TestClass testClass, /*~~>*/String pattern, int index,
                 Object[] parameters) {
-            String finalPattern = pattern.replaceAll("\\{index\\}",
+            /*~~>*/String finalPattern = pattern.replaceAll("\\{index\\}",
                     Integer.toString(index));
-            String name = MessageFormat.format(finalPattern, parameters);
+            /*~~>*/String name = MessageFormat.format(finalPattern, parameters);
             return new TestWithParameters("[" + name + "]", testClass,
                     Arrays.asList(parameters));
         }

@@ -30,7 +30,7 @@ import org.junit.runners.model.InitializationError;
  * </ol>
  */
 public class MaxCore {
-    private static final String MALFORMED_JUNIT_3_TEST_CLASS_PREFIX = "malformed JUnit 3 test class: ";
+    private static final /*~~>*/String MALFORMED_JUNIT_3_TEST_CLASS_PREFIX = "malformed JUnit 3 test class: ";
 
     /**
      * Create a new MaxCore from a serialized file stored at storedResults
@@ -38,7 +38,7 @@ public class MaxCore {
      * @deprecated use storedLocally()
      */
     @Deprecated
-    public static MaxCore forFolder(String folderName) {
+    public static MaxCore forFolder(/*~~>*/String folderName) {
         return storedLocally(new File(folderName));
     }
 
@@ -135,7 +135,7 @@ public class MaxCore {
         if (type == null) {
             throw new RuntimeException("Can't build a runner from description [" + each + "]");
         }
-        String methodName = each.getMethodName();
+        /*~~>*/String methodName = each.getMethodName();
         if (methodName == null) {
             return Request.aClass(type).getRunner();
         }

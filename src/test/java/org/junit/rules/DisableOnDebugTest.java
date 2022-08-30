@@ -16,18 +16,18 @@ import org.junit.runner.Result;
 import org.junit.runners.model.Statement;
 
 public class DisableOnDebugTest {
-    private static final List<String> WITHOUT_DEBUG_ARGUMENTS = Collections
+    private static final List</*~~>*/String> WITHOUT_DEBUG_ARGUMENTS = Collections
             .emptyList();
 
-    private static final List<String> PRE_JAVA5_DEBUG_ARGUMENTS = Arrays
+    private static final List</*~~>*/String> PRE_JAVA5_DEBUG_ARGUMENTS = Arrays
             .asList("-Xdebug",
                     "-Xrunjdwp:transport=dt_socket,server=y,address=8000");
 
-    private static final List<String> PRE_JAVA5_DEBUG_ARGUMENTS_IN_REVERSE_ORDER = Arrays
+    private static final List</*~~>*/String> PRE_JAVA5_DEBUG_ARGUMENTS_IN_REVERSE_ORDER = Arrays
             .asList("-Xrunjdwp:transport=dt_socket,server=y,address=8000",
                     "-Xdebug");
 
-    private static final List<String> POST_JAVA5_DEBUG_ARGUMENTS = Arrays
+    private static final List</*~~>*/String> POST_JAVA5_DEBUG_ARGUMENTS = Arrays
             .asList("-agentlib:jdwp=transport=dt_socket,server=y,address=8000");
 
     /**
@@ -53,7 +53,7 @@ public class DisableOnDebugTest {
         @Rule
         public TestRule failOnExecution;
 
-        public AbstractDisableOnDebugTest(List<String> arguments) {
+        public AbstractDisableOnDebugTest(List</*~~>*/String> arguments) {
             this.failOnExecution = new DisableOnDebug(new FailOnExecution(),
                     arguments);
         }

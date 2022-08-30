@@ -36,7 +36,7 @@ public class JUnitCoreReturnsCorrectExitCodeTest {
         runClass(getClass().getName() + "$Succeed", 0);
     }
 
-    private void runClass(final String className, int returnCode) {
+    private void runClass(final /*~~>*/String className, int returnCode) {
         Integer exitValue = new MainRunner().runWithCheckForSystemExit(new Runnable() {
             public void run() {
                 JUnitCore.main(className);

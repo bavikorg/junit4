@@ -49,7 +49,7 @@ public class ResultMatchers {
     /**
      * Matches if the result has exactly one failure, and it contains {@code string}
      */
-    public static Matcher<Object> hasSingleFailureContaining(final String string) {
+    public static Matcher<Object> hasSingleFailureContaining(final /*~~>*/String string) {
         return new BaseMatcher<Object>() {
             public boolean matches(Object item) {
                 return item.toString().contains(string) && failureCountIs(1).matches(item);
@@ -84,7 +84,7 @@ public class ResultMatchers {
      * Matches if the result has one or more failures, and at least one of them
      * contains {@code string}
      */
-    public static Matcher<PrintableResult> hasFailureContaining(final String string) {
+    public static Matcher<PrintableResult> hasFailureContaining(final /*~~>*/String string) {
         return new TypeSafeMatcher<PrintableResult>() {
             @Override
             public boolean matchesSafely(PrintableResult item) {

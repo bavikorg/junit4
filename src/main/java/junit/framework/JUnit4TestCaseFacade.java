@@ -11,7 +11,7 @@ public class JUnit4TestCaseFacade implements Test, Describable {
     }
 
     @Override
-    public String toString() {
+    public /*~~>*/String toString() {
         return getDescription().toString();
     }
 

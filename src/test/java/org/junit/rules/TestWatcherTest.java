@@ -57,10 +57,10 @@ public class TestWatcherTest {
         public Class<?> testClass;
 
         @Parameter(1)
-        public String expectedCallbacks;
+        public /*~~>*/String expectedCallbacks;
 
         @Parameter(2)
-        public List<String> expectedFailures;
+        public List</*~~>*/String> expectedFailures;
 
         private static TestRule selectedRule; //for injecting rule into test classes
 
@@ -77,7 +77,7 @@ public class TestWatcherTest {
             selectedRule = new ErroneousTestWatcher();
             PrintableResult result = testResult(testClass);
             assertThat(result, failureCountIs(expectedFailures.size()));
-            for (String expectedFailure: expectedFailures) {
+            for (/*~~>*/String expectedFailure: expectedFailures) {
                 assertThat(result, hasFailureContaining(expectedFailure));
             }
         }

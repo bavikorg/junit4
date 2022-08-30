@@ -135,7 +135,7 @@ public class TimeoutTest {
         long longTime = runAndTime(InfiniteLoopTest.class);
         long shortTime = runAndTime(ImpatientLoopTest.class);
         long difference = longTime - shortTime;
-        assertTrue(String.format("Difference was %sms", difference), difference < 200);
+        assertTrue(/*~~>*/String.format("Difference was %sms", difference), difference < 200);
     }
 
     private long runAndTime(Class<?> clazz) {
@@ -146,7 +146,7 @@ public class TimeoutTest {
         return totalTime;
     }
 
-    private String stackForException(Throwable exception) {
+    private /*~~>*/String stackForException(Throwable exception) {
         Writer buffer = new StringWriter();
         PrintWriter writer = new PrintWriter(buffer);
         exception.printStackTrace(writer);

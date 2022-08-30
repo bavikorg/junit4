@@ -28,7 +28,7 @@ import org.junit.runner.notification.Failure;
 import org.junit.tests.SampleJUnit4Tests.*;
 
 public class StackTracesTest {
-    private static final String EOL = System.getProperty("line.separator", "\n");
+    private static final /*~~>*/String EOL = System.getProperty("line.separator", "\n");
     private static ExecutorService executorService;
 
     @BeforeClass
@@ -185,16 +185,16 @@ public class StackTracesTest {
         assertNotEquals(failure.getTrace(), failure.getTrimmedTrace());
     }
 
-    private abstract static class StringMatcher extends TypeSafeMatcher<String> {
+    private abstract static class StringMatcher extends TypeSafeMatcher</*~~>*/String> {
     }
 
     /**
      * A matcher that matches the exception message in a stack trace.
      */
     private static class ExceptionMessageMatcher extends StringMatcher {
-        private final Matcher<String> matcher;
+        private final Matcher</*~~>*/String> matcher;
 
-        public ExceptionMessageMatcher(String message) {
+        public ExceptionMessageMatcher(/*~~>*/String message) {
             matcher = CoreMatchers.equalTo(message);
         }
 
@@ -203,13 +203,13 @@ public class StackTracesTest {
         }
 
         @Override
-        protected boolean matchesSafely(String line) {
+        protected boolean matchesSafely(/*~~>*/String line) {
             return matcher.matches(line);
         }
     }
 
     /** Returns a matcher that matches the message line in a stack trace. */
-    private static StringMatcher message(String message) {
+    private static StringMatcher message(/*~~>*/String message) {
         return new ExceptionMessageMatcher(message);
     }
 
@@ -220,10 +220,10 @@ public class StackTracesTest {
         private static final Pattern PATTERN
                 = Pattern.compile("\t*at ([a-zA-Z0-9.$]+)\\([a-zA-Z0-9]+\\.java:[0-9]+\\)");
 
-        private final String method;
+        private final /*~~>*/String method;
 
-        public StackTraceLineMatcher(String method) {
-            this.method = method;
+        public StackTraceLineMatcher(/*~~>*/String method) {
+            /*~~>*/this.method = method;
         }
 
         public void describeTo(Description description) {
@@ -231,7 +231,7 @@ public class StackTracesTest {
         }
 
         @Override
-        protected boolean matchesSafely(String line) {
+        protected boolean matchesSafely(/*~~>*/String line) {
             if (!line.startsWith("\t")) {
                 return false;
             }
@@ -241,13 +241,13 @@ public class StackTracesTest {
             if (!matcher.matches()) {
                 fail("Line does not look like a stack trace line: " + line);
             }
-            String matchedMethod = matcher.group(1);
+            /*~~>*/String matchedMethod = matcher.group(1);
             return method.equals(matchedMethod);
         }
     }
 
     /** Returns a matcher that matches the "at ..." line in a stack trace. */
-    private static StringMatcher at(String method) {
+    private static StringMatcher at(/*~~>*/String method) {
         return new StackTraceLineMatcher(method);
     }
 
@@ -258,10 +258,10 @@ public class StackTracesTest {
         private static final Pattern PATTERN
                 = Pattern.compile("\t*\\.\\.\\. [0-9]+ ([a-z]+)");
 
-        private final String suffix;
+        private final /*~~>*/String suffix;
 
-        public FramesRemovedMatcher(String suffix) {
-            this.suffix = suffix;
+        public FramesRemovedMatcher(/*~~>*/String suffix) {
+            /*~~>*/this.suffix = suffix;
         }
 
         public void describeTo(Description description) {
@@ -269,7 +269,7 @@ public class StackTracesTest {
         }
 
         @Override
-        protected boolean matchesSafely(String line) {
+        protected boolean matchesSafely(/*~~>*/String line) {
             if (!line.startsWith("\t")) {
                 return false;
             }
@@ -311,17 +311,17 @@ public class StackTracesTest {
     }
     
     private static void assertHasTrimmedTrace(Failure failure, StringMatcher... matchers) {
-        String trimmedTrace = failure.getTrimmedTrace();
-        String[] lines = trimmedTrace.split(EOL);
+        /*~~>*/String trimmedTrace = failure.getTrimmedTrace();
+        /*~~>*/String[] lines = trimmedTrace.split(EOL);
 
         int index = 0;
         for (; index < lines.length && index < matchers.length; index++) {
-            String line = lines[index];
+            /*~~>*/String line = lines[index];
             StringMatcher matcher = matchers[index];
             assertThat(line, matcher);
         }
         if (index < lines.length) {
-            String extraLine = lines[index];
+            /*~~>*/String extraLine = lines[index];
             fail("Extra line in trimmed trace: " + extraLine);
         } else if (index < matchers.length) {
             StringDescription description = new StringDescription();

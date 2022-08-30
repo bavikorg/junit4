@@ -22,12 +22,12 @@ public class CategoriesAndParameterizedTest {
     @RunWith(Parameterized.class)
     public static class ParameterizedTestWithoutCategory {
         @Parameters
-        public static Iterable<String> getParameters() {
+        public static Iterable</*~~>*/String> getParameters() {
             return Arrays.asList("first", "second");
         }
 
         @Parameterized.Parameter
-        public String value;
+        public /*~~>*/String value;
 
         @Test
         public void testSomething() {
@@ -62,12 +62,12 @@ public class CategoriesAndParameterizedTest {
     @Category(Token.class)
     public static class ParameterizedTestWithCategory {
         @Parameters
-        public static Iterable<String> getParameters() {
+        public static Iterable</*~~>*/String> getParameters() {
             return Arrays.asList("first", "second");
         }
 
         @Parameterized.Parameter
-        public String value;
+        public /*~~>*/String value;
 
         @Test
         public void testSomething() {
@@ -92,12 +92,12 @@ public class CategoriesAndParameterizedTest {
     @RunWith(Parameterized.class)
     public static class ParameterizedTestWithMethodWithCategory {
         @Parameters
-        public static Iterable<String> getParameters() {
+        public static Iterable</*~~>*/String> getParameters() {
             return Arrays.asList("first", "second");
         }
 
         @Parameterized.Parameter
-        public String value;
+        public /*~~>*/String value;
 
         @Test
         @Category(Token.class)

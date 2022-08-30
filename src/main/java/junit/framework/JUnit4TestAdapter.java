@@ -84,7 +84,7 @@ public class JUnit4TestAdapter implements Test, Filterable, Orderable, Describab
     }
 
     @Override
-    public String toString() {
+    public /*~~>*/String toString() {
         return fNewTestClass.getName();
     }
 

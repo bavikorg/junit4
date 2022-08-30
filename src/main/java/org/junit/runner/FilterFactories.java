@@ -17,15 +17,15 @@ class FilterFactories {
      * @param request the request that will be filtered
      * @param filterSpec the filter specification
      */
-    public static Filter createFilterFromFilterSpec(Request request, String filterSpec)
+    public static Filter createFilterFromFilterSpec(Request request, /*~~>*/String filterSpec)
             throws FilterFactory.FilterNotCreatedException {
         Description topLevelDescription = request.getRunner().getDescription();
-        String[] tuple;
+        /*~~>*/String[] tuple;
 
         if (filterSpec.contains("=")) {
             tuple = filterSpec.split("=", 2);
         } else {
-            tuple = new String[]{ filterSpec, "" };
+            tuple = new /*~~>*/String[]{ filterSpec, "" };
         }
 
         return createFilter(tuple[0], new FilterFactoryParams(topLevelDescription, tuple[1]));
@@ -37,7 +37,7 @@ class FilterFactories {
      * @param filterFactoryFqcn The fully qualified class name of the {@link FilterFactory}
      * @param params The arguments to the {@link FilterFactory}
      */
-    public static Filter createFilter(String filterFactoryFqcn, FilterFactoryParams params)
+    public static Filter createFilter(/*~~>*/String filterFactoryFqcn, FilterFactoryParams params)
             throws FilterFactory.FilterNotCreatedException {
         FilterFactory filterFactory = createFilterFactory(filterFactoryFqcn);
 
@@ -58,7 +58,7 @@ class FilterFactories {
         return filterFactory.createFilter(params);
     }
 
-    static FilterFactory createFilterFactory(String filterFactoryFqcn) throws FilterNotCreatedException {
+    static FilterFactory createFilterFactory(/*~~>*/String filterFactoryFqcn) throws FilterNotCreatedException {
         Class<? extends FilterFactory> filterFactoryClass;
 
         try {

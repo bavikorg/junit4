@@ -15,7 +15,7 @@ import static java.util.Collections.singletonList;
 public class ErrorReportingRunner extends Runner {
     private final List<Throwable> causes;
 
-    private final String classNames;
+    private final /*~~>*/String classNames;
 
     public ErrorReportingRunner(Class<?> testClass, Throwable cause) {
         this(cause, testClass);
@@ -50,7 +50,7 @@ public class ErrorReportingRunner extends Runner {
         }
     }
 
-    private String getClassNames(Class<?>... testClasses) {
+    private /*~~>*/String getClassNames(Class<?>... testClasses) {
         final StringBuilder builder = new StringBuilder();
         for (Class<?> testClass : testClasses) {
             if (builder.length() != 0) {

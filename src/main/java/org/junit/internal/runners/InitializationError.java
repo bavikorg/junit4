@@ -27,7 +27,7 @@ public class InitializationError extends Exception {
         this(Arrays.asList(errors));
     }
 
-    public InitializationError(String string) {
+    public InitializationError(/*~~>*/String string) {
         this(new Exception(string));
     }
 

@@ -19,7 +19,7 @@ public class SuiteMethodTest {
     public static boolean wasRun;
 
     public static class OldTest extends TestCase {
-        public OldTest(String name) {
+        public OldTest(/*~~>*/String name) {
             super(name);
         }
 

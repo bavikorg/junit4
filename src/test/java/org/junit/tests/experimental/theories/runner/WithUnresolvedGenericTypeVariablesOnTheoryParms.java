@@ -30,7 +30,7 @@ public class WithUnresolvedGenericTypeVariablesOnTheoryParms {
     @RunWith(Theories.class)
     public static class TypeVariableOnTheoryOnly {
         @DataPoint
-        public static List<String> strings = Arrays.asList("foo", "bar");
+        public static List</*~~>*/String> strings = Arrays.asList("foo", "bar");
 
         @Theory
         public <T> void forItems(Collection<?> items) {
@@ -46,7 +46,7 @@ public class WithUnresolvedGenericTypeVariablesOnTheoryParms {
     @RunWith(Theories.class)
     public static class TypeVariableOnTheoryParm {
         @DataPoint
-        public static String string = "foo";
+        public static /*~~>*/String string = "foo";
 
         @Theory
         public <T> void forItem(T item) {
@@ -62,7 +62,7 @@ public class WithUnresolvedGenericTypeVariablesOnTheoryParms {
     @RunWith(Theories.class)
     public static class TypeVariableOnParameterizedTheoryParm {
         @DataPoint
-        public static List<String> strings = Arrays.asList("foo", "bar");
+        public static List</*~~>*/String> strings = Arrays.asList("foo", "bar");
 
         @Theory
         public <T> void forItems(Collection<T> items) {
@@ -78,7 +78,7 @@ public class WithUnresolvedGenericTypeVariablesOnTheoryParms {
     @RunWith(Theories.class)
     public static class TypeVariableOnWildcardUpperBoundOnTheoryParm {
         @DataPoint
-        public static List<String> strings = Arrays.asList("foo", "bar");
+        public static List</*~~>*/String> strings = Arrays.asList("foo", "bar");
 
         @Theory
         public <U> void forItems(Collection<? extends U> items) {
@@ -94,7 +94,7 @@ public class WithUnresolvedGenericTypeVariablesOnTheoryParms {
     @RunWith(Theories.class)
     public static class TypeVariableOnWildcardLowerBoundOnTheoryParm {
         @DataPoint
-        public static List<String> strings = Arrays.asList("foo", "bar");
+        public static List</*~~>*/String> strings = Arrays.asList("foo", "bar");
 
         @Theory
         public <V> void forItems(Collection<? super V> items) {
@@ -110,8 +110,8 @@ public class WithUnresolvedGenericTypeVariablesOnTheoryParms {
     @RunWith(Theories.class)
     public static class TypeVariableOnArrayTypeOnTheoryParm {
         @DataPoints
-        public static String[][] items() {
-            return new String[][]{new String[]{"foo"}, new String[]{"bar"}};
+        public static /*~~>*//*~~>*/String[][] items() {
+            return new /*~~>*/String[][]{new /*~~>*/String[]{"foo"}, new /*~~>*/String[]{"bar"}};
         }
 
         @Theory
@@ -149,7 +149,7 @@ public class WithUnresolvedGenericTypeVariablesOnTheoryParms {
     @RunWith(Theories.class)
     public static class TypeVariableOnTheoryClass<T> {
         @DataPoint
-        public static String item = "bar";
+        public static /*~~>*/String item = "bar";
 
         @Theory
         public void forItem(T item) {

@@ -30,7 +30,7 @@ import org.junit.runners.model.MultipleFailureException;
 import org.junit.runners.model.Statement;
 
 public class ExternalResourceRuleTest {
-    private static String callSequence;
+    private static /*~~>*/String callSequence;
 
     public static class UsesExternalResource {
         @Rule
@@ -110,7 +110,7 @@ public class ExternalResourceRuleTest {
     public void shouldThrowMultipleFailureExceptionWhenTestFailsAndTwoClosingResourcesFail() {
         Result result = JUnitCore.runClasses(TestFailsAndTwoClosingResourcesFail.class);
         assertEquals(3, result.getFailures().size());
-        List<String> messages = new ArrayList<String>();
+        List</*~~>*/String> messages = new ArrayList</*~~>*/String>();
         for (Failure failure : result.getFailures()) {
             messages.add(failure.getMessage());
         }

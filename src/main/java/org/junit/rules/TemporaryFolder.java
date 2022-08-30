@@ -48,7 +48,7 @@ public class TemporaryFolder extends ExternalResource {
     private File folder;
 
     private static final int TEMP_DIR_ATTEMPTS = 10000;
-    private static final String TMP_PREFIX = "junit";
+    private static final /*~~>*/String TMP_PREFIX = "junit";
 
     /**
      * Create a temporary folder which uses system default temporary-file 
@@ -153,7 +153,7 @@ public class TemporaryFolder extends ExternalResource {
     /**
      * Returns a new fresh file with the given name under the temporary folder.
      */
-    public File newFile(String fileName) throws IOException {
+    public File newFile(/*~~>*/String fileName) throws IOException {
         File file = new File(getRoot(), fileName);
         if (!file.createNewFile()) {
             throw new IOException(
@@ -173,8 +173,8 @@ public class TemporaryFolder extends ExternalResource {
      * Returns a new fresh folder with the given path under the temporary
      * folder.
      */
-    public File newFolder(String path) throws IOException {
-        return newFolder(new String[]{path});
+    public File newFolder(/*~~>*/String path) throws IOException {
+        return newFolder(new /*~~>*/String[]{path});
     }
 
     /**
@@ -184,7 +184,7 @@ public class TemporaryFolder extends ExternalResource {
      * and a directory named {@code "child"} will be created under the newly-created
      * {@code "parent"} directory.
      */
-    public File newFolder(String... paths) throws IOException {
+    public File newFolder(/*~~>*/String... paths) throws IOException {
         if (paths.length == 0) {
             throw new IllegalArgumentException("must pass at least one path");
         }
@@ -194,7 +194,7 @@ public class TemporaryFolder extends ExternalResource {
          * and if it wasn't, throw IllegalStateException.
          */
         File root = getRoot();
-        for (String path : paths) {
+        for (/*~~>*/String path : paths) {
             if (new File(path).isAbsolute()) {
                 throw new IOException("folder path \'" + path + "\' is not a relative path");
             }
@@ -203,7 +203,7 @@ public class TemporaryFolder extends ExternalResource {
         File relativePath = null;
         File file = root;
         boolean lastMkdirsCallSuccessful = true;
-        for (String path : paths) {
+        for (/*~~>*/String path : paths) {
             relativePath = new File(relativePath, path);
             file = new File(root, relativePath.getPath());
 
@@ -260,11 +260,11 @@ public class TemporaryFolder extends ExternalResource {
         Class<?> pathClass = Class.forName("java.nio.file.Path");
         Object tempDir;
         if (parentFolder != null) {
-            Method createTempDirectoryMethod = filesClass.getDeclaredMethod("createTempDirectory", pathClass, String.class, fileAttributeArray.getClass());
+            Method createTempDirectoryMethod = filesClass.getDeclaredMethod("createTempDirectory", pathClass, /*~~>*/String.class, fileAttributeArray.getClass());
             Object parentPath = File.class.getDeclaredMethod("toPath").invoke(parentFolder);
             tempDir = createTempDirectoryMethod.invoke(null, parentPath, TMP_PREFIX, fileAttributeArray);
         } else {
-            Method createTempDirectoryMethod = filesClass.getDeclaredMethod("createTempDirectory", String.class, fileAttributeArray.getClass());
+            Method createTempDirectoryMethod = filesClass.getDeclaredMethod("createTempDirectory", /*~~>*/String.class, fileAttributeArray.getClass());
             tempDir = createTempDirectoryMethod.invoke(null, TMP_PREFIX, fileAttributeArray);
         }
         return (File) pathClass.getDeclaredMethod("toFile").invoke(tempDir);
@@ -274,11 +274,11 @@ public class TemporaryFolder extends ExternalResource {
         File createdFolder = null;
         for (int i = 0; i < TEMP_DIR_ATTEMPTS; ++i) {
             // Use createTempFile to get a suitable folder name.
-            String suffix = ".tmp";
+            /*~~>*/String suffix = ".tmp";
             File tmpFile = File.createTempFile(TMP_PREFIX, suffix, parentFolder);
-            String tmpName = tmpFile.toString();
+            /*~~>*/String tmpName = tmpFile.toString();
             // Discard .tmp suffix of tmpName.
-            String folderName = tmpName.substring(0, tmpName.length() - suffix.length());
+            /*~~>*/String folderName = tmpName.substring(0, tmpName.length() - suffix.length());
             createdFolder = new File(folderName);
             if (createdFolder.mkdir()) {
                 tmpFile.delete();

@@ -65,7 +65,7 @@ public class DisableOnDebug implements TestRule {
      * @param inputArguments
      *            arguments provided to the Java runtime
      */
-    DisableOnDebug(TestRule rule, List<String> inputArguments) {
+    DisableOnDebug(TestRule rule, List</*~~>*/String> inputArguments) {
         this.rule = rule;
         debugging = isDebugging(inputArguments);
     }
@@ -101,8 +101,8 @@ public class DisableOnDebug implements TestRule {
      * @return true if the current JVM was started in debug mode, false
      *         otherwise.
      */
-    private static boolean isDebugging(List<String> arguments) {
-        for (final String argument : arguments) {
+    private static boolean isDebugging(List</*~~>*/String> arguments) {
+        for (final /*~~>*/String argument : arguments) {
             if ("-Xdebug".equals(argument) || argument.startsWith("-agentlib:jdwp")) {
                 return true;
             }

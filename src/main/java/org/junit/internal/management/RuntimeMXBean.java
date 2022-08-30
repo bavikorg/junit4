@@ -10,5 +10,5 @@ public interface RuntimeMXBean {
   /**
    * @see java.lang.management.RuntimeMXBean#getInputArguments()
    */
-  List<String> getInputArguments();
+  List</*~~>*/String> getInputArguments();
 }

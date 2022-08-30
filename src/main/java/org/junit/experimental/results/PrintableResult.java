@@ -64,7 +64,7 @@ public class PrintableResult {
     }
 
     @Override
-    public String toString() {
+    public /*~~>*/String toString() {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         new TextListener(new PrintStream(stream)).testRunFinished(result);
         return stream.toString();
